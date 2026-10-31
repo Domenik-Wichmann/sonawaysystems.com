@@ -24,7 +24,7 @@ The repository root is the website root. No Node.js, dependency installation, bu
 
 All examples use fictional data and run entirely in the visitor's browser. They are illustrative interfaces, not a deployed Sonaway knowledge backend.
 
-The graph has three scenarios: an order-cutoff change, a temporary peak-week context, and staff/customer views of a returns policy. Visitors inspect nodes, review impact and approve a simulated update. The Warehouse B exception remains unchanged and is flagged for owner review.
+The graph has three scenarios: order cutoffs, a temporary peak-week context, and staff/customer views of returns rules. Every card shows its effective value and the rule it inherits. Visitors can change the company default, the warehouse department override or Warehouse C’s site exception. Warehouses A and B inherit from warehouse core; C starts with its own exception. Field operations inherit from the company; support has a separate department override. Changes are computed from these relationships, rather than updating every card indiscriminately. Visitors can remove an override to restore inheritance. Ending the peak-week context restores the original example.
 
 The guided intake follows a deterministic branching conversation. No external language model is called. The calculator exposes all assumptions and shows potential released capacity, not promised cash savings.
 
@@ -37,8 +37,9 @@ No database, form collection service, analytics or marketing cookies are include
 ## Editing
 
 - Page structure and copy: the individual HTML files.
-- Styles and responsive layout: `assets/styles.css`.
+- Styles and responsive layout: `assets/styles.css` and `assets/refinements.css`.
 - All interactions and demo data: `assets/site.js`.
+- Editorial-style photography and generation prompts: see `ASSETS.md`.
 - Brand icon: `assets/favicon.svg`.
 - Social image: `assets/social-card.svg` and `assets/social-card.png`.
 - Canonical URLs, sitemap and social image URLs target `https://sonawaysystems.com/`.

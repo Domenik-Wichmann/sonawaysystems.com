@@ -22,71 +22,108 @@
       support: { name: 'Customer support', parent: 'core' },
       a: { name: 'Warehouse A', parent: 'warehouse' },
       b: { name: 'Warehouse B', parent: 'warehouse' },
+      c: { name: 'Warehouse C', parent: 'warehouse' },
       crew: { name: 'Service crews', parent: 'field' },
       public: { name: 'Customer website', parent: 'support' }
     };
     const scenarios = {
       cutoff: {
-        title: 'An earlier order cutoff', label: 'Standard order cutoff', old: '12:00', next: '10:00', exception: '11:00', source: 'Order policy §2.1',
-        proposal: 'Standard order cutoff, 12:00 → 10:00.',
-        explanation: 'Warehouse B has its own approved 11:00 cutoff. It will be flagged for review.',
-        affected: ['core', 'warehouse', 'field', 'support', 'a', 'crew', 'public'],
-        descriptions: {
-          core: 'The approved company policy. Connected teams inherit the relevant parts unless a specific exception applies.',
-          warehouse: 'The shared warehouse procedure references the company cutoff. Site instructions use this same rule instead of a separate copy.',
-          field: 'Field teams need the cutoff when promising delivery dates. A change affects their guidance as well as warehouse instructions.',
-          support: 'The approved answer about delivery timing draws on the same order policy. It needs refreshing when the cutoff changes.',
-          a: 'Warehouse A follows the shared rule. Its daily checklist and cached answer card are connected to this knowledge.',
-          b: 'Warehouse B has an approved local cutoff. The parent change is flagged for review; the local value is not silently overwritten.',
-          crew: 'Delivery guidance and a previously saved answer depend on the cutoff. Refresh the connected guidance and notify affected staff.',
-          public: 'Customers can see the published order deadline. Internal staffing, approval notes and operational exceptions are outside this example’s public view.'
-        },
-        impacts: [['Company policy and inherited views', 'Update after approval'], ['Warehouse A checklist & answer card', 'Refresh connected outputs'], ['Field and support guidance', 'Refresh connected outputs'], ['Customer-facing deadline', 'Publish approved information'], ['Warehouse B: local 11:00 rule', 'Flag for owner review'], ['Recent recipients of affected answers', 'Notify about the change']]
+        title: 'Shared policy, different local rules', label: 'Standard order cutoff', source: 'Order policy §2.1',
+        rules: { core: '12:00', warehouse: '11:00', c: '10:00', support: '13:00' },
+        options: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
+        suggested: { core: '14:00', warehouse: '15:00', c: '09:00' }
       },
       event: {
-        title: 'A temporary peak-week arrangement', label: 'Dispatch service hours', old: '08:00–17:00', next: '08:00–20:00', exception: '08:00–16:00', source: 'Dispatch policy §3 + peak-week context',
-        proposal: 'Extend dispatch to 20:00 for the selected peak week.',
-        explanation: 'The base schedule stays unchanged. The temporary view applies only during its approved period.',
-        affected: ['core', 'warehouse', 'field', 'support', 'a', 'crew', 'public'],
-        descriptions: {
-          core: 'Base dispatch hours remain 08:00–17:00. The approved peak-week context temporarily changes the effective schedule for relevant views.',
-          warehouse: 'Warehouse guidance can inherit the peak-week schedule without replacing its normal year-round instructions.',
-          field: 'Field teams see the temporary hours during peak week, so their planning reflects the effective schedule.',
-          support: 'Support receives the effective peak-week hours and the period they apply to, with a link to the approved context.',
-          a: 'Warehouse A follows the peak-week arrangement. After the context expires, its effective view returns to the base schedule.',
-          b: 'A separate site agreement keeps this warehouse at 08:00–16:00. Its owner must review whether peak-week changes should apply here.',
-          crew: 'Crews receive the effective schedule and an update notification. Actual staffing changes would need their own agreed workflow.',
-          public: 'The customer view shows the approved temporary dispatch hours and their dates, without exposing internal planning notes.'
-        },
-        impacts: [['Base schedule: 08:00–17:00', 'Keep unchanged'], ['Peak-week context', 'Activate for approved dates'], ['Connected team and customer views', 'Use effective schedule'], ['Warehouse B: site agreement', 'Flag for owner review'], ['Affected team members', 'Notify at activation'], ['End of approved period', 'Return to base schedule']]
+        title: 'Temporary hours, with local context', label: 'Dispatch closing time', source: 'Dispatch policy §3 · peak-week view',
+        rules: { core: '17:00', warehouse: '15:00', c: '14:00', support: '18:00' },
+        options: ['14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'],
+        suggested: { core: '20:00', warehouse: '19:00', c: '16:00' }
       },
       returns: {
-        title: 'One policy, different audiences', label: 'Standard returns window', old: '30 days', next: '45 days', exception: '14 days · special stock', source: 'Returns policy §4 + audience permissions',
-        proposal: 'Standard returns window, 30 → 45 days.',
-        explanation: 'Staff and customer views share the approved rule. Internal approval details stay internal.',
-        affected: ['core', 'warehouse', 'field', 'support', 'a', 'crew', 'public'],
-        descriptions: {
-          core: 'The company policy defines the standard returns window, internal escalation rules and which information may be published.',
-          warehouse: 'Receiving procedures use the shared window to guide acceptance. Internal handling instructions are available only to relevant staff.',
-          field: 'Field staff need the current window when helping customers. They also see role-relevant escalation guidance.',
-          support: 'Support answers combine the public rule with internal escalation instructions. Permissions govern which components are included.',
-          a: 'Warehouse A inherits the standard returns window and its relevant receiving instructions from the shared knowledge.',
-          b: 'An approved special-stock rule has a 14-day window. A standard-policy update does not automatically remove that exception.',
-          crew: 'A staff-facing answer can include the returns window and an internal contact route. The customer answer has a narrower scope.',
-          public: 'Customers receive the approved returns window and public instructions. Internal escalation thresholds and private contacts are excluded from this illustrative view.'
-        },
-        impacts: [['Standard policy and inherited views', 'Update after approval'], ['Staff receiving and support guidance', 'Refresh connected outputs'], ['Customer answer: returns window', 'Publish approved information'], ['Internal contacts & escalation rules', 'Keep restricted'], ['Warehouse B: special-stock rule', 'Flag for owner review'], ['Recently issued affected answers', 'Notify relevant recipients']]
+        title: 'One policy model, staff and customer views', label: 'Returns acceptance window', source: 'Returns policy §4 · audience-specific guidance',
+        rules: { core: '30 days', warehouse: '21 days', c: '14 days', support: '45 days' },
+        options: ['7 days', '14 days', '21 days', '30 days', '45 days', '60 days'],
+        suggested: { core: '45 days', warehouse: '30 days', c: '21 days' }
       }
     };
     let scenarioKey = 'cutoff';
+    let rules = { ...scenarios.cutoff.rules };
     let selected = 'core';
-    let applied = false;
+    let updated = [];
+    let reviewed = [];
+    let changeCount = 0;
+    let pending = null;
     let pulseTimer;
-    const modal = document.querySelector('#impact-modal');
-    const preview = document.querySelector('#preview-change');
     const graphSvg = graph.querySelector('svg');
-    const setText = (selector, text) => { document.querySelector(selector).textContent = text; };
-    const lineage = (id) => nodes[id].parent ? [...lineage(nodes[id].parent), nodes[id].name] : [nodes[id].name];
+    const modal = document.querySelector('#impact-modal');
+    const targetSelect = document.querySelector('#change-target');
+    const newRule = document.querySelector('#new-rule');
+    const inherit = document.querySelector('#inherit-change');
+    const preview = document.querySelector('#preview-change');
+    const reset = document.querySelector('#reset-graph');
+    const setText = (selector, value) => { document.querySelector(selector).textContent = value; };
+    const owns = (object, key) => Object.prototype.hasOwnProperty.call(object, key);
+    const lineage = id => nodes[id].parent ? [...lineage(nodes[id].parent), id] : [id];
+    const effective = (id, model = rules) => owns(model, id) ? { value: model[id], origin: id } : effective(nodes[id].parent, model);
+
+    function makeProposal() {
+      const target = targetSelect.value;
+      const next = { ...rules };
+      if (inherit.checked && target !== 'core') delete next[target];
+      else next[target] = newRule.value;
+      const affected = Object.keys(nodes).filter(id => {
+        const before = effective(id);
+        const after = effective(id, next);
+        return before.value !== after.value || before.origin !== after.origin;
+      });
+      const preserved = Object.keys(rules).filter(id => id !== target && lineage(id).includes(target));
+      return { target, next, affected, preserved, previous: { ...rules }, restoresInheritance: inherit.checked && target !== 'core' };
+    }
+
+    function updateProposalSummary() {
+      const proposal = makeProposal();
+      const before = effective(proposal.target).value;
+      const after = effective(proposal.target, proposal.next).value;
+      const description = document.querySelector('#change-description');
+      description.replaceChildren(document.createTextNode(proposal.restoresInheritance
+        ? `${nodes[proposal.target].name}: restore inheritance from ${nodes[nodes[proposal.target].parent].name}.`
+        : `${nodes[proposal.target].name}: ${before} → ${after}.`));
+      const line = document.createElement('span');
+      const count = proposal.affected.length;
+      line.textContent = count ? `${count} connected ${count === 1 ? 'view will' : 'views will'} change. ${proposal.preserved.length ? `${proposal.preserved.length} explicit overrides stay in place for review.` : 'Other branches keep their current rules.'}` : 'Choose a different value or restore inheritance to see a change.';
+      description.append(line);
+      preview.disabled = count === 0;
+      preview.textContent = count === 0 ? 'Choose a different rule' : 'Preview update';
+    }
+
+    function configureEditor() {
+      const s = scenarios[scenarioKey];
+      const target = targetSelect.value;
+      newRule.replaceChildren();
+      for (const value of s.options) {
+        const option = document.createElement('option'); option.value = value; option.textContent = value; newRule.append(option);
+      }
+      const recommended = s.suggested[target];
+      newRule.value = recommended !== effective(target).value ? recommended : s.options[(s.options.indexOf(recommended) + 1) % s.options.length];
+      inherit.checked = false;
+      inherit.disabled = target === 'core';
+      newRule.disabled = false;
+      setText('#target-explainer', target === 'core' ? 'Company changes reach inheriting branches. Department and site overrides keep their own values.' : 'Edit this rule, or remove its override to inherit the parent rule again.');
+      updateProposalSummary();
+    }
+
+    function describeNode(id) {
+      const source = effective(id);
+      const local = owns(rules, id);
+      if (id === 'core') return scenarioKey === 'event'
+        ? 'The shared closing time in this illustrative peak-week context. Changes affect inheriting branches; ending the context restores the original example.'
+        : 'The company default. Only branches that inherit this rule follow a change to it. Department and site overrides remain explicit.';
+      if (id === 'public') return `This customer-facing view uses the ${source.value} rule from ${nodes[source.origin].name}. Only approved public guidance is shown; internal contacts and escalation details stay restricted.`;
+      if (local) return id === 'c'
+        ? `An approved site-specific exception sets ${source.value}. Warehouse A and B can follow the warehouse default while C keeps this separate rule. You can restore inheritance using the controls above.`
+        : `This department sets its own ${source.value} rule. Its inheriting teams follow this value, even when the company default differs. A parent change does not silently replace it.`;
+      return `This view inherits ${source.value} from ${nodes[source.origin].name}. It has no independent copy of the rule, so a change at that source flows through automatically in this illustration.`;
+    }
 
     function drawEdges(animate = false) {
       const bounds = graph.getBoundingClientRect();
@@ -103,8 +140,9 @@
         const mid = (y1 + y2) / 2;
         const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         path.setAttribute('d', `M ${x1} ${y1} C ${x1} ${mid}, ${x2} ${mid}, ${x2} ${y2}`);
-        if (applied && scenarios[scenarioKey].affected.includes(id)) path.classList.add('affected');
-        if (animate && id !== 'b') path.classList.add('pulse');
+        if (owns(rules, id)) path.classList.add('blocked');
+        if (updated.includes(id)) path.classList.add('affected');
+        if (animate && updated.includes(id)) path.classList.add('pulse');
         graphSvg.append(path);
       }
     }
@@ -112,63 +150,88 @@
     function render() {
       const s = scenarios[scenarioKey];
       setText('#scenario-title', s.title);
-      setText('#node-title', nodes[selected].name);
-      setText('#node-label', s.label);
-      const value = selected === 'b' ? s.exception : applied ? s.next : s.old;
-      setText('#node-value', value);
-      setText('#node-description', s.descriptions[selected]);
-      setText('#node-source', `${s.source} → ${lineage(selected).join(' → ')}${selected === 'b' ? ' → Approved local exception' : ''}`);
-      if (scenarioKey === 'event' && applied) setText('#node-label', 'Effective hours · peak-week example');
-      const desc = document.querySelector('#change-description');
-      desc.replaceChildren(document.createTextNode((applied ? 'Example applied: ' : 'Proposed change: ') + s.proposal));
-      const detail = document.createElement('span');
-      detail.textContent = applied ? 'Connected views refreshed in this illustration. Warehouse B remains flagged for review.' : s.explanation;
-      desc.append(detail);
-      const status = document.querySelector('#lab-status');
-      status.classList.toggle('applied', applied);
-      status.replaceChildren(Object.assign(document.createElement('i'), {}), document.createTextNode(applied ? 'Example updated' : 'Current version'));
-      preview.textContent = applied ? 'Reset this example' : 'Preview the change';
       graph.querySelectorAll('[data-node]').forEach(button => {
         const id = button.dataset.node;
+        const source = effective(id);
+        const local = owns(rules, id);
+        const tag = id === 'core' ? 'COMPANY DEFAULT' : local ? (id === 'c' ? 'SITE EXCEPTION' : 'DEPARTMENT OVERRIDE') : `FROM ${nodes[source.origin].name.toUpperCase()}`;
+        button.querySelector('.node-time').textContent = source.value;
+        button.querySelector('.node-tag').textContent = tag;
+        button.setAttribute('aria-label', `${nodes[id].name}, ${source.value}, ${tag.toLowerCase()}${updated.includes(id) ? ', updated' : ''}${reviewed.includes(id) ? ', override preserved for review' : ''}`);
         button.setAttribute('aria-pressed', String(id === selected));
-        button.classList.toggle('updated', applied && s.affected.includes(id) && id !== 'core');
-        const tag = button.querySelector('.node-tag');
-        tag.textContent = id === 'b' ? (applied ? 'OWNER REVIEW NEEDED' : 'LOCAL EXCEPTION') : id === 'core' ? (applied ? 'APPROVED EXAMPLE CHANGE' : 'APPROVED SHARED KNOWLEDGE') : applied ? 'CONNECTED VIEW REFRESHED' : { warehouse: 'SHARED SITE PROCEDURES', field: 'ROLE-SPECIFIC GUIDANCE', support: 'APPROVED RESPONSES', a: 'INHERITS SHARED RULES', crew: 'ANSWERS + CHECKLISTS', public: 'CUSTOMER-SAFE VIEW' }[id];
+        button.classList.toggle('override', id !== 'core' && local);
+        button.classList.toggle('updated', updated.includes(id));
+        button.classList.toggle('review', reviewed.includes(id));
       });
+      const source = effective(selected);
+      setText('#node-title', nodes[selected].name);
+      setText('#node-label', s.label);
+      setText('#node-value', source.value);
+      setText('#node-description', describeNode(selected));
+      const activePath = lineage(selected).slice(lineage(selected).indexOf(source.origin));
+      setText('#node-source', `${activePath.map(id => nodes[id].name).join(' → ')} · ${s.source}`);
+      const status = document.querySelector('#lab-status');
+      status.classList.toggle('applied', changeCount > 0);
+      status.replaceChildren(document.createElement('i'), document.createTextNode(changeCount ? `${updated.length} ${updated.length === 1 ? 'view' : 'views'} updated` : 'Current rules'));
+      reset.textContent = scenarioKey === 'event' && changeCount ? 'End peak-week context' : 'Reset example';
       document.querySelectorAll('[data-scenario]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.scenario === scenarioKey)));
-      requestAnimationFrame(() => drawEdges());
+      updateProposalSummary();
+      requestAnimationFrame(() => { drawEdges(); if (window.innerWidth < 650 && changeCount === 0 && selected === 'core') graph.parentElement.scrollLeft = (graph.scrollWidth - graph.parentElement.clientWidth) / 2; });
     }
 
-    graph.addEventListener('click', event => { const node = event.target.closest('[data-node]'); if (!node) return; selected = node.dataset.node; render(); });
-    document.querySelectorAll('[data-scenario]').forEach(button => button.addEventListener('click', () => { clearTimeout(pulseTimer); scenarioKey = button.dataset.scenario; applied = false; selected = 'core'; render(); }));
+    graph.addEventListener('click', event => {
+      const button = event.target.closest('[data-node]');
+      if (!button) return;
+      selected = button.dataset.node;
+      render();
+    });
+    targetSelect.addEventListener('change', () => { selected = targetSelect.value; configureEditor(); render(); });
+    newRule.addEventListener('change', updateProposalSummary);
+    inherit.addEventListener('change', () => { newRule.disabled = inherit.checked; updateProposalSummary(); });
+    const resetScenario = () => {
+      clearTimeout(pulseTimer); rules = { ...scenarios[scenarioKey].rules }; updated = []; reviewed = []; changeCount = 0; selected = 'core'; targetSelect.value = 'core'; configureEditor(); render();
+    };
+    document.querySelectorAll('[data-scenario]').forEach(button => button.addEventListener('click', () => { scenarioKey = button.dataset.scenario; resetScenario(); }));
+    reset.addEventListener('click', resetScenario);
     preview.addEventListener('click', () => {
-      if (applied) { applied = false; render(); return; }
-      const s = scenarios[scenarioKey];
-      setText('#impact-description', `${s.proposal} ${s.explanation}`);
+      pending = makeProposal();
+      if (!pending.affected.length) return;
+      const from = effective(pending.target).value;
+      const to = effective(pending.target, pending.next).value;
+      setText('#impact-description', `${nodes[pending.target].name}: ${from} → ${to}.${pending.restoresInheritance ? ' The explicit override will be removed, restoring the parent rule.' : ''}${scenarioKey === 'event' ? ' This applies only inside the illustrative peak-week context.' : ''}`);
       const list = document.querySelector('#impact-list');
       list.replaceChildren();
-      for (const [label, action] of s.impacts) {
+      for (const id of pending.affected) {
         const li = document.createElement('li');
-        const name = document.createElement('span'); name.textContent = label;
-        const next = document.createElement('span'); next.textContent = action;
-        li.append(name, next); list.append(li);
+        const label = document.createElement('span'); label.textContent = nodes[id].name;
+        const action = document.createElement('span'); action.textContent = `${effective(id).value} → ${effective(id, pending.next).value}`;
+        li.append(label, action); list.append(li);
       }
-      modal.showModal();
-      document.body.classList.add('modal-open');
+      for (const id of pending.preserved) {
+        const li = document.createElement('li');
+        const label = document.createElement('span'); label.textContent = nodes[id].name;
+        const action = document.createElement('span'); action.className = 'impact-kept'; action.textContent = `${effective(id).value} · override kept for review`;
+        li.append(label, action); list.append(li);
+      }
+      modal.showModal(); document.body.classList.add('modal-open');
     });
     document.querySelector('.close-modal').addEventListener('click', () => modal.close());
-    modal.addEventListener('click', event => { if (event.target === modal) { const r = modal.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) modal.close(); } });
+    modal.addEventListener('click', event => {
+      if (event.target !== modal) return;
+      const r = modal.getBoundingClientRect();
+      if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) modal.close();
+    });
     modal.addEventListener('close', () => { document.body.classList.remove('modal-open'); preview.focus({ preventScroll: true }); });
     document.querySelector('#approve-change').addEventListener('click', () => {
-      applied = true;
-      render();
-      modal.close();
+      if (!pending) return;
+      rules = pending.next; updated = pending.affected; reviewed = pending.preserved; selected = pending.target; changeCount++;
+      pending = null; configureEditor(); render(); modal.close();
       requestAnimationFrame(() => drawEdges(true));
-      pulseTimer = setTimeout(() => drawEdges(), 2400);
+      clearTimeout(pulseTimer); pulseTimer = setTimeout(() => drawEdges(), 2500);
     });
     new ResizeObserver(() => drawEdges()).observe(graph);
     if (document.fonts) document.fonts.ready.then(() => drawEdges());
-    render();
+    configureEditor(); render();
   }
 
   const chatBody = document.querySelector('#chat-body');
