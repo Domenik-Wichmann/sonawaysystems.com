@@ -57,3 +57,7 @@ Static checks: JavaScript syntax, one H1 per page, unique IDs, local links and a
 ## Visual identity
 
 Ink navy, warm white and copper/amber accents, with explicit light/dark text pairs. Service tags use high-contrast navy or copper surfaces. The source-color system remains green/purple/blue/amber for the interactive hierarchy.
+
+## Readability and business variety
+
+Body ink is a deeper near-black navy and secondary text is darker slate. Supporting copy, navigation, forms, tags, captions and demo labels use larger type. The packing hero remains; a restaurant-team scene supports the homepage and a lighting-assembly workshop introduces services. Sector copy explicitly includes franchises, retail branches, manufacturing, distribution and field teams. All scenes remain illustrative.
