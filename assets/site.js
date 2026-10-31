@@ -13,6 +13,7 @@
     window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
   }
 
+  let automaticDemoScroll = false;
   const siteHeader = document.querySelector('.site-header');
   if (siteHeader) {
     let previousY = Math.max(0, window.scrollY);
@@ -23,7 +24,8 @@
       requestAnimationFrame(() => {
         const currentY = Math.max(0, window.scrollY);
         const delta = currentY - previousY;
-        if (currentY < 90 || nav?.classList.contains('open')) siteHeader.classList.remove('header-hidden');
+        if (automaticDemoScroll) siteHeader.classList.add('header-hidden');
+        else if (currentY < 90 || nav?.classList.contains('open')) siteHeader.classList.remove('header-hidden');
         else if (Math.abs(delta) > 3) siteHeader.classList.toggle('header-hidden', delta > 0);
         previousY = currentY;
         scrollQueued = false;
@@ -126,7 +128,22 @@
       document.querySelectorAll('[data-scenario]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.scenario === scenarioKey)));
       requestAnimationFrame(() => drawEdges());
     }
+    function frameDemo() {
+      const stage = document.querySelector('#interactive-demo');
+      const rect = stage.getBoundingClientRect();
+      if (rect.top >= 12 && rect.bottom <= window.innerHeight - 12) return;
+      automaticDemoScroll = true;
+      siteHeader?.classList.add('header-hidden');
+      stage.scrollIntoView({ behavior: 'instant', block: 'start' });
+      requestAnimationFrame(() => requestAnimationFrame(() => { automaticDemoScroll = false; }));
+    }
+    document.querySelectorAll('a[href="#interactive-demo"]').forEach(link => link.addEventListener('click', event => {
+      event.preventDefault();
+      frameDemo();
+      window.history.replaceState(null, '', '#interactive-demo');
+    }));
     function openEditor(id) {
+      frameDemo();
       closeEditors(); selected = id; render();
       const card = graph.querySelector(`[data-node="${id}"]`), editor = card.querySelector('.node-editor');
       editor.replaceChildren();
