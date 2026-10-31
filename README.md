@@ -24,7 +24,11 @@ The repository root is the website root. No Node.js, dependency installation, bu
 
 All examples use fictional data and run entirely in the visitor's browser. They are illustrative interfaces, not a deployed Sonaway knowledge backend.
 
-The graph has three scenarios: order cutoffs, a temporary peak-week context, and staff/customer views of returns rules. Every card shows its effective value and the rule it inherits. Visitors can change the company default, the warehouse department override or Warehouse C’s site exception. Warehouses A and B inherit from warehouse core; C starts with its own exception. Field operations inherit from the company; support has a separate department override. Changes are computed from these relationships, rather than updating every card indiscriminately. Visitors can remove an override to restore inheritance. Ending the peak-week context restores the original example.
+The graph has three existing scenarios: order cutoffs, a peak-week context and returns rules. Every node is editable directly: click a node, choose a value, and the change propagates immediately in this browser-only demonstration. There is no separate node selector, Apply step or approval modal. Any non-root node can restore its parent rule using the first option in its inline editor. Undo and Reset are included.
+
+Node and connector colors identify the effective rule source. The business default and its inheriting views are green; warehouse core, A and B start purple; support and the customer website start blue; warehouse C’s independent exception starts amber. Removing an override changes the effective value and source color together. Creating a new override gives that node its own source color.
+
+The demonstration is sized to the viewport and does not require internal scrolling. Its full hierarchy is visible on desktop and phone layouts. The header hides when scrolling down and returns when scrolling up.
 
 The guided intake follows a deterministic branching conversation. No external language model is called. The calculator exposes all assumptions and shows potential released capacity, not promised cash savings.
 
@@ -37,7 +41,7 @@ No database, form collection service, analytics or marketing cookies are include
 ## Editing
 
 - Page structure and copy: the individual HTML files.
-- Styles and responsive layout: `assets/styles.css` and `assets/refinements.css`.
+- Styles and responsive layout: `assets/styles.css`, `assets/refinements.css` and `assets/compact-demo.css`.
 - All interactions and demo data: `assets/site.js`.
 - Editorial-style photography and generation prompts: see `ASSETS.md`.
 - Brand icon: `assets/favicon.svg`.
@@ -46,6 +50,6 @@ No database, form collection service, analytics or marketing cookies are include
 
 ## Verification
 
-Checked in the browser: policy-change review and propagation, local exception preservation, temporary context, customer-safe view, branching intake, calculator at 0% and 90%, mobile menu, mobile graph controls, contact brief and copy behavior. The mobile layout was checked inside a 390px iframe; document overflow remained contained to the intentionally scrollable graph.
+Checked in the browser: direct node edits, scoped propagation, local overrides, restoring inheritance, matching source colors, Undo, and header hiding/return by scroll direction. The complete demo fits a 936px desktop viewport, a 700px desktop iframe and a 740px phone iframe; the phone page has no horizontal overflow. Previous checks also covered branching intake, calculator bounds, contact brief and copying. The graph has no horizontal or internal scrolling.
 
 Static checks: JavaScript syntax, one H1 per page, unique IDs, local links and anchors. Native email-client delivery is not tested or handled by this site.

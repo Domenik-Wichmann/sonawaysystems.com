@@ -13,225 +13,176 @@
     window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
   }
 
+  const siteHeader = document.querySelector('.site-header');
+  if (siteHeader) {
+    let previousY = Math.max(0, window.scrollY);
+    let scrollQueued = false;
+    window.addEventListener('scroll', () => {
+      if (scrollQueued) return;
+      scrollQueued = true;
+      requestAnimationFrame(() => {
+        const currentY = Math.max(0, window.scrollY);
+        const delta = currentY - previousY;
+        if (currentY < 90 || nav?.classList.contains('open')) siteHeader.classList.remove('header-hidden');
+        else if (Math.abs(delta) > 3) siteHeader.classList.toggle('header-hidden', delta > 0);
+        previousY = currentY;
+        scrollQueued = false;
+      });
+    }, { passive: true });
+    siteHeader.addEventListener('focusin', () => siteHeader.classList.remove('header-hidden'));
+    menu?.addEventListener('click', () => siteHeader.classList.remove('header-hidden'));
+  }
+
   const graph = document.querySelector('#knowledge-graph');
   if (graph) {
     const nodes = {
-      core: { name: 'Business core', parent: null },
-      warehouse: { name: 'Warehouse core', parent: 'core' },
-      field: { name: 'Field operations', parent: 'core' },
-      support: { name: 'Customer support', parent: 'core' },
-      a: { name: 'Warehouse A', parent: 'warehouse' },
-      b: { name: 'Warehouse B', parent: 'warehouse' },
-      c: { name: 'Warehouse C', parent: 'warehouse' },
-      crew: { name: 'Service crews', parent: 'field' },
-      public: { name: 'Customer website', parent: 'support' }
+      core: { name: 'Business core', short: 'Business', parent: null, ink: '#315e47', bg: '#e2eddf', line: '#8caf93' },
+      warehouse: { name: 'Warehouse core', short: 'Warehouse', parent: 'core', ink: '#70509c', bg: '#eee5f7', line: '#b59bce' },
+      field: { name: 'Field operations', short: 'Field ops', parent: 'core', ink: '#2c7c82', bg: '#e0f0ee', line: '#8abbbb' },
+      support: { name: 'Customer support', short: 'Support', parent: 'core', ink: '#356b9c', bg: '#e2edf8', line: '#93b3d1' },
+      a: { name: 'Warehouse A', short: 'WH A', parent: 'warehouse', ink: '#9c5077', bg: '#f3e2ed', line: '#cca0b8' },
+      b: { name: 'Warehouse B', short: 'WH B', parent: 'warehouse', ink: '#845293', bg: '#efe1f1', line: '#b99bc5' },
+      c: { name: 'Warehouse C', short: 'WH C', parent: 'warehouse', ink: '#a76a31', bg: '#f8ead8', line: '#d6b182' },
+      crew: { name: 'Service crews', short: 'Crews', parent: 'field', ink: '#8b7433', bg: '#f1edda', line: '#c4b988' },
+      public: { name: 'Customer website', short: 'Website', parent: 'support', ink: '#a4574a', bg: '#f5e5df', line: '#d0a299' }
     };
     const scenarios = {
-      cutoff: {
-        title: 'Shared policy, different local rules', label: 'Standard order cutoff', source: 'Order policy §2.1',
-        rules: { core: '12:00', warehouse: '11:00', c: '10:00', support: '13:00' },
-        options: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
-        suggested: { core: '14:00', warehouse: '15:00', c: '09:00' }
-      },
-      event: {
-        title: 'Temporary hours, with local context', label: 'Dispatch closing time', source: 'Dispatch policy §3 · peak-week view',
-        rules: { core: '17:00', warehouse: '15:00', c: '14:00', support: '18:00' },
-        options: ['14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'],
-        suggested: { core: '20:00', warehouse: '19:00', c: '16:00' }
-      },
-      returns: {
-        title: 'One policy model, staff and customer views', label: 'Returns acceptance window', source: 'Returns policy §4 · audience-specific guidance',
-        rules: { core: '30 days', warehouse: '21 days', c: '14 days', support: '45 days' },
-        options: ['7 days', '14 days', '21 days', '30 days', '45 days', '60 days'],
-        suggested: { core: '45 days', warehouse: '30 days', c: '21 days' }
-      }
+      cutoff: { title: 'Standard order cutoff', rules: { core: '12:00', warehouse: '11:00', c: '10:00', support: '13:00' }, options: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'] },
+      event: { title: 'Dispatch closing time · peak-week example', rules: { core: '17:00', warehouse: '15:00', c: '14:00', support: '18:00' }, options: ['14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'] },
+      returns: { title: 'Returns acceptance window', rules: { core: '30 days', warehouse: '21 days', c: '14 days', support: '45 days' }, options: ['7 days', '14 days', '21 days', '30 days', '45 days', '60 days'] }
     };
     let scenarioKey = 'cutoff';
     let rules = { ...scenarios.cutoff.rules };
     let selected = 'core';
     let updated = [];
-    let reviewed = [];
-    let changeCount = 0;
-    let pending = null;
-    let pulseTimer;
+    let history = [];
+    let animationTimer;
+    let statusText = 'Click any node to edit. Changes stay in this example.';
     const graphSvg = graph.querySelector('svg');
-    const modal = document.querySelector('#impact-modal');
-    const targetSelect = document.querySelector('#change-target');
-    const newRule = document.querySelector('#new-rule');
-    const inherit = document.querySelector('#inherit-change');
-    const preview = document.querySelector('#preview-change');
+    const undo = document.querySelector('#undo-change');
     const reset = document.querySelector('#reset-graph');
-    const setText = (selector, value) => { document.querySelector(selector).textContent = value; };
-    const owns = (object, key) => Object.prototype.hasOwnProperty.call(object, key);
-    const lineage = id => nodes[id].parent ? [...lineage(nodes[id].parent), id] : [id];
+    const owns = (model, id) => Object.prototype.hasOwnProperty.call(model, id);
     const effective = (id, model = rules) => owns(model, id) ? { value: model[id], origin: id } : effective(nodes[id].parent, model);
-
-    function makeProposal() {
-      const target = targetSelect.value;
-      const next = { ...rules };
-      if (inherit.checked && target !== 'core') delete next[target];
-      else next[target] = newRule.value;
-      const affected = Object.keys(nodes).filter(id => {
-        const before = effective(id);
-        const after = effective(id, next);
-        return before.value !== after.value || before.origin !== after.origin;
+    const lineage = id => nodes[id].parent ? [...lineage(nodes[id].parent), id] : [id];
+    const differences = (before, after) => Object.keys(nodes).filter(id => {
+      const a = effective(id, before), b = effective(id, after);
+      return a.value !== b.value || a.origin !== b.origin;
+    });
+    function closeEditors(focus = false) {
+      graph.querySelectorAll('.is-editing').forEach(card => {
+        card.classList.remove('is-editing'); card.querySelector('.node-editor').hidden = true;
+        card.querySelector('.node-trigger').setAttribute('aria-expanded', 'false');
+        if (focus) card.querySelector('.node-trigger').focus({ preventScroll: true });
       });
-      const preserved = Object.keys(rules).filter(id => id !== target && lineage(id).includes(target));
-      return { target, next, affected, preserved, previous: { ...rules }, restoresInheritance: inherit.checked && target !== 'core' };
     }
-
-    function updateProposalSummary() {
-      const proposal = makeProposal();
-      const before = effective(proposal.target).value;
-      const after = effective(proposal.target, proposal.next).value;
-      const description = document.querySelector('#change-description');
-      description.replaceChildren(document.createTextNode(proposal.restoresInheritance
-        ? `${nodes[proposal.target].name}: restore inheritance from ${nodes[nodes[proposal.target].parent].name}.`
-        : `${nodes[proposal.target].name}: ${before} → ${after}.`));
-      const line = document.createElement('span');
-      const count = proposal.affected.length;
-      line.textContent = count ? `${count} connected ${count === 1 ? 'view will' : 'views will'} change. ${proposal.preserved.length ? `${proposal.preserved.length} explicit overrides stay in place for review.` : 'Other branches keep their current rules.'}` : 'Choose a different value or restore inheritance to see a change.';
-      description.append(line);
-      preview.disabled = count === 0;
-      preview.textContent = count === 0 ? 'Choose a different rule' : 'Preview update';
-    }
-
-    function configureEditor() {
-      const s = scenarios[scenarioKey];
-      const target = targetSelect.value;
-      newRule.replaceChildren();
-      for (const value of s.options) {
-        const option = document.createElement('option'); option.value = value; option.textContent = value; newRule.append(option);
-      }
-      const recommended = s.suggested[target];
-      newRule.value = recommended !== effective(target).value ? recommended : s.options[(s.options.indexOf(recommended) + 1) % s.options.length];
-      inherit.checked = false;
-      inherit.disabled = target === 'core';
-      newRule.disabled = false;
-      setText('#target-explainer', target === 'core' ? 'Company changes reach inheriting branches. Department and site overrides keep their own values.' : 'Edit this rule, or remove its override to inherit the parent rule again.');
-      updateProposalSummary();
-    }
-
-    function describeNode(id) {
-      const source = effective(id);
-      const local = owns(rules, id);
-      if (id === 'core') return scenarioKey === 'event'
-        ? 'The shared closing time in this illustrative peak-week context. Changes affect inheriting branches; ending the context restores the original example.'
-        : 'The company default. Only branches that inherit this rule follow a change to it. Department and site overrides remain explicit.';
-      if (id === 'public') return `This customer-facing view uses the ${source.value} rule from ${nodes[source.origin].name}. Only approved public guidance is shown; internal contacts and escalation details stay restricted.`;
-      if (local) return id === 'c'
-        ? `An approved site-specific exception sets ${source.value}. Warehouse A and B can follow the warehouse default while C keeps this separate rule. You can restore inheritance using the controls above.`
-        : `This department sets its own ${source.value} rule. Its inheriting teams follow this value, even when the company default differs. A parent change does not silently replace it.`;
-      return `This view inherits ${source.value} from ${nodes[source.origin].name}. It has no independent copy of the rule, so a change at that source flows through automatically in this illustration.`;
-    }
-
     function drawEdges(animate = false) {
       const bounds = graph.getBoundingClientRect();
       graphSvg.setAttribute('viewBox', `0 0 ${bounds.width} ${bounds.height}`);
       graphSvg.replaceChildren();
       for (const [id, node] of Object.entries(nodes)) {
         if (!node.parent) continue;
-        const p = graph.querySelector(`[data-node="${node.parent}"]`).getBoundingClientRect();
-        const c = graph.querySelector(`[data-node="${id}"]`).getBoundingClientRect();
-        const x1 = p.left + p.width / 2 - bounds.left;
-        const y1 = p.bottom - bounds.top;
-        const x2 = c.left + c.width / 2 - bounds.left;
-        const y2 = c.top - bounds.top;
+        const parent = graph.querySelector(`[data-node="${node.parent}"]`).getBoundingClientRect();
+        const child = graph.querySelector(`[data-node="${id}"]`).getBoundingClientRect();
+        const x1 = parent.left + parent.width / 2 - bounds.left, y1 = parent.bottom - bounds.top;
+        const x2 = child.left + child.width / 2 - bounds.left, y2 = child.top - bounds.top;
         const mid = (y1 + y2) / 2;
         const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         path.setAttribute('d', `M ${x1} ${y1} C ${x1} ${mid}, ${x2} ${mid}, ${x2} ${y2}`);
-        if (owns(rules, id)) path.classList.add('blocked');
-        if (updated.includes(id)) path.classList.add('affected');
-        if (animate && updated.includes(id)) path.classList.add('pulse');
+        path.style.stroke = nodes[effective(id).origin].ink;
+        if (owns(rules, id)) path.classList.add('own-rule');
+        if (animate && updated.includes(id)) path.classList.add('flowing');
         graphSvg.append(path);
       }
     }
-
     function render() {
-      const s = scenarios[scenarioKey];
-      setText('#scenario-title', s.title);
-      graph.querySelectorAll('[data-node]').forEach(button => {
-        const id = button.dataset.node;
-        const source = effective(id);
-        const local = owns(rules, id);
-        const tag = id === 'core' ? 'COMPANY DEFAULT' : local ? (id === 'c' ? 'SITE EXCEPTION' : 'DEPARTMENT OVERRIDE') : `FROM ${nodes[source.origin].name.toUpperCase()}`;
-        button.querySelector('.node-time').textContent = source.value;
-        button.querySelector('.node-tag').textContent = tag;
-        button.setAttribute('aria-label', `${nodes[id].name}, ${source.value}, ${tag.toLowerCase()}${updated.includes(id) ? ', updated' : ''}${reviewed.includes(id) ? ', override preserved for review' : ''}`);
-        button.setAttribute('aria-pressed', String(id === selected));
-        button.classList.toggle('override', id !== 'core' && local);
-        button.classList.toggle('updated', updated.includes(id));
-        button.classList.toggle('review', reviewed.includes(id));
+      document.querySelector('#scenario-title').textContent = scenarios[scenarioKey].title;
+      graph.querySelectorAll('[data-node]').forEach(card => {
+        const id = card.dataset.node, source = effective(id), palette = nodes[source.origin];
+        card.style.setProperty('--source-bg', palette.bg);
+        card.style.setProperty('--source-ink', palette.ink);
+        card.style.setProperty('--source-line', palette.line);
+        card.dataset.origin = source.origin;
+        card.classList.toggle('is-selected', selected === id);
+        card.classList.toggle('just-updated', updated.includes(id));
+        card.querySelector('.node-time').textContent = source.value;
+        card.querySelector('.node-tag').textContent = source.origin === id ? (id === 'core' ? 'COMPANY DEFAULT' : 'OWN RULE') : `FROM ${nodes[source.origin].short.toUpperCase()}`;
+        const trigger = card.querySelector('.node-trigger');
+        trigger.setAttribute('aria-label', `Edit ${nodes[id].name} rule, ${source.value}, ${source.origin === id ? 'sets its own rule' : `inherits from ${nodes[source.origin].name}`}`);
+        trigger.setAttribute('aria-pressed', String(id === selected));
+        trigger.setAttribute('aria-expanded', String(card.classList.contains('is-editing')));
       });
       const source = effective(selected);
-      setText('#node-title', nodes[selected].name);
-      setText('#node-label', s.label);
-      setText('#node-value', source.value);
-      setText('#node-description', describeNode(selected));
-      const activePath = lineage(selected).slice(lineage(selected).indexOf(source.origin));
-      setText('#node-source', `${activePath.map(id => nodes[id].name).join(' → ')} · ${s.source}`);
-      const status = document.querySelector('#lab-status');
-      status.classList.toggle('applied', changeCount > 0);
-      status.replaceChildren(document.createElement('i'), document.createTextNode(changeCount ? `${updated.length} ${updated.length === 1 ? 'view' : 'views'} updated` : 'Current rules'));
-      reset.textContent = scenarioKey === 'event' && changeCount ? 'End peak-week context' : 'Reset example';
+      document.querySelector('#node-readout').textContent = source.origin === selected
+        ? `${nodes[selected].name} sets ${source.value}. Matching colors show which views use this rule.`
+        : `${nodes[selected].name} inherits ${source.value} from ${nodes[source.origin].name}.`;
+      document.querySelector('#lab-status').textContent = statusText;
+      const legend = document.querySelector('#source-colors'); legend.replaceChildren();
+      const origins = [...new Set(Object.keys(nodes).map(id => effective(id).origin))];
+      for (const id of origins) {
+        const entry = document.createElement('span'); const dot = document.createElement('i'); dot.style.backgroundColor = nodes[id].ink;
+        entry.append(dot, document.createTextNode(nodes[id].short)); legend.append(entry);
+      }
+      undo.disabled = history.length === 0;
       document.querySelectorAll('[data-scenario]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.scenario === scenarioKey)));
-      updateProposalSummary();
-      requestAnimationFrame(() => { drawEdges(); if (window.innerWidth < 650 && changeCount === 0 && selected === 'core') graph.parentElement.scrollLeft = (graph.scrollWidth - graph.parentElement.clientWidth) / 2; });
+      requestAnimationFrame(() => drawEdges());
     }
-
-    graph.addEventListener('click', event => {
-      const button = event.target.closest('[data-node]');
-      if (!button) return;
-      selected = button.dataset.node;
+    function openEditor(id) {
+      closeEditors(); selected = id; render();
+      const card = graph.querySelector(`[data-node="${id}"]`), editor = card.querySelector('.node-editor');
+      editor.replaceChildren();
+      if (nodes[id].parent) {
+        const parent = effective(nodes[id].parent);
+        const option = document.createElement('option'); option.value = '__inherit__'; option.textContent = `↳ Use parent rule (${parent.value})`; editor.append(option);
+      }
+      for (const value of scenarios[scenarioKey].options) {
+        const option = document.createElement('option'); option.value = value; option.textContent = value; editor.append(option);
+      }
+      editor.value = owns(rules, id) ? rules[id] : '__inherit__';
+      card.classList.add('is-editing'); editor.hidden = false;
+      card.querySelector('.node-trigger').setAttribute('aria-expanded', 'true');
+      editor.focus({ preventScroll: true });
+      // Open the native picker directly where supported, within the click gesture.
+      try { if (typeof editor.showPicker === 'function') editor.showPicker(); } catch { /* Normal select interaction remains available. */ }
+    }
+    function applyChange(id, value) {
+      const before = { ...rules }, next = { ...rules };
+      if (value === '__inherit__' && nodes[id].parent) delete next[id]; else next[id] = value;
+      const changed = differences(before, next);
+      closeEditors();
+      if (!changed.length) return;
+      history.push({ rules: before, selected: id });
+      rules = next; selected = id; updated = changed;
+      const unchangedOverrides = Object.keys(rules).filter(other => other !== id && lineage(other).includes(id)).length;
+      statusText = `${nodes[id].name}: ${effective(id, before).value} → ${effective(id).value}. ${changed.length} ${changed.length === 1 ? 'view updated' : 'views updated'}${unchangedOverrides ? `; ${unchangedOverrides} ${unchangedOverrides === 1 ? 'override kept' : 'overrides kept'}` : ''}.`;
       render();
-    });
-    targetSelect.addEventListener('change', () => { selected = targetSelect.value; configureEditor(); render(); });
-    newRule.addEventListener('change', updateProposalSummary);
-    inherit.addEventListener('change', () => { newRule.disabled = inherit.checked; updateProposalSummary(); });
-    const resetScenario = () => {
-      clearTimeout(pulseTimer); rules = { ...scenarios[scenarioKey].rules }; updated = []; reviewed = []; changeCount = 0; selected = 'core'; targetSelect.value = 'core'; configureEditor(); render();
-    };
-    document.querySelectorAll('[data-scenario]').forEach(button => button.addEventListener('click', () => { scenarioKey = button.dataset.scenario; resetScenario(); }));
-    reset.addEventListener('click', resetScenario);
-    preview.addEventListener('click', () => {
-      pending = makeProposal();
-      if (!pending.affected.length) return;
-      const from = effective(pending.target).value;
-      const to = effective(pending.target, pending.next).value;
-      setText('#impact-description', `${nodes[pending.target].name}: ${from} → ${to}.${pending.restoresInheritance ? ' The explicit override will be removed, restoring the parent rule.' : ''}${scenarioKey === 'event' ? ' This applies only inside the illustrative peak-week context.' : ''}`);
-      const list = document.querySelector('#impact-list');
-      list.replaceChildren();
-      for (const id of pending.affected) {
-        const li = document.createElement('li');
-        const label = document.createElement('span'); label.textContent = nodes[id].name;
-        const action = document.createElement('span'); action.textContent = `${effective(id).value} → ${effective(id, pending.next).value}`;
-        li.append(label, action); list.append(li);
-      }
-      for (const id of pending.preserved) {
-        const li = document.createElement('li');
-        const label = document.createElement('span'); label.textContent = nodes[id].name;
-        const action = document.createElement('span'); action.className = 'impact-kept'; action.textContent = `${effective(id).value} · override kept for review`;
-        li.append(label, action); list.append(li);
-      }
-      modal.showModal(); document.body.classList.add('modal-open');
-    });
-    document.querySelector('.close-modal').addEventListener('click', () => modal.close());
-    modal.addEventListener('click', event => {
-      if (event.target !== modal) return;
-      const r = modal.getBoundingClientRect();
-      if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) modal.close();
-    });
-    modal.addEventListener('close', () => { document.body.classList.remove('modal-open'); preview.focus({ preventScroll: true }); });
-    document.querySelector('#approve-change').addEventListener('click', () => {
-      if (!pending) return;
-      rules = pending.next; updated = pending.affected; reviewed = pending.preserved; selected = pending.target; changeCount++;
-      pending = null; configureEditor(); render(); modal.close();
+      graph.querySelector(`[data-node="${id}"] .node-trigger`).focus({ preventScroll: true });
       requestAnimationFrame(() => drawEdges(true));
-      clearTimeout(pulseTimer); pulseTimer = setTimeout(() => drawEdges(), 2500);
+      clearTimeout(animationTimer); animationTimer = setTimeout(() => { updated = []; graph.querySelectorAll('.just-updated').forEach(c => c.classList.remove('just-updated')); drawEdges(); }, 1800);
+    }
+    graph.addEventListener('click', event => {
+      const trigger = event.target.closest('.node-trigger');
+      if (trigger) openEditor(trigger.closest('[data-node]').dataset.node);
     });
+    graph.addEventListener('change', event => {
+      if (event.target.matches('.node-editor')) applyChange(event.target.closest('[data-node]').dataset.node, event.target.value);
+    });
+    graph.addEventListener('keydown', event => { if (event.key === 'Escape') { event.preventDefault(); closeEditors(true); } });
+    graph.addEventListener('focusout', () => { queueMicrotask(() => { if (!graph.contains(document.activeElement)) closeEditors(); }); });
+    document.addEventListener('click', event => { if (!graph.contains(event.target)) closeEditors(); });
+    undo.addEventListener('click', () => {
+      const snapshot = history.pop(); if (!snapshot) return;
+      clearTimeout(animationTimer); const before = rules; rules = snapshot.rules; selected = snapshot.selected;
+      updated = differences(before, rules); statusText = 'Last edit undone. Values, inheritance and source colors restored.'; closeEditors(); render();
+    });
+    const resetScenario = () => {
+      clearTimeout(animationTimer); closeEditors(); rules = { ...scenarios[scenarioKey].rules }; selected = 'core'; updated = []; history = [];
+      statusText = 'Click any node to edit. Changes stay in this example.'; render();
+    };
+    reset.addEventListener('click', resetScenario);
+    document.querySelectorAll('[data-scenario]').forEach(button => button.addEventListener('click', () => { scenarioKey = button.dataset.scenario; resetScenario(); }));
     new ResizeObserver(() => drawEdges()).observe(graph);
     if (document.fonts) document.fonts.ready.then(() => drawEdges());
-    configureEditor(); render();
+    render();
   }
 
   const chatBody = document.querySelector('#chat-body');
@@ -275,9 +226,9 @@
         bubble('assistant', `Draft scope: ${scope}; ${label.toLowerCase()}; ${period}. Next we’d confirm access hours, identify affected instructions and route the change to the responsible person. No update is published yet.`);
         choices(['See the connected impact']);
       } else {
-        document.querySelector('#explore').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-        document.querySelector('[data-node="a"]').click();
-        document.querySelector('#preview-change').focus({ preventScroll: true });
+        document.querySelector('#interactive-demo').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+        document.querySelector('[data-node="a"] .node-trigger').click();
+        document.querySelector('[data-node="a"] .node-trigger').focus({ preventScroll: true });
       }
     }
     document.querySelector('#chat-reset').addEventListener('click', resetChat);
