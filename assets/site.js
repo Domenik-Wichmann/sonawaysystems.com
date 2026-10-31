@@ -38,15 +38,15 @@
   const graph = document.querySelector('#knowledge-graph');
   if (graph) {
     const nodes = {
-      core: { name: 'Business core', short: 'Business', parent: null, ink: '#315e47', bg: '#e2eddf', line: '#8caf93' },
-      warehouse: { name: 'Warehouse core', short: 'Warehouse', parent: 'core', ink: '#70509c', bg: '#eee5f7', line: '#b59bce' },
-      field: { name: 'Field operations', short: 'Field ops', parent: 'core', ink: '#2c7c82', bg: '#e0f0ee', line: '#8abbbb' },
-      support: { name: 'Customer support', short: 'Support', parent: 'core', ink: '#356b9c', bg: '#e2edf8', line: '#93b3d1' },
-      a: { name: 'Warehouse A', short: 'WH A', parent: 'warehouse', ink: '#9c5077', bg: '#f3e2ed', line: '#cca0b8' },
-      b: { name: 'Warehouse B', short: 'WH B', parent: 'warehouse', ink: '#845293', bg: '#efe1f1', line: '#b99bc5' },
-      c: { name: 'Warehouse C', short: 'WH C', parent: 'warehouse', ink: '#a76a31', bg: '#f8ead8', line: '#d6b182' },
-      crew: { name: 'Service crews', short: 'Crews', parent: 'field', ink: '#8b7433', bg: '#f1edda', line: '#c4b988' },
-      public: { name: 'Customer website', short: 'Website', parent: 'support', ink: '#a4574a', bg: '#f5e5df', line: '#d0a299' }
+      core: { name: 'Business core', short: 'Business', parent: null, ink: '#24553b', bg: '#e2eddf', line: '#709e7b' },
+      warehouse: { name: 'Warehouse core', short: 'Warehouse', parent: 'core', ink: '#63418d', bg: '#eee5f7', line: '#a486bf' },
+      field: { name: 'Field operations', short: 'Field ops', parent: 'core', ink: '#22616c', bg: '#e0f0ee', line: '#8abbbb' },
+      support: { name: 'Customer support', short: 'Support', parent: 'core', ink: '#245c90', bg: '#e2edf8', line: '#7ba4c7' },
+      a: { name: 'Warehouse A', short: 'WH A', parent: 'warehouse', ink: '#893d64', bg: '#f3e2ed', line: '#cca0b8' },
+      b: { name: 'Warehouse B', short: 'WH B', parent: 'warehouse', ink: '#70417f', bg: '#efe1f1', line: '#b99bc5' },
+      c: { name: 'Warehouse C', short: 'WH C', parent: 'warehouse', ink: '#89501e', bg: '#f8ead8', line: '#c89961' },
+      crew: { name: 'Service crews', short: 'Crews', parent: 'field', ink: '#6f5b21', bg: '#f1edda', line: '#c4b988' },
+      public: { name: 'Customer website', short: 'Website', parent: 'support', ink: '#8e4034', bg: '#f5e5df', line: '#d0a299' }
     };
     const scenarios = {
       cutoff: { title: 'Standard order cutoff', rules: { core: '12:00', warehouse: '11:00', c: '10:00', support: '13:00' }, options: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'] },
@@ -92,7 +92,11 @@
         path.setAttribute('d', `M ${x1} ${y1} C ${x1} ${mid}, ${x2} ${mid}, ${x2} ${y2}`);
         path.style.stroke = nodes[effective(id).origin].ink;
         if (owns(rules, id)) path.classList.add('own-rule');
-        if (animate && updated.includes(id)) path.classList.add('flowing');
+        // A local rule starts a new branch: its incoming edge carries no update.
+        // Only animate edges that actually pass the changed rule to an inheritor.
+        path.dataset.from = node.parent;
+        path.dataset.to = id;
+        if (animate && updated.includes(id) && !owns(rules, id)) path.classList.add('flowing');
         graphSvg.append(path);
       }
     }
