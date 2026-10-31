@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sonawaysystems.com/sitemap.xml
