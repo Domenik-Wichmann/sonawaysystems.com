@@ -211,6 +211,8 @@
     let stage = 0;
     let site = '';
     let timing = '';
+    let delivery = '';
+    const updateNetwork = () => window.dispatchEvent(new CustomEvent('sonaway:intake', { detail: { stage, site, timing, delivery } }));
     const bubble = (role, text) => {
       const el = document.createElement('div'); el.className = `chat-bubble ${role} reveal`;
       if (role === 'assistant') { const label = document.createElement('small'); label.textContent = 'SONAWAY / GUIDED INTAKE'; el.append(label); }
@@ -222,10 +224,11 @@
       chatBody.append(wrap);
     };
     const resetChat = () => {
-      stage = 0; site = ''; timing = ''; chatBody.replaceChildren();
+      stage = 0; site = ''; timing = ''; delivery = ''; chatBody.replaceChildren();
       bubble('user', 'We’re moving deliveries to the rear entrance.');
       bubble('assistant', 'Which location does this apply to? Warehouse A and Warehouse B have separate delivery instructions.');
       choices(['Warehouse A', 'Both warehouses']);
+      updateNetwork();
     };
     function advance(label) {
       chatBody.querySelector('.chat-choices')?.remove();
@@ -240,7 +243,7 @@
         bubble('assistant', 'Does this include every delivery, or just supplier deliveries? Customer collections have a separate route.');
         choices(['Supplier deliveries only', 'All deliveries, not collections']);
       } else if (stage === 2) {
-        stage = 3;
+        stage = 3; delivery = label;
         bubble('user', label);
         const scope = site === 'Both warehouses' ? 'Warehouse A and Warehouse B' : 'Warehouse A';
         const period = timing === 'For one event week' ? 'a temporary event-week context, with exact dates still to confirm' : 'an ongoing change starting next Monday, with the exact date still to confirm';
@@ -251,6 +254,7 @@
         document.querySelector('[data-node="a"] .node-trigger').click();
         document.querySelector('[data-node="a"] .node-trigger').focus({ preventScroll: true });
       }
+      updateNetwork();
     }
     document.querySelector('#chat-reset').addEventListener('click', resetChat);
     resetChat();
@@ -291,3 +295,4 @@
     });
   }
 })();
+

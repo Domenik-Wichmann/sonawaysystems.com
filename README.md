@@ -61,3 +61,10 @@ Ink navy, warm white and copper/amber accents, with explicit light/dark text pai
 ## Readability and business variety
 
 Body ink is a deeper near-black navy and secondary text is darker slate. Supporting copy, navigation, forms, tags, captions and demo labels use larger type. The packing hero remains; a restaurant-team scene supports the homepage and a lighting-assembly workshop introduces services. Sector copy explicitly includes franchises, retail branches, manufacturing, distribution and field teams. All scenes remain illustrative.
+
+
+## Guided-intake knowledge map
+
+The existing delivery-access conversation now has a companion SVG neighborhood map, inspired by the hospitality site's traversal animation but using Systems' own copy, choices and business context. Location, timing and delivery-type choices determine which records are highlighted; customer collections remain unchanged. A moving marker follows actual connectors, including return paths. Skip motion, restart, fast consecutive answers, background tabs and reduced-motion preferences settle or cancel animation safely. No model calls, persistence or operational publication occur.
+
+Files: `assets/intake-network.js` and `assets/intake-network.css`, with a small state-event hook in `assets/site.js`. The existing propagation demo and calculator are unchanged. JavaScript syntax and all eight completed conversation combinations were checked. Browser-rendered verification and Hostinger deployment were not performed in this editing session.
