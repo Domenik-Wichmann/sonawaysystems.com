@@ -1,74 +1,35 @@
-/* Local, fictional delivery-access map. No requests or operational changes. */
+/* Smooth scope-focused exploration; fictional data only. */
 (() => {
-  'use strict';
-  const positions = {
-    change: [310,198], a: [133,108], b: [504,105], rear: [318,65],
-    normal: [97,284], period: [309,335], suppliers: [510,269],
-    deliveries: [514,350], collections: [120,365], instructions: [490,170],
-    owner: [130,205]
-  };
-  function scene({stage=0,site='',timing='',delivery=''}={}) {
-    const both=site==='Both warehouses', temporary=timing==='For one event week';
-    const all=delivery==='All deliveries, not collections';
-    const nodes=[
-      ['change','Delivery access','draft'],
-      ['a','Warehouse A',stage?'matched':'context'],
-      ['b','Warehouse B',stage?(both?'matched':'outside'):'context'],
-      ['rear','Rear entrance',stage?'matched':'context'],
-      ['normal','Normal instructions','context'],
-    ];
-    const edges=[['change','a'],['change','b'],['change','rear'],['a','normal']];
-    if(stage>=1){nodes.push(['period',stage>=2?(temporary?'Event week':'From next Monday'):'When it applies',stage>=2?'matched':'context']);edges.push(['normal','period']);}
-    if(stage>=2){nodes.push(['suppliers','Supplier deliveries',stage>=3?'matched':'context'],['collections','Customer collections','outside']);edges.push(['rear','suppliers'],['normal','collections']);}
-    if(stage>=3){nodes.push(['deliveries','Other deliveries',all?'matched':'outside'],['instructions',both?'Both delivery guides':'Warehouse A guide','matched'],['owner','Responsible person','context']);edges.push(['suppliers','deliveries'],['suppliers','instructions'],['a','owner']);if(both)edges.push(['b','instructions']);}
-    const captions=[
-      'Two locations. Separate instructions. First, choose where the change belongs.',
-      `${both?'Both warehouses are':'Warehouse A is'} in scope. Next, connect the change to its dates.`,
-      `${temporary?'Keep the normal route beneath a temporary exception.':'Keep the previous instructions in history.'} Customer collections have their own route.`,
-      `${both?'Two delivery guides':'One delivery guide'} linked to the draft. Collections stay unchanged. Exact dates, access hours and approval still need confirmation.`
-    ];
-    return {nodes:nodes.map(([id,label,state])=>({id,label,state,x:positions[id][0],y:positions[id][1]})),edges,caption:captions[Math.min(stage,3)]};
-  }
-  // Export the small state model for provider-free branch checks.
-  if(typeof module!=='undefined'&&module.exports)module.exports={scene};
-  if(typeof document==='undefined')return;
-  const svg=document.querySelector('#intake-network-svg');if(!svg)return;
-  const ns='http://www.w3.org/2000/svg', links=svg.querySelector('.network-links'), layer=svg.querySelector('.network-nodes');
-  const tracer=svg.querySelector('.network-tracer'),skip=document.querySelector('#network-skip'),caption=document.querySelector('#network-caption');
-  const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
-  const elements=new Map(),paths=new Map();let frame=0,finish=null;
-  const make=(tag,attrs)=>{const n=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,String(v)));return n;};
-  function stop(){cancelAnimationFrame(frame);frame=0;tracer.setAttribute('visibility','hidden');skip.hidden=true;finish=null;}
-  function render(detail){
-    stop();const data=scene(detail), byId=new Map(data.nodes.map(n=>[n.id,n]));
-    for(const [id,e] of elements)if(!byId.has(id)){e.remove();elements.delete(id);}
-    for(const n of data.nodes){
-      let group=elements.get(n.id);
-      if(!group){group=make('g',{'data-record':n.id,transform:`translate(${n.x} ${n.y})`});group.append(make('circle',{r:22,class:'network-halo'}),make('circle',{r:n.id==='change'?12:8,class:'network-core'}));const label=make('text',{y:38,'text-anchor':'middle'});group.append(label);layer.append(group);elements.set(n.id,group);}
-      group.setAttribute('class',`network-record ${n.state}`);const label=group.querySelector('text');label.replaceChildren();const lines=[''];for(const word of n.label.split(' ')){if((lines.at(-1)+' '+word).trim().length>16)lines.push(word);else lines[lines.length-1]=(lines.at(-1)+' '+word).trim();}lines.forEach((line,i)=>{const span=make('tspan',{x:0,dy:i?20:0});span.textContent=line;label.append(span);});
-    }
-    links.replaceChildren();paths.clear();
-    for(const [a,b] of data.edges){const p=byId.get(a),q=byId.get(b);const bend=(p.x+q.x)/2;
-      const path=make('path',{d:`M ${p.x} ${p.y} Q ${bend} ${p.y-28} ${q.x} ${q.y}`,class:`network-edge ${q.state==='outside'?'outside':''}`});links.append(path);paths.set(`${a}:${b}`,path);
-    }
-    svg.querySelector('#network-svg-desc').textContent=data.caption;
-    caption.textContent=data.caption;
-    // Depth-first walk follows actual edges, including return journeys.
-    const adjacent=new Map(data.nodes.map(n=>[n.id,[]]));for(const [a,b]of data.edges){adjacent.get(a).push(b);adjacent.get(b).push(a);}
-    const visited=new Set(),walk=[];
-    function visit(a){visited.add(a);for(const b of adjacent.get(a))if(!visited.has(b)){walk.push([a,b]);visit(b);walk.push([b,a]);}}
-    visit('change');
-    finish=()=>{stop();for(const e of elements.values())e.classList.add('discovered');for(const p of paths.values())p.classList.add('traversed');};
-    if(motion.matches||document.hidden){finish();return;}
-    for(const e of elements.values())e.classList.remove('discovered');elements.get('change').classList.add('discovered');
-    skip.hidden=false;tracer.removeAttribute('hidden');tracer.setAttribute('visibility','visible');let start=null,index=0;
-    const tick=time=>{if(start===null)start=time;const [a,b]=walk[index];const forward=paths.has(`${a}:${b}`);const path=paths.get(forward?`${a}:${b}`:`${b}:${a}`);const t=Math.min(1,(time-start)/240),eased=t*t*(3-2*t);const point=path.getPointAtLength(path.getTotalLength()*(forward?eased:1-eased));tracer.setAttribute('cx',point.x);tracer.setAttribute('cy',point.y);
-      if(t===1){path.classList.add('traversed');elements.get(b).classList.add('discovered');index++;start=null;if(index>=walk.length){finish();return;}}
-      frame=requestAnimationFrame(tick);
-    };frame=requestAnimationFrame(tick);
-  }
-  skip.addEventListener('click',()=>finish?.());
-  motion.addEventListener('change',()=>finish?.());
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)finish?.();});
-  window.addEventListener('sonaway:intake',e=>render(e.detail));
+ 'use strict';
+ function scene({example='access',answers={},stage=0,approved=false}={}){
+  const focus=answers.scope==='Warehouse A'?'a':answers.scope==='Warehouse B'?'b':'warehouses';
+  const nodes=[{id:'warehouses',label:'Warehouses'},{id:'a',label:'Warehouse A'},{id:'b',label:'Warehouse B'},{id:'change',label:example==='cutoff'?'Order cutoff':example==='checklist'?'Equipment checks':'Delivery access'}];
+  const extras=[['value',answers.value||'Proposed rule'],['audience',answers.audience||'Who it applies to'],['period',answers.period?.includes('temporary')?'9–15 November':'From 9 November'],['hours',answers.hours||'Conditions'],['owner',answers.owner||'Review owner'],['report',approved?'Demo approved':'Change report']];
+  extras.forEach(([id,label],i)=>{if(stage>i)nodes.push({id,label});});
+  const others=nodes.filter(n=>n.id!==focus);
+  for(const n of nodes){n.state=answers.scope&&answers.scope!=='Both warehouses'&&((n.id==='a'&&focus==='b')||(n.id==='b'&&focus==='a'))?'outside':n.id===focus?'draft':stage?'matched':'context';const angle=-Math.PI/2+others.indexOf(n)*Math.PI*2/others.length;n.x=n.id===focus?320:320+245*Math.cos(angle);n.y=n.id===focus?185:185+140*Math.sin(angle);}
+  const edges=[['warehouses','a'],['warehouses','b'],[focus,'change']];extras.forEach(([id])=>{if(nodes.some(n=>n.id===id))edges.push([focus,id]);});
+  return {nodes,edges,focus,caption:approved?'Demo approved. Connected guidance and notifications are simulated only.':!answers.scope?'Warehouses share a parent. Choose one site or both to explore their knowledge.':(answers.scope==='Both warehouses'?'The Warehouses group is the focus. ':answers.scope+' is the focus. ')+(stage<6?'Connected details appear as you complete the change.':'Review affected guidance before approving the draft.')};
+ }
+ if(typeof module!=='undefined'&&module.exports)module.exports={scene};
+ if(typeof document==='undefined')return;
+ const svg=document.querySelector('#intake-network-svg');if(!svg)return;
+ const layer=svg.querySelector('.network-nodes'),links=svg.querySelector('.network-links'),tracer=svg.querySelector('.network-tracer'),skip=document.querySelector('#network-skip'),motion=matchMedia('(prefers-reduced-motion: reduce)');
+ const elements=new Map(),points=new Map();let frame=0,finish=null;
+ const make=(tag,attrs)=>{const e=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));return e;};
+ function stop(){cancelAnimationFrame(frame);tracer.setAttribute('visibility','hidden');skip.hidden=true;finish=null;}
+ function render(detail){
+  stop();const data=scene(detail),ids=new Set(data.nodes.map(n=>n.id)),start=new Map();
+  for(const [id,e]of elements)if(!ids.has(id)){e.remove();elements.delete(id);points.delete(id);}
+  for(const n of data.nodes){let g=elements.get(n.id);if(!g){g=make('g',{'data-record':n.id});g.append(make('circle',{r:22,class:'network-halo'}),make('circle',{r:8,class:'network-core'}),make('text',{y:32,'text-anchor':'middle'}));layer.append(g);elements.set(n.id,g);}g.setAttribute('class','network-record '+n.state+' discovered');g.querySelector('.network-core').setAttribute('r',n.id===data.focus?14:8);const label=g.querySelector('text');label.replaceChildren();let lines=[''];for(const word of n.label.split(' ')){if((lines.at(-1)+' '+word).trim().length>18)lines.push(word);else lines[lines.length-1]=(lines.at(-1)+' '+word).trim();}lines.forEach((line,i)=>{const span=make('tspan',{x:0,dy:i?18:0});span.textContent=line;label.append(span);});start.set(n.id,points.get(n.id)||points.get(data.focus)||{x:320,y:185});}
+  links.replaceChildren();const paths=[],seen=new Set();for(const [a,b]of data.edges){if(a===b)continue;const key=[a,b].sort().join(':');if(seen.has(key))continue;seen.add(key);const outside=data.nodes.find(n=>n.id===b).state==='outside';const p=make('path',{class:'network-edge '+(outside?'outside':''),'data-from':a,'data-to':b});links.append(p);paths.push({a,b,p,outside});}
+  function layout(t){for(const n of data.nodes){const old=start.get(n.id),p={x:old.x+(n.x-old.x)*t,y:old.y+(n.y-old.y)*t};points.set(n.id,p);elements.get(n.id).setAttribute('transform','translate('+p.x+' '+p.y+')');}for(const {a,b,p}of paths){const x=points.get(a),y=points.get(b);p.setAttribute('d','M '+x.x+' '+x.y+' Q '+((x.x+y.x)/2+12)+' '+((x.y+y.y)/2-14)+' '+y.x+' '+y.y);}}
+  svg.dataset.focus=data.focus;document.querySelector('#network-caption').textContent=data.caption;svg.querySelector('#network-svg-desc').textContent=data.caption;
+  finish=()=>{stop();layout(1);paths.filter(p=>!p.outside).forEach(({p})=>p.classList.add('traversed'));};
+  if(motion.matches||document.hidden){finish();return;}
+  skip.hidden=false;tracer.removeAttribute('hidden');const adj=new Map(data.nodes.map(n=>[n.id,[]]));for(const edge of paths){if(edge.outside)continue;adj.get(edge.a).push({to:edge.b,edge,forward:true});adj.get(edge.b).push({to:edge.a,edge,forward:false});}
+  const visited=new Set(),walk=[];function visit(id){visited.add(id);for(const item of adj.get(id))if(!visited.has(item.to)){walk.push(item);visit(item.to);walk.push({...item,to:id,forward:!item.forward});}}visit(data.focus);
+  let began=null,index=0,leg=null;function tick(time){if(began===null)began=time;const t=Math.min(1,(time-began)/720);layout(1-(1-t)**3);if(t===1&&walk.length){if(leg===null)leg=time;const item=walk[index],progress=Math.min(1,(time-leg)/180),p=item.edge.p,at=p.getPointAtLength(p.getTotalLength()*(item.forward?progress:1-progress));tracer.setAttribute('visibility','visible');tracer.setAttribute('cx',at.x);tracer.setAttribute('cy',at.y);if(progress===1){p.classList.add('traversed');index++;leg=null;if(index===walk.length){finish();return;}}}else if(t===1){finish();return;}frame=requestAnimationFrame(tick);}frame=requestAnimationFrame(tick);
+ }
+ skip.addEventListener('click',()=>finish?.());motion.addEventListener('change',()=>finish?.());document.addEventListener('visibilitychange',()=>{if(document.hidden)finish?.();});window.addEventListener('sonaway:intake',e=>render(e.detail));
 })();

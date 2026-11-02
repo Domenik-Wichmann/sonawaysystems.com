@@ -73,3 +73,7 @@ Files: `assets/intake-network.js` and `assets/intake-network.css`, with a small 
 ## Copper & Ink editorial design
 
 Architectural split hero, squared geometry, copper accents, prominent propagation workspace and native expandable service rows. Existing copy and the latest guided-intake map are preserved. Shared styling applies across six pages.
+
+## Guided change examples
+
+Delivery access, order cutoff and equipment checklist examples each collect six details, including A/B/both location scope, exact illustrative dates, audiences, conditions and owner. A complete report lists proposed changes, affected guidance, exceptions, sample sources and simulated notifications. Approval is browser-local and explicitly fictional. Previous-detail, revise, restart and scenario switching are available. Persistent SVG nodes interpolate to the selected scope over 720ms before an edge-following traversal; unchanged sites are excluded from traversal. Reduced motion, skip and background tabs settle immediately. Model checks cover all 384 complete answer combinations.

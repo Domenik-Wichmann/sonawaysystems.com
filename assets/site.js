@@ -206,60 +206,6 @@
     render();
   }
 
-  const chatBody = document.querySelector('#chat-body');
-  if (chatBody) {
-    let stage = 0;
-    let site = '';
-    let timing = '';
-    let delivery = '';
-    const updateNetwork = () => window.dispatchEvent(new CustomEvent('sonaway:intake', { detail: { stage, site, timing, delivery } }));
-    const bubble = (role, text) => {
-      const el = document.createElement('div'); el.className = `chat-bubble ${role} reveal`;
-      if (role === 'assistant') { const label = document.createElement('small'); label.textContent = 'SONAWAY / GUIDED INTAKE'; el.append(label); }
-      el.append(document.createTextNode(text)); chatBody.append(el);
-    };
-    const choices = options => {
-      const wrap = document.createElement('div'); wrap.className = 'chat-choices';
-      for (const label of options) { const b = document.createElement('button'); b.textContent = label; b.addEventListener('click', () => advance(label)); wrap.append(b); }
-      chatBody.append(wrap);
-    };
-    const resetChat = () => {
-      stage = 0; site = ''; timing = ''; delivery = ''; chatBody.replaceChildren();
-      bubble('user', 'We’re moving deliveries to the rear entrance.');
-      bubble('assistant', 'Which location does this apply to? Warehouse A and Warehouse B have separate delivery instructions.');
-      choices(['Warehouse A', 'Both warehouses']);
-      updateNetwork();
-    };
-    function advance(label) {
-      chatBody.querySelector('.chat-choices')?.remove();
-      if (stage === 0) {
-        site = label; stage = 1;
-        bubble('user', label);
-        bubble('assistant', 'When should it apply? I’ll keep the normal instructions connected, so a temporary change doesn’t replace them permanently.');
-        choices(['From next Monday onward', 'For one event week']);
-      } else if (stage === 1) {
-        timing = label; stage = 2;
-        bubble('user', label);
-        bubble('assistant', 'Does this include every delivery, or just supplier deliveries? Customer collections have a separate route.');
-        choices(['Supplier deliveries only', 'All deliveries, not collections']);
-      } else if (stage === 2) {
-        stage = 3; delivery = label;
-        bubble('user', label);
-        const scope = site === 'Both warehouses' ? 'Warehouse A and Warehouse B' : 'Warehouse A';
-        const period = timing === 'For one event week' ? 'a temporary event-week context, with exact dates still to confirm' : 'an ongoing change starting next Monday, with the exact date still to confirm';
-        bubble('assistant', `Draft scope: ${scope}; ${label.toLowerCase()}; ${period}. Next we’d confirm access hours, identify affected instructions and route the change to the responsible person. No update is published yet.`);
-        choices(['See the connected impact']);
-      } else {
-        document.querySelector('#interactive-demo').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-        document.querySelector('[data-node="a"] .node-trigger').click();
-        document.querySelector('[data-node="a"] .node-trigger').focus({ preventScroll: true });
-      }
-      updateNetwork();
-    }
-    document.querySelector('#chat-reset').addEventListener('click', resetChat);
-    resetChat();
-  }
-
   const calc = document.querySelector('.calculator');
   if (calc) {
     const fields = ['people', 'questions', 'minutes', 'rate', 'share'];
@@ -295,4 +241,5 @@
     });
   }
 })();
+
 
