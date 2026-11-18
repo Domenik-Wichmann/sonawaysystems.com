@@ -28,3 +28,5 @@
 .chapter-links a { color:#233a46; text-decoration:underline; text-decoration-color:#ad765b; text-underline-offset:5px; padding-block:7px; }
 .chapter-links a:hover { color:#864026; }
 #industries { scroll-margin-top:95px; }
+.service-pair { grid-template-columns:repeat(2,minmax(0,1fr)); }
+@media(max-width:760px) { .service-pair { grid-template-columns:1fr; } }
