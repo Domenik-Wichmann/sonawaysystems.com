@@ -1,0 +1,4 @@
+/* Keep the actual service visible on every screen, including phones. */
+.photo-hero .ph-copy>p.ph-offer{display:block;color:#543b50;font-size:clamp(14px,1.12vw,17px);line-height:1.65;max-width:450px}.photo-hero .ph-copy>.eyebrow{font-weight:700;letter-spacing:.11em}
+@media(max-width:600px){.photo-hero .ph-copy>p.ph-offer{display:block;font-size:14px;line-height:1.55;margin-bottom:16px}.photo-hero .ph-copy h1{font-size:clamp(30px,8.2vw,40px);line-height:1.08}.photo-hero .ph-copy>.eyebrow{font-size:9px}}
+

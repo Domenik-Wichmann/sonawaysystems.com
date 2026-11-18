@@ -1,0 +1,118 @@
+/* Sonaway hospitality palette. Surface and accent roles are shared across every page. */
+:root{--limestone:#f2f7f8;--porcelain:#fbfefe;--forest:#183b49;--espresso:#1c3039;--champagne:#4f9493;--copper:#48818d;--ink:var(--espresso);--navy:var(--forest);--cream:var(--limestone);--sand:#e1edf0;--gold:var(--champagne);--muted:#405a64;--line:#b6cdd1;--sage:#cedfe3;--copper-ink:#255963;--forest-soft:#eaf4f4;--copper-soft:#e6f1f2}
+body{background:var(--limestone);color:var(--espresso)}
+p{color:var(--muted)}
+::selection{background:var(--forest);color:var(--porcelain)}
+:focus-visible{outline:3px solid var(--copper);outline-offset:4px}
+.site-header,.mobile-nav{background:var(--limestone)}
+.brand,.site-header .brand,.desktop-nav a,.mobile-nav a,.mobile-menu-button,.nav-contact{color:var(--espresso)}
+.brand-symbol,.brand-dot,.nav-contact span{color:var(--champagne)}
+.desktop-nav a.active,.desktop-nav a:hover,.mobile-nav a.active,.contact-direct a{color:var(--copper-ink)}
+.btn-primary,.btn-primary:visited{background:var(--forest);color:var(--porcelain)}
+.btn-primary:hover{background:#285c67}
+.btn-outline-light{color:var(--espresso);background:#f2f7f8CC;border-color:#9b8295}
+.btn-outline-light:hover{background:var(--porcelain)}
+.text-link,.eyebrow,.micro,.service-need{color:#427783}
+.home-hero,.light-section,.outcomes-section,.reclaim-section{background:var(--limestone)}
+.home-hero h1,.interior-hero h1,.section h2,.sub-hero h1,.managed-copy h2{color:var(--espresso)}
+.home-hero h1 em,.interior-hero h1 em,.managed-copy h2 em,.reclaim-heading h2 em{color:#427783}
+.home-hero .hero-service-note,.feature-card,.contact-panel,.benefit-card,.benefit-dialog{background:var(--porcelain)}
+.cream-section,.managed-section,.ownership-preview,.interior-hero,.cta-band,.bespoke-note{background:#e1edf0}
+.dark-section,.knowledge-section,.footer,.managed-example,.technical-hero,.ownership-hero-panel,.benefit-example{background:var(--forest);color:var(--porcelain)}
+.dark-section h2,.knowledge-section .kl-heading h2,.knowledge-section .demo-intro h3,.footer .brand-name{color:var(--porcelain)}
+.dark-section p,.dark-section .section-head p,.knowledge-section .kl-heading p,.knowledge-section .demo-intro p,.footer p,.footer-nav a,.footer-bottom,.managed-handoff p,.benefit-example p{color:var(--limestone)}
+.dark-section .eyebrow,.dark-section .micro,.knowledge-section .eyebrow,.knowledge-section .kl-heading h2 em,.managed-example-head,.managed-handoff span,.benefit-example>span{color:var(--champagne)}
+.dark-section .text-link,.text-link.light,.knowledge-section .text-link{color:var(--porcelain);border-color:var(--champagne)}
+.ownership-hero-panel>span,.ownership-hero-panel small,.technical-label{color:var(--limestone)}
+.tech-node{background:var(--porcelain);color:var(--espresso)}
+.tech-node.c{background:var(--champagne);color:var(--espresso)}
+.contact-panel input,.contact-panel select,.contact-panel textarea{background:var(--porcelain);color:var(--espresso);border-color:#9b8295;accent-color:var(--forest)}
+.contact-panel input::placeholder,.contact-panel textarea::placeholder{color:#655E54}
+.contact-direct span,.form-foot{color:var(--muted)}
+/* Operational assistant, training and reporting use the same materials as the editorial pages. */
+.interface-shell,.ops-panel{background:var(--porcelain);color:var(--espresso)}
+.interface-top,.interface-side,.ops-lesson,.ops-metrics div{background:var(--limestone)}
+.interface-side-label,.interface-side-item,.interface-side-bottom,.interface-subfoot,.ops-smallprint{color:var(--muted)}
+.interface-side-item.selected,.ops-role.active{background:var(--forest);color:var(--porcelain)}
+.interface-mark,.ops-avatar{background:var(--forest);color:var(--porcelain)}
+.ops-control .section-head p,.ops-steps p,.ops-dark-note{color:var(--limestone)}
+.ops-steps>div{background:var(--forest)}
+.ops-steps small{color:var(--champagne)}
+/* Calculator: hours stay visually primary, with money represented in forest. */
+.reclaim-shell,.reclaim-month,.reclaim-input-wrap input,.reclaim-currency select{background:var(--porcelain);color:var(--espresso)}
+.reclaim-results{background:linear-gradient(135deg,var(--limestone),var(--forest-soft))}
+.reclaim-year{background:var(--forest-soft);border-color:#8aaeb4}
+.reclaim-hours strong{color:var(--espresso)}
+.reclaim-worth strong,.reclaim-daily strong,.reclaim-total h3{color:var(--forest)}
+.reclaim-slider{background:linear-gradient(to right,var(--forest) var(--fill,50%),#cbdfe2 var(--fill,50%));accent-color:var(--forest)}
+.reclaim-slider::-webkit-slider-thumb{background:var(--porcelain);border-color:var(--forest)}
+.reclaim-slider::-moz-range-thumb{background:var(--porcelain);border-color:var(--forest)}
+.reclaim-bar>span,.reclaim-result-footer>.btn{background:var(--forest);color:var(--porcelain)}
+/* Property groups retain distinct identities through warm, related mineral tones. */
+.kl-shell{background:var(--porcelain)}
+.kl-shell [data-rule=core]{--rule:#183b49;--tint:#eaf4f4;--edge:#8aaeb4;--ink:#183b49}
+.kl-shell [data-rule=alpine]{--rule:#255963;--tint:#e6f1f2;--edge:#48818d;--ink:#7D3F28}
+.kl-shell [data-rule=suites]{--rule:#76603B;--tint:#F1E8D6;--edge:#A58A59;--ink:#65502F}
+.kl-shell [data-rule=chalet]{--rule:#71435f;--tint:#f0e7f4;--edge:#a982a4;--ink:#54243f}
+.kl-shell [data-rule=lake]{--rule:#6a5065;--tint:#f1eaf3;--edge:#ad96ad;--ink:#572c46}
+.kl-shell [data-rule=garden]{--rule:#A35134;--tint:#F4E8DE;--edge:#BD8167;--ink:#803D26}
+.kl-shell [data-rule=rooms]{--rule:#716842;--tint:#EDEBDE;--edge:#9B9167;--ink:#58502F}
+.kl-shell [data-rule=lodgeA]{--rule:#654C3D;--tint:#EDE4DC;--edge:#9A7D66;--ink:#5C4333}
+.kl-shell [data-rule=lodgeB]{--rule:#76516d;--tint:#f4edf6;--edge:#b294ad;--ink:#60324e}
+.kl-tabs button[aria-selected=true]{border-bottom-color:var(--copper);color:var(--forest);background:var(--porcelain)}
+.kl-tree{background:radial-gradient(ellipse at 50% 0,var(--porcelain),var(--limestone))}
+.kl-edges path.kl-active-edge{stroke:var(--forest)}
+.kl-node-trigger>strong{color:var(--espresso)}
+.kl-audience-options button[aria-pressed=true],.kl-output-tabs button[aria-pressed=true]{background:var(--forest);border-color:var(--forest);color:var(--porcelain);box-shadow:inset 3px 0 var(--champagne)}
+.kl-audience-options button[aria-pressed=true]:hover{background:#285c67}
+.kl-audience-options button[aria-pressed=true] small{color:var(--limestone)}
+.kl-audience-preview{background:var(--porcelain);border-top-color:var(--forest)}
+.kl-audience-preview[data-audience=staff]{border-top-color:var(--copper)}
+.kl-audience-preview[data-audience=manager]{border-top-color:#427783}
+.kl-audience-boundary>strong,.kl-audience-boundary>p{color:var(--muted)}
+.kl-context-card.kl-on-path{background:var(--forest-soft);border-color:#8aaeb4}
+.kl-context-card.kl-answer-node{background:var(--copper-soft);border-color:var(--copper);box-shadow:0 0 0 1px var(--copper)}
+.kl-context-card.kl-answer-node .kl-context-origin{color:var(--copper-ink)}
+.kl-effective-view{background:var(--forest-soft)}
+/* Guided intake: champagne search signals, a copper discovery, clear porcelain labels. */
+.gi-shell,.gi-message-content,.gi-chat-top{background:var(--porcelain)}
+.gi-conversation,.gi-compose{background:var(--limestone)}
+.gi-chat-avatar,.gi-approve,.gi-output-tabs button[aria-pressed=true]{background:var(--forest);color:var(--porcelain)}
+.gi-progress .current{background:var(--copper)}
+.gi-map{background:radial-gradient(ellipse at 45% 35%,#285c67,var(--forest) 75%);color:var(--porcelain)}
+.gi-network-title,.gi-network-caption,.gi-exploring .gi-network-title{color:var(--porcelain)}
+.gi-web-trail,.gi-signal{stroke:var(--champagne);filter:drop-shadow(0 0 3px #4f949344)}
+.gi-traveller-core{fill:var(--porcelain);filter:drop-shadow(0 0 4px var(--champagne))}
+.gi-orbit-current .gi-orbit-core{fill:var(--champagne);filter:drop-shadow(0 0 7px #4f949380)}
+.gi-found-ring,.gi-orbit-found .gi-orbit-halo{stroke:var(--copper)}
+.gi-orbit-found .gi-orbit-core,.gi-orbit-found.gi-orbit-source .gi-orbit-core{fill:var(--copper);stroke:var(--porcelain);filter:drop-shadow(0 0 6px #48818d88)}
+.gi-orbit-found .gi-orbit-halo{fill:#48818d20}
+.gi-orbit-found .gi-orbit-label,.gi-orbit-found.gi-orbit-source .gi-orbit-label{fill:var(--porcelain)}
+.gi-orbit-label{stroke:var(--forest)}
+.gi-choices button:hover{border-color:var(--copper);background:var(--copper-soft)}
+/* Custom-build graph: the same discovery language, over resort photography. */
+.build-preview{background:var(--forest);color:var(--porcelain);border-color:#8aaeb4}
+.bp-photo{background-image:linear-gradient(#183b4922,#183b49E8 48%,#183b49 92%),none}
+.bp-message{background:#fbfefeEF;color:var(--espresso)}
+.bp-dot text,.bp-dot.bp-lit text{fill:var(--porcelain);stroke:var(--forest)}
+.bp-dot circle{fill:var(--sage);stroke:var(--limestone)}
+.bp-dot.bp-lit>circle:not(.bp-node-aura){fill:var(--copper)!important;stroke:var(--porcelain)!important;filter:drop-shadow(0 0 8px #48818d88)!important}
+.bp-dot.bp-lit .bp-node-aura{fill:#48818d20;stroke:var(--copper)}
+.build-preview[data-phase=capture] [data-route=capture],.build-preview[data-phase=review] [data-route=review],.build-preview[data-phase=deliver] [data-route=deliver]{stroke:var(--champagne);filter:drop-shadow(0 0 3px #4f949366)}
+.bp-scenarios button{background:var(--forest);color:var(--porcelain);border-color:#cedfe3}
+.bp-scenarios button[aria-pressed=true]{background:var(--champagne);border-color:var(--champagne);color:var(--espresso)}
+.bp-head>span,.build-preview .bp-story>p{color:var(--limestone)}
+.bp-story>span{color:var(--champagne)}
+/* Readable text variants keep metallic colors decorative rather than body-copy colors. */
+.dark-section .eyebrow,.dark-section .micro,.knowledge-section .eyebrow,.managed-example-head,.managed-handoff span,.benefit-example>span,.ops-steps small,.bp-story>span{color:#C3AA7A}
+.interface-eyebrow{color:#427783}
+.interface-top b,.interface-top>span,.answer-header>span:last-child{color:#527f87}
+.dark-section .interface-shell p,.dark-section .interface-shell li,.interface-shell .answer-card p,.interface-shell .answer-card li{color:var(--espresso)}
+.answer-card,.ops-flow>div{background:var(--porcelain)}
+.ownership-preview h2,.ownership-preview h2 em,.ownership-preview p,.cta-band p{color:var(--espresso)}
+.ownership-diagram p{color:var(--muted)}
+.technical-label,.ownership-hero-panel>span,.ownership-hero-panel small{color:var(--limestone)}
+.interface-top .interface-mark{color:var(--porcelain)}
+.ownership-hero-panel .control-item strong{color:#C3AA7A}
+.nav-contact span{color:#427783}
+
