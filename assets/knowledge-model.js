@@ -20,7 +20,7 @@
       buffet: ['8–11 AM · festive buffet', "The festive collection counter runs later, from 8–11 AM, for all customers."],
       room: ['24 hours', "Delivery support is available around the clock during Year-end peak."] } },
     wedding: { name: "Priority order run", parent: 'winter', dates: 'Dec 18 only', sample: '2026-12-18', range: [1218,1218], rules: {
-      restaurant: ['Private event · use the bistro', "The main dispatch desk is reserved for a priority run tonight. Other customers can dine at Collection desk from 5–10 PM."],
+      restaurant: ['Private event · use the collection desk', "The main dispatch desk is reserved for a priority run tonight. Other customers can dine at Collection desk from 5–10 PM."],
       buffet: ["Reserved for priority customers", "The main collection counter is reserved for the priority batch, 8–11 AM. Other customers have dispatch at Collection desk, 7–10:30 AM."] } },
     spring: { name: 'Spring season', parent: 'base', dates: 'Mar 1–May 31', sample: '2026-03-15', range: [301,531], rules: {
       restaurant: ['5–10:30 PM', "Spring dinner service runs from 5–10:30 PM in the main dispatch desk."] } },
@@ -28,7 +28,7 @@
       restaurant: ['5–11 PM', "During the spring peak, the main dispatch desk stays open until 11 PM. Service begins at 5 PM."],
       buffet: ['7–11 AM · festival buffet', "The festival collection counter is open to all customers from 7–11 AM."] } },
     gala: { name: "Stocktake day", parent: 'festival', dates: 'Apr 16 only', sample: '2026-04-16', range: [416,416], rules: {
-      restaurant: ["Stocktake only · use the bistro", "The main dispatch desk is reserved for the stocktake from 6 PM. Other customers can dine at Collection desk, 5–10 PM."],
+      restaurant: ["Stocktake only · use the collection desk", "The main dispatch desk is reserved for the stocktake from 6 PM. Other customers can dine at Collection desk, 5–10 PM."],
       room: ['24 hours', "Delivery support runs for 24 hours on stocktake day, including overnight after the event."] } }
   };
   function dateCode(iso) {
