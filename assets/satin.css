@@ -60,3 +60,26 @@ h1,h2{font-family:Georgia,serif;font-weight:400;letter-spacing:-.044em}
 }
 @media(max-width:650px){.industry-cards{grid-template-columns:1fr}.photo-scene-copy{right:12px;left:12px}.photo-scene button[aria-expanded=true]{padding:12px}}
 @media(prefers-reduced-motion:reduce){html:has(.chapter-page){scroll-snap-type:none}.photo-scene,.button{transition:none}}
+/* Industrial colorway on the shared chapter and surface layout. */
+:root{--paper:#f0f5f4;--white:#fafffe;--ink:#172c34;--muted:#384f57;--orange:#236561;--gold:#467e77;--line:#becfcd;--satin:linear-gradient(115deg,#142c3c,#204b52 54%,#386c68);--glaze:radial-gradient(ellipse at 95% 5%,#d6e9e5,transparent 68%),linear-gradient(140deg,#fcfefd,#e9f2f0)}
+.site-header .brand,.site-header .brand-name,.site-header .nav-links>a,.offer-menu summary,.site-header .menu-toggle{color:#f8fffd}
+.site-header .nav-cta{border-color:#add2cc}
+.site-header .nav-links>a:hover,.site-header .nav-links>a[aria-current]{color:#c9f0e3}
+.button{border-color:#57958b}
+.text-link,.offer-links a,.site-header .nav-links .offer-links a{color:#235d58}
+.offer-links,.industry-cards article,.chapter-page .capture-options article,.capture-methods article,.capture-handoff,.detail-accordion details,.chapter-rail{background:#fcfffe}
+.photo-scene{background:#203d43;border-inline-start-color:#cfebe366}
+.photo-scene::after{background:linear-gradient(0deg,#12282ce8,transparent 76%)}
+.ops-menu,.capture-nav,.ops-source{background:#edf5f3}
+.ops-menu button[aria-pressed=true],.capture-nav button[aria-pressed=true]{background:#fbfffd;border-color:#63958c;color:#245d58}
+.ops-source{border-color:#63958c}
+.ops-context,.chapter-rail a{color:#235d58}
+.chapter-rail a[aria-current],.chapter-rail a:hover,.chapter-rail b{background:#204b52;color:#fff}
+.capture-methods span{background:#dfefeb;color:#235d58}
+.chapter-page .button,.chapter-page .ops-menu button,.chapter-page .capture-nav button{position:relative;overflow:hidden}
+@media(prefers-reduced-motion:no-preference){
+ .chapter-page main .button::after,.chapter-page main .ops-menu button::after,.chapter-page main .capture-nav button::after{content:"";position:absolute;inset:0;pointer-events:none;transform:translateX(-115%);background:linear-gradient(108deg,transparent 22%,#ffffff4f 50%,transparent 75%);animation:surface-sweep 9s ease-in-out infinite}
+ .chapter-page main .ops-menu button::after,.chapter-page main .capture-nav button::after{animation:none}
+ .chapter-page main .ops-menu button:hover::after,.chapter-page main .capture-nav button:hover::after{animation:surface-sweep 1.5s ease-out}
+}
+@keyframes surface-sweep{0%,68%{transform:translateX(-115%)} 92%,100%{transform:translateX(115%)}}
