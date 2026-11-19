@@ -9,7 +9,7 @@
    lead:'A buyer, successor or incoming manager needs to understand how the business runs. Document the routines, decisions, handoffs and exceptions that currently depend on a few people.',
    highlights:['Documented responsibilities','Repeatable procedures','Visible exceptions'],
    flow:[['Capture the owner’s decisions','Record the checks, approvals and judgement calls that keep work moving.'],['Give each process an owner','Show who does the work and where issues are escalated.'],['Prepare a usable handover','Deliver a playbook the next manager can review and maintain.']],
-   note:'A documented operation supports due diligence and transition planning. Sale price and buyer interest depend on the business and the transaction.',
+   note:'Keep agreed responsibilities and operating records together for a buyer or incoming manager.',
    detail:'Start with a workflow that stops when the owner is away. Knowledge capture can establish a practical handover before a wider system is built.',
    href:'knowledge-capture.html',link:'Explore knowledge capture'
   },
@@ -19,7 +19,7 @@
    lead:'Build onboarding from the procedures your managers approve. Give each role a clear starting sequence, visual references and short refreshers for the tasks ahead.',
    highlights:['Role-specific onboarding','Reusable lessons','Current source material'],
    flow:[['Agree the working standard','Resolve differences with the process owner.'],['Build the first-shift guide','Turn the approved steps into concise lessons and checks.'],['Keep learning connected','Update the relevant lessons when the procedure changes.']],
-   stat:'Gallup reported that only 12% of U.S. employees said their company did a good job of onboarding. This is survey context, not a measured Sonaway result.',
+   stat:'Gallup reported that only 12% of U.S. employees said their company did a good job of onboarding.',
    source:'https://www.gallup.com/workplace/353096/how-to-improve-employee-onboarding.aspx',sourceLabel:'Gallup, 2021',
    note:'Managers define readiness and supervise practical work. Training content supports that responsibility.',
    detail:'Custom learning tools can present a refresher by role, workstation or current task, using the same approved procedures as staff answers.',
@@ -32,7 +32,7 @@
    highlights:['Guidance on shift','Source-linked answers','Clear escalation'],
    flow:[['Capture the recurring question','Find the procedure and the details people keep missing.'],['Make the answer accessible','Use the tools staff already open or build a focused interface.'],['Review unanswered questions','Investigate gaps with the source owner.']],
    stat:'Illustrative arithmetic: 20 repeated questions at 2 minutes each consume 40 minutes of the answering person’s time per day. Adjust the calculator to your operation.',
-   note:'The calculator estimates potential capacity using your assumptions. It does not predict payroll savings.',
+   note:'Use the calculator with your own team’s figures.',
    detail:'An assistant should cite the approved source and direct uncertain questions to the responsible person. The custom systems page shows this workflow.',
    href:'custom-systems.html#what-we-build',link:'Try the custom workspace'
   },
