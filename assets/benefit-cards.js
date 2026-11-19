@@ -4,7 +4,7 @@
  if(!dialog)return;
  const items={
   capture:{
-   kicker:'SUCCESSION & BUSINESS HANDOVER',title:'Make the business easier to hand over.',
+   kicker:'SALE, SUCCESSION & BUSINESS HANDOVER',title:'Prepare for a sale or handover.',
    situation:'“How much of the operation still depends on the owner being available?”',
    lead:'A buyer, successor or incoming manager needs to understand how the business runs. Document the routines, decisions, handoffs and exceptions that currently depend on a few people.',
    highlights:['Documented responsibilities','Repeatable procedures','Visible exceptions'],
