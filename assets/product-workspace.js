@@ -4,7 +4,7 @@
  const stage=app.querySelector('[data-pw-stage]');let current='capture';
  const state={capture:0,answers:0,connections:0,learning:0,quality:0,insights:0};
  let source='voice',question='early',role='housekeeping',topic='handover',quizNote='';
- const order=['capture','answers','connections','learning','quality','insights'];
+ const order=['capture','answers','connections','learning','quality','insights'].filter(id=>{const button=app.querySelector(`[data-workspace-module="${id}"]`);return button&&!button.hidden});
  const meta={
  capture:['CAPTURE & ORGANIZE','Capture and review staff know-how.','Try a capture workflow we could build for your team.','Your people contribute the know-how. We build and maintain the agreed capture and review tools.'],
  answers:['SOURCE-LINKED ANSWERS','Ask a question. Check the approved source.',"Try a staff assistant built around approved site procedures.",'We configure the sources, languages, access and escalation for the assistant you need.'],
@@ -27,12 +27,12 @@
  };
  function capture(){const n=state.capture,c=captureTypes[source];
   const choices=Object.entries(captureTypes).map(([id,t],i)=>`<button type="button" class="pw-mode-choice pw-mode-hint" style="--hint-delay:${i*.8}s" data-pw-source="${id}" aria-pressed="${source===id&&n>0}"><span class="pw-mode-icon" aria-hidden="true">${t.icon}</span><strong>${t.label}</strong><small>${t.hint}</small><span class="pw-mode-arrow" aria-hidden="true">→</span></button>`).join('');
-  const left=panel('Capture knowledge','Simple inputs from the working day.',`<div class="pw-capture-methods" role="group" aria-label="Try a capture method">${choices}</div><p class="pw-inbox-note">Share it as you go. We turn the useful parts into connected, reviewed knowledge.</p>`);
+  const left=panel('Source material','',`<div class="pw-capture-methods" role="group" aria-label="Try a capture method">${choices}</div>`);
   let body;
-  if(n===0)body=`<div class="pw-empty-preview"><span aria-hidden="true">✧</span><h5>Capture it once.<br>Put it to work.</h5><p>Choose voice, photo, document or message to try an example.</p></div>`;
+  if(n===0)body=`<div class="pw-empty-preview"><span aria-hidden="true">✧</span><h5>Your draft will appear here.</h5><p>Select a sample on the left, then follow it from source material to an approved procedure.</p></div>`;
   else if(n===1)body=`<div class="pw-capture-preview ${source==='photo'?'pw-photo-preview':''}">${source==='photo'?'<div class="systems-reference" aria-label="Illustrative reference photo caption"><span>▧</span><strong>Dispatch station setup</strong><small>Caption · Label scanner and order traveler at the packing station.</small></div>':source==='voice'?'<span class="pw-wave" aria-hidden="true">▂ ▅ ▃ ▇ ▄ ▆ ▂ ▅ ▃</span>':''}<small>${c.caption}</small><blockquote>${c.quote}</blockquote></div><p class="pw-capture-explainer">${c.copy}</p>${primary('extract',c.action)}`;
   else body=`${tag(n===3?'Example saved':'Draft · review required',n===3?'pw-tag-approved':'')}<h5 class="pw-capture-draft-title">${c.draft}</h5><ol class="pw-procedure">${c.steps.map(x=>`<li>${x}</li>`).join('')}</ol>${evidence(c.source,"Northline Operations · Reviewer: duty manager")}${n===2?primary('approve-capture','Review & save the example'):note('Saved in the example knowledge base, linked to its source and relevant staff guidance.')}`;
-  return `<div class="pw-two-columns">${left}${panel(n===0?'Your knowledge, ready to take shape':n===1?c.title:c.draft,n===0?'Choose an input to begin.':n===1?'A simple contribution becomes something useful.':'Connected evidence. Clear responsibility.',body)}</div>`;
+  return `<div class="pw-two-columns">${left}${panel(n===0?'Procedure preview':n===1?c.title:c.draft,n===0?'':n===1?'Original material and context':'Steps linked to the original source',body)}</div>`;
  }
 
  const answers={
@@ -46,7 +46,7 @@
   return `<div class="pw-two-columns">${chat}${right}</div>`;
  }
  function connections(){const n=state.connections;
-  const left=panel('A handoff that needs coordination',"Example / Early collection",`<div class="pw-request"><span class="pw-avatar" aria-hidden="true">FD</span><div><small>DIDISPATCHTCH DESK</small><h5>A customer has arrived before collection.</h5><p>The order is being prepared. The incoming shift needs a clear status and next step.</p></div></div>${evidence("Early-collection procedure","Order preparation · Inspection · Customer alternatives")}${n===0?primary('prepare-handoff','Prepare the handoff'):tag('Context connected')}`);
+  const left=panel('A handoff that needs coordination',"Example / Early collection",`<div class="pw-request"><span class="pw-avatar" aria-hidden="true">FD</span><div><small>DISPATCH DESK</small><h5>A customer has arrived before collection.</h5><p>The order is being prepared. The incoming shift needs a clear status and next step.</p></div></div>${evidence("Early-collection procedure","Order preparation · Inspection · Customer alternatives")}${n===0?primary('prepare-handoff','Prepare the handoff'):tag('Context connected')}`);
   const steps=n===0?`<div class="pw-empty-preview pw-empty-small">${mark('flow')}<h5>Bring the next person into the picture.</h5><p>The example routes the right context between teams, with an approval before any action.</p></div>`:`<div class="pw-handoff"><div><span>01</span><strong>Dispatch desk</strong><p>Work order and expected collection.</p></div><i aria-hidden="true">↓</i><div><span>02</span><strong>Packing team</strong><p>Order preparation and inspection status.</p></div><i aria-hidden="true">↓</i><div><span>03</span><strong>Duty manager</strong><p>${n===3?'Example handoff approved.':"Review unresolved status and the collection alternative."}</p></div></div>`;
   const right=panel('Connected departments','A visible path, with clear responsibility.',steps+(n===1?primary('review-handoff','Review the proposed handoff'):n===2?`<div class="pw-review-strip">Draft only. No order status or customer message has been changed.</div>${primary('approve-handoff','Approve example handoff')}`:n===3?tag('Example approved · next steps assigned','pw-tag-approved'):''));
   return `<div class="pw-two-columns">${left}${right}</div>`;
@@ -62,7 +62,7 @@
   return `<div class="pw-two-columns">${left}${panel('Staff learning','A sample of task-based guidance.',body)}</div>`;
  }
  function quality(){const n=state.quality;
-  const records=`<div class="pw-policy-pair"><article><small>APPROVED DIDISPATCHTCH POLICY</small><strong>9 PM</strong><span>Current approved source</span></article><article class="${n===0?'pw-policy-conflict':''}"><small>CUSTOMER INFORMATION</small><strong>${n===3?'9 PM':'10 PM'}</strong><span>${n===3?'Example synchronized':"Older customer guide"}</span></article></div>`;
+  const records=`<div class="pw-policy-pair"><article><small>APPROVED DISPATCH POLICY</small><strong>9 PM</strong><span>Current approved source</span></article><article class="${n===0?'pw-policy-conflict':''}"><small>CUSTOMER INFORMATION</small><strong>${n===3?'9 PM':'10 PM'}</strong><span>${n===3?'Example synchronized':"Older customer guide"}</span></article></div>`;
   const left=panel(n===3?'The example sources agree':'Two sources disagree',"Dispatch / Access hours / Closing time",`${tag(n===3?'Example approved':'Review needed',n===3?'pw-tag-approved':'pw-tag-review')}${records}${n===0?primary('compare-quality','Compare the sources'):evidence("Approved dispatch access policy",'The designated source lists a 9 PM closing time.')}`);
   let body=n===0?`<div class="pw-empty-preview pw-empty-small">${mark('quality')}<h5>Catch the contradiction.</h5><p>Compare the evidence before changing what staff or customers see.</p></div>`:`<div class="pw-correction"><small>PROPOSED CORRECTION</small><h5>Align the customer guide to 9 PM.</h5><ul><li>Keep the approved dispatch policy as the source.</li><li>Update linked customer information.</li><li>Flag relevant staff guidance for review.</li></ul></div>`;
   if(n===1)body+=primary('prepare-quality','Prepare a reviewed correction');
@@ -78,14 +78,14 @@
   return `<div class="pw-two-columns">${left}${panel('From signal to improvement','A manager can decide what to investigate.',body)}</div>`;
  }
  const guides={
- capture:['Choose voice, photo, document or message to try an example.','Turn the source into a short draft procedure.','Review the source-linked steps, then approve the example.','The example procedure is approved. Try another tool in the sidebar.'],
+ capture:['Choose voice, photo, document or message to try an example.','Turn the source into a short draft procedure.','Review the source-linked steps, then approve the example.','The example procedure is approved. Choose another source to try again.'],
  answers:['Choose an example question to see the answer and its source.','Open the source attached to the answer.','You can check the guidance against the source. Try another question or tool.'],
  connections:["Prepare a handoff for the early-arriving customer.",'Review which departments and source are connected.','Approve the example handoff after reviewing the proposed path.','The example is approved. Its responsibilities and evidence stay visible.'],
  learning:['Choose a staff role to see its next relevant refresher.','Try the quick check linked to this procedure.','Choose the response that follows the approved procedure.','The example refresher is complete. Try a different role or tool.'],
  quality:["Compare the approved policy with the older customer guide.",'Prepare a correction based on the approved source.','Review the affected guidance, then approve the example correction.','The example sources now agree, with the review recorded.'],
  insights:['Choose a recurring topic to see a question behind the pattern.','Prepare a short learning draft from the question and its source.','The example draft is ready for the source owner’s review.']};
  function render(){const restoreFocus=stage.contains(document.activeElement);const m=meta[current],n=state[current],complete=n===guides[current].length-1;
-  app.querySelector('[data-pw-kicker]').textContent=m[0];app.querySelector('[data-pw-title]').textContent=m[1];app.querySelector('[data-pw-description]').textContent=m[2];app.querySelector('[data-pw-number]').textContent=`0${order.indexOf(current)+1} / 06`;
+  app.querySelector('[data-pw-kicker]').textContent=m[0];app.querySelector('[data-pw-title]').textContent=m[1];app.querySelector('[data-pw-description]').textContent=m[2];app.querySelector('[data-pw-number]').textContent=`0${order.indexOf(current)+1} / 0${order.length}`;
   app.querySelector('[data-pw-description]').textContent=guides[current][n];app.querySelector('[data-pw-outcome]').textContent=m[3];
   app.querySelectorAll('[data-workspace-module]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.workspaceModule===current)));
   stage.innerHTML=({capture,answers:answerView,connections,learning,quality,insights}[current])();
