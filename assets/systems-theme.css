@@ -50,7 +50,7 @@ body{background:var(--satin-light);color:var(--ink)}
  .ph-panel{min-width:0}
  .ph-panel.is-active{flex-grow:5}
  .story-interior #capture-workspace{padding:0;background:transparent}
- .story-interior #capture-workspace>.story-screen{min-height:100svh;display:flex;align-items:center;padding:80px 50px 32px}
+ .story-interior #capture-workspace>.story-screen{min-height:100svh;display:flex;align-items:center;padding:24px 76px 24px 24px}
  .story-interior #capture-workspace .story-surface{width:100%;padding:30px;border-radius:28px;background:var(--satin-light)}
  .story-interior #capture-workspace .wrap{width:100%}
 }
