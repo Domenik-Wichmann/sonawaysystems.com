@@ -60,3 +60,5 @@
  .time-period .time-money strong{font-size:30px}
  .capture-poster img{height:350px}
 }
+.story-interior .photo-quote .story-surface{background:var(--satin-light)!important}
+.story-interior .photo-quote:before,.story-interior .photo-quote .story-surface:before{display:none}
