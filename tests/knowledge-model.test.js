@@ -27,7 +27,7 @@ test('event exceptions expire and seasonal boundaries include their end dates',(
 test('inherited fields keep the correct ancestor rather than an unrelated event rule',()=>{
   const galaBuffet=resolve('2026-04-16','buffet');
   assert.deepEqual(galaBuffet.path,['base','spring','festival','gala']);
-  assert.equal(galaBuffet.value,'7–11 AM · festival buffet');
+  assert.equal(galaBuffet.value,'7–11 AM · peak collections');
   const weddingRoom=resolve('2026-12-18','room');
   assert.deepEqual(weddingRoom.path,['base','winter','wedding']);
   assert.equal(weddingRoom.value,'6 AM–midnight');

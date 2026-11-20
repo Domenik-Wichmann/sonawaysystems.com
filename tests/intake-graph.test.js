@@ -19,6 +19,6 @@ test('questions change topology, and alternate service changes explore different
  const signatures=Array.from({length:4},(_,i)=>{const s=g.scene(m,a,i);return s.nodes.map(n=>`${n.x},${n.y}`).join('|');});assert.equal(new Set(signatures).size,4);
  const hours=g.scene(m,a,3),event=g.scene(m,{...a,change:'private'},3),move=g.scene(m,{...a,change:'move'},3);
  const degrees=s=>s.nodes.map(n=>s.edges.filter(e=>!e.cross&&e.from===n.id).length).sort().join(',');assert.notEqual(degrees(hours),degrees(event));assert.notEqual(hours.nodes.length,move.nodes.length);
- assert.ok(hours.nodes.some(n=>n.label==='Packing lead readiness'));assert.ok(event.nodes.some(n=>n.label==='Event bookings'));assert.ok(move.nodes.some(n=>n.label==='Alternative dining'));
+ assert.ok(hours.nodes.some(n=>n.label==='Packing lead readiness'));assert.ok(event.nodes.some(n=>n.label==='Priority calendar'));assert.ok(move.nodes.some(n=>n.label==='Alternate pickup stations'));
 });
 
