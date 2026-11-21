@@ -16,7 +16,7 @@
   consistent:{
    kicker:'TRAINING & ONBOARDING',title:'Help new hires find their feet.',
    situation:'“Every starter gets a slightly different explanation of the same job.”',
-   lead:'Build onboarding from the procedures your managers approve. Give each role a clear starting sequence, visual references and short refreshers for the tasks ahead.',
+   lead:'A new housekeeper opens the room-turnover guide on the linen cart. It shows which supplies to restock, what the finished room should look like and when to call the supervisor for inspection.',
    highlights:['Role-specific onboarding','Reusable lessons','Current source material'],
    flow:[['Agree the working standard','Resolve differences with the process owner.'],['Build the first-shift guide','Turn the approved steps into concise lessons and checks.'],['Keep learning connected','Update the relevant lessons when the procedure changes.']],
    stat:'Gallup reported that only 12% of U.S. employees said their company did a good job of onboarding.',
