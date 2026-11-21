@@ -1,0 +1,157 @@
+[
+  {
+    "id": "faq-1",
+    "question": "Why does my business need a knowledge base?",
+    "answer": "When a packer on the night shift asks in Spanish which label goes on an order, they can get the answer in Spanish and open the approved procedure in Spanish, too. The same source serves someone asking in English, German, Chinese or another language your business needs. Your team can find answers 24/7, even when the person who wrote the guide is off shift.",
+    "url": "/#common-questions"
+  },
+  {
+    "id": "faq-2",
+    "question": "Could we just use ChatGPT?",
+    "answer": "ChatGPT can help draft instructions and let people collaborate. Someone still has to collect what your crew knows, settle conflicting versions and decide what goes into the handbook. We do that work with your team and publish approved answers where the right people can find and maintain them.",
+    "url": "/#common-questions"
+  },
+  {
+    "id": "faq-3",
+    "question": "Do you use AI to write our procedures?",
+    "answer": "We use AI to help transcribe recordings and organize source material. A human reviews the evidence, writes the procedure and takes gaps back to your staff. The instructions come from your business, and someone you designate approves them before publication.",
+    "url": "/#common-questions"
+  },
+  {
+    "id": "faq-4",
+    "question": "Which businesses benefit most?",
+    "answer": "Often it’s a growing business where the founders or original crew still field every question. Packing facilities, fabrication shops, hotels and franchise groups are good examples. We capture the work while it happens so people can spend their shift on the floor.",
+    "url": "/#common-questions"
+  },
+  {
+    "id": "faq-5",
+    "question": "What can you build for multiple locations?",
+    "answer": "Your front desk can look up a late-arrival procedure while guests see just the arrival instructions on your website. We can also connect the guest guide to a voice agent that answers calls. You decide which information is public, which stays with staff and when a question goes to a person.",
+    "url": "/#common-questions"
+  },
+  {
+    "id": "faq-6",
+    "question": "How can you help us train staff?",
+    "answer": "We start with the tasks your managers want people to learn and turn approved procedures into role-specific onboarding. Once the system is in use, recurring staff questions can show where a guide or lesson needs work. We can deliver a short refresher before the next shift that needs it.",
+    "url": "/#common-questions"
+  },
+  {
+    "id": "capture-inputs",
+    "question": "What do my employees have to record?",
+    "aliases": [
+      "What can we send you?",
+      "Can we send voice notes?",
+      "Can we send photos and videos?"
+    ],
+    "answer": "Have someone talk through a task on their phone as they do it. They can send short videos, existing checklists and photos too. Give each photo a caption or mention it in the recording so we know which step it shows.",
+    "url": "/knowledge-capture.html#capture-your-day"
+  },
+  {
+    "id": "existing-tools",
+    "question": "Can we keep the software we already use?",
+    "aliases": [
+      "Do we need to switch platforms?",
+      "Can you use our existing knowledge base?",
+      "Can we keep our existing software?"
+    ],
+    "answer": "Yes, where your platform supports it. We can organize approved procedures in the handbook, knowledge base or training platform your team already uses. During discovery we check how imports work and who can publish. Editable files are also an option.",
+    "url": "/knowledge-capture.html#delivery"
+  },
+  {
+    "id": "handoff",
+    "question": "Who owns the knowledge base after you build it?",
+    "aliases": [
+      "Who owns the system?",
+      "Can we maintain it ourselves?"
+    ],
+    "answer": "You control your operational information and receive the agreed project code, documentation and access. Your team can maintain the system, appoint another provider or ask Sonaway to look after it. We spell out any third-party or reusable component licenses in the agreement.",
+    "url": "/approach.html#ownership-deliverables"
+  },
+  {
+    "id": "disagreement",
+    "question": "What if two people describe the same job differently?",
+    "aliases": [
+      "How do you resolve conflicting instructions?"
+    ],
+    "answer": "We compare the accounts with your existing instructions, flag the disagreement and ask the people responsible for that step. We put the agreed version into a draft for your process owner to check before it reaches staff.",
+    "url": "/#what-we-do"
+  },
+  {
+    "id": "custom-tools",
+    "question": "What kinds of custom systems can you build?",
+    "aliases": [
+      "What can you build for us?"
+    ],
+    "answer": "We can build a searchable knowledge base, QR guides for individual workstations, role-specific training and dashboards. For a group with several sites, we can carry shared procedures across locations and show each team the instructions that apply there. We agree the features and integrations during discovery.",
+    "url": "/custom-systems.html#what-we-build"
+  },
+  {
+    "id": "public-answers",
+    "question": "Can guests and customers use the knowledge base too?",
+    "aliases": [
+      "Can the public ask questions?"
+    ],
+    "answer": "Yes. You choose which material guests or customers can see and which instructions stay with staff. We can make a public guide available on your website, offer answers in the languages you need or connect the approved material to a voice agent.",
+    "url": "/#common-questions"
+  },
+  {
+    "id": "knowledge-capture-capture-your-day",
+    "title": "Recording work",
+    "answer": "What can you send us? ▤ Your working-day notes ◉ Shift handover.m4a Voice note · steps and exceptions ▷ Label check.mp4 Short demonstration of the task ▧ Station setup.jpg Photo with a caption linking it to the task ☷ Packing checklist.pdf The instructions already in use Voice notes ◉ Explain the steps, what you check and what makes you do it differently. Short notes from the day are useful. Short videos ▷ Demonstrate a setup, handoff or inspection. Tell us which role does it and what a good result looks like. Photos with context ▧ Add clear captions or refer to the photo in the accompanying recording so we can connect it to the right step. Documents & interviews ▤ Include the checklists and manuals you already use. We can interview staff and ask follow-up questions to close the gaps.",
+    "url": "/knowledge-capture.html#capture-your-day"
+  },
+  {
+    "id": "knowledge-capture-delivery",
+    "title": "Delivery and existing platforms",
+    "answer": "Get the knowledge into the system your team uses. Editable files Receive the agreed procedures, maps and checklists with their sources and owners. Your platform We can organize the approved material in your chosen handbook, knowledge base or training platform where supported. We confirm import and publishing access during discovery. A custom system We can make approved documents and answers available automatically in the languages your staff use, with QR guides at each station and a public edition for guests or visitors. Explore custom systems →",
+    "url": "/knowledge-capture.html#delivery"
+  },
+  {
+    "id": "knowledge-capture-pricing",
+    "title": "Illustrative knowledge capture budgets",
+    "answer": "What does knowledge capture cost? Example USD budgets for discussion. A proposal confirms the work, source volume, deliverables and price. ONE WORKFLOW $3,000 One location, up to two interviewees and up to three procedures or checklists. SMALL-TEAM PLAYBOOK $6,000 One location, up to five interviewees, up to three core workflows and up to eight procedures or checklists. MULTIPLE LOCATIONS Let’s scope it For cross-site processes, extensive source material or more involved handoffs. Request a discovery call →",
+    "url": "/knowledge-capture.html#pricing"
+  },
+  {
+    "id": "approach-ownership-deliverables",
+    "title": "Ownership and handoff",
+    "answer": "A system you own, with a documented handoff. You receive the agreed system and information in an environment you control. Our maintenance service supports that asset; it does not make your operational knowledge conditional on a Sonaway subscription. 01 Your environment We deploy into the agreed accounts and infrastructure, with access you control and third-party services billed as agreed. 02 Your operational information Your source material, structured knowledge and agreed operational data remain under your control, with documented access and export arrangements. 03 Code & documentation Receive agreed project-specific repositories, deployment procedures, configuration, documentation and data-export guidance. Pre-existing reusable components and third-party dependencies come with explicit licensing terms. 04 Who maintains the system Keep Sonaway responsible for the agreed upkeep, or appoint your own team or provider. Maintenance scope and responsibilities are documented separately from ownership.",
+    "url": "/approach.html#ownership-deliverables"
+  },
+  {
+    "id": "approach-ownership-options",
+    "title": "Maintenance options",
+    "answer": "Ongoing care from Sonaway. Control stays with you. Your staff contribute practical knowledge and tell us what changed. We organise it, check it against sources, prepare revisions and maintain the agreed tools. Your designated managers approve operational changes before publication. OPTION A Documented handoff If you prefer to run it independently, we provide the agreed code, data, access and operating instructions. Your team or chosen provider assumes maintenance and future changes. OPTION B Sonaway-managed care We maintain the agreed content, training, source checks, reporting and technical connections. You have a specialist to work with as information changes and problems arise, without assigning staff to run a knowledge-management platform. Infrastructure and third-party services may carry their own costs. Reusable libraries and third-party components may be licensed rather than assigned outright; rights are set out transparently in the contract.",
+    "url": "/approach.html#ownership-options"
+  },
+  {
+    "id": "approach-ownership-delivery",
+    "title": "Discovery and implementation",
+    "answer": "How we scope, build and maintain your system. We start by understanding the work, reviewing your sources and agreeing the useful tools to build. Scope, deliverables, acceptance criteria, timelines and responsibilities are agreed before significant development begins. We plan maintenance alongside the build: what gets checked, who approves changes and how faults are handled. New modules and major development remain separately scoped. 01 Discovery & scoping Gather documents and staff know-how; identify the workflows, gaps and constraints with your managers. 02 Build & integration Build the agreed interfaces and integrations in iterations your team can review. 03 Validation & training Check source handling, permissions, approval steps and practical staff use against the agreed criteria. 04 Handoff & optional care Provide the agreed code, access and documentation, with defined ongoing care or a complete handoff.",
+    "url": "/approach.html#ownership-delivery"
+  },
+  {
+    "id": "approach-care-responsibilities",
+    "title": "Ongoing responsibilities",
+    "answer": "Clear responsibilities. Agreed support. Your team’s part Share source material and operational changes, and nominate managers to confirm facts and approve publication. Your team decides policy and safety requirements; we show staff how to contribute and use the tools. Sonaway’s part Organise and cross-check information, investigate discrepancies, prepare revisions, maintain the agreed tools and explain the reporting. We handle the specialist work while your managers retain operational authority. Service scope, review frequency and response times are agreed in advance. New integrations, major features and additional reporting projects are scoped separately. Analysis of workflow bottlenecks requires suitable process data.",
+    "url": "/approach.html#care-responsibilities"
+  },
+  {
+    "id": "about-about-approach",
+    "title": "Working with Sonaway",
+    "answer": "We start with how your business actually works. The procedure may be in a binder, the latest change in a message and the useful detail in an experienced colleague’s head. Staff are serving customers and running facilities; maintaining a knowledge system is another job competing for their time. We gather documents and staff knowledge, check the gaps with your managers and build the agreed tools around approved information. That can include phone-based answers, reusable training, update workflows, dashboards and connections to existing systems. With ongoing care, we keep working with your business: checking sources, maintaining training and integrations, investigating problems and reviewing useful patterns. You own the agreed system and can choose a documented handoff instead.",
+    "url": "/about.html#about-approach"
+  },
+  {
+    "id": "about-about-principles",
+    "title": "How we handle operational knowledge",
+    "answer": "Who does the work, and how we work with you. 01 Founder-led delivery Work directly with Domenik Wichmann, responsible for understanding your operation, building the agreed system and organising its ongoing care. 02 Start with one job Choose a job that keeps coming back to a supervisor. We watch or listen to a walkthrough, then check the steps and exceptions with the people who do it. 03 Clear responsibility after launch Your managers approve operational changes. We maintain the agreed information and technology, with defined scope, review schedules and response times—or a documented handoff to your provider.",
+    "url": "/about.html#about-principles"
+  },
+  {
+    "id": "contact-contact-context",
+    "title": "Preparing for discovery",
+    "answer": "You don’t need a technical specification. Describe the people affected, where information lives and what happens today. You do not need to choose the technology. We will discuss a practical starting point, what we would deliver and the ongoing maintenance it needs. 01 “We’re opening another location.” We can build shared procedures, local variations and role-based training, then maintain the agreed information and tools as the new site starts operating. 02 “We keep retraining the same procedures.” We can turn approved procedures into reusable onboarding and short refreshers, with phone-based answers for routine questions and reviews of recurring learning needs. 03 “Nobody has time to keep it all updated.” We can take responsibility for agreed source checks, training revisions, reporting and technical upkeep while your managers approve operational changes.",
+    "url": "/contact.html#contact-context"
+  }
+]

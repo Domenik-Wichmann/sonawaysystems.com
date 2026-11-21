@@ -1,0 +1,61 @@
+[
+  {
+    "id": "capture-inputs",
+    "question": "What do my employees have to record?",
+    "aliases": [
+      "What can we send you?",
+      "Can we send voice notes?",
+      "Can we send photos and videos?"
+    ],
+    "answer": "Have someone talk through a task on their phone as they do it. They can send short videos, existing checklists and photos too. Give each photo a caption or mention it in the recording so we know which step it shows.",
+    "url": "/knowledge-capture.html#capture-your-day"
+  },
+  {
+    "id": "existing-tools",
+    "question": "Can we keep the software we already use?",
+    "aliases": [
+      "Do we need to switch platforms?",
+      "Can you use our existing knowledge base?",
+      "Can we keep our existing software?"
+    ],
+    "answer": "Yes, where your platform supports it. We can organize approved procedures in the handbook, knowledge base or training platform your team already uses. During discovery we check how imports work and who can publish. Editable files are also an option.",
+    "url": "/knowledge-capture.html#delivery"
+  },
+  {
+    "id": "handoff",
+    "question": "Who owns the knowledge base after you build it?",
+    "aliases": [
+      "Who owns the system?",
+      "Can we maintain it ourselves?"
+    ],
+    "answer": "You control your operational information and receive the agreed project code, documentation and access. Your team can maintain the system, appoint another provider or ask Sonaway to look after it. We spell out any third-party or reusable component licenses in the agreement.",
+    "url": "/approach.html#ownership-deliverables"
+  },
+  {
+    "id": "disagreement",
+    "question": "What if two people describe the same job differently?",
+    "aliases": [
+      "How do you resolve conflicting instructions?"
+    ],
+    "answer": "We compare the accounts with your existing instructions, flag the disagreement and ask the people responsible for that step. We put the agreed version into a draft for your process owner to check before it reaches staff.",
+    "url": "/#what-we-do"
+  },
+  {
+    "id": "custom-tools",
+    "question": "What kinds of custom systems can you build?",
+    "aliases": [
+      "What can you build for us?"
+    ],
+    "answer": "We can build a searchable knowledge base, QR guides for individual workstations, role-specific training and dashboards. For a group with several sites, we can carry shared procedures across locations and show each team the instructions that apply there. We agree the features and integrations during discovery.",
+    "url": "/custom-systems.html#what-we-build"
+  },
+  {
+    "id": "public-answers",
+    "question": "Can guests and customers use the knowledge base too?",
+    "aliases": [
+      "Can the public ask questions?"
+    ],
+    "answer": "Yes. You choose which material guests or customers can see and which instructions stay with staff. We can make a public guide available on your website, offer answers in the languages you need or connect the approved material to a voice agent.",
+    "url": "/#common-questions"
+  }
+]

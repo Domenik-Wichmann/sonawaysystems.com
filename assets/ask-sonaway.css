@@ -1,0 +1,15 @@
+#common-questions .faq-layout {grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(1.6rem,4vw,4rem)}
+#ask-sonaway {margin-top:1.45rem}
+#ask-sonaway label {display:block;color:#183e4b;font:650 1rem/1.45 'DM Sans',sans-serif;margin-bottom:.55rem}
+.ask-controls {display:flex;align-items:stretch;border:1px solid #92b2b8;border-radius:1rem;background:#fff;padding:.35rem;gap:.3rem}
+.ask-controls:focus-within {outline:2px solid #407381;outline-offset:2px}
+.ask-controls input {min-width:0;flex:1;border:0;border-radius:.7rem;padding:.65rem;color:#183e4b;background:white;font:inherit;font-size:1rem}
+.ask-controls button {border:0;border-radius:.7rem;padding:.55rem 1rem;background:#205360;color:white;font:650 1rem/1.4 'DM Sans',sans-serif;cursor:pointer}
+.ask-controls button:disabled {opacity:.7}
+#sonaway-answer {margin-top:.85rem;padding:1rem 1.1rem;color:#183e4b;background:#edf5f4;border:1px solid #bbd1d1;border-radius:1rem;max-height:19rem;overflow:auto;overscroll-behavior:contain}
+#sonaway-answer p {margin:0;font-size:1rem;line-height:1.5;color:#183e4b}
+#sonaway-answer ul {list-style:none;margin:0;padding:0}
+#sonaway-answer li,#sonaway-answer [data-contact] {margin-top:.55rem}
+#sonaway-answer a {font-size:.95rem;color:#215460;text-decoration:underline;text-underline-offset:.15em}
+#sonaway-answer [data-contact]:not([hidden]) {display:inline-block}
+@media(max-width:800px){#common-questions .faq-layout{grid-template-columns:1fr}#sonaway-answer{max-height:none}}
