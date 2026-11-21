@@ -14,8 +14,17 @@
       meeting: 'After two labels were mixed up, the team agreed to keep held cartons off the dispatch pallet. Only the shift lead releases them after checking the corrected label.',
       follow: 'Linked procedure', notes: 'Decision from the shift meeting', source: 'Source document', more: 'Ask another question',
       askTitle: 'Ask the shift guide', askIntro: 'Try a question from the packing floor.',
-      questions: ['What if a label doesn’t match?', 'Who releases a held carton?', 'What do I check before sealing?'],
-      answers: ['Put the carton on the hold rack and tell the shift lead. Keep it off the dispatch pallet.', 'The shift lead releases the carton after checking the corrected label.', 'Match the customer name and order number on the label to the order sheet.'],
+      threads: {
+        pack: ["How do I pack this order?", "Match the produce and carton count to the order.", "Check the customer label before sealing."],
+        mismatch: ["What if the label doesn’t match?", "Move the carton to the hold rack.", "Tell the shift lead which detail differs."],
+        place: ["Where should I put the label?", "Choose one flat face of the carton.", "Press the entire label flat, clear of corners and seams."],
+        seal: ["What do I check before sealing?", "Compare the customer name and order number with the order sheet.", "Check that the label lies flat."],
+        crease: ["What if the label is creased?", "Keep the carton off the dispatch pallet.", "Ask the shift lead to check the replacement label."],
+        hold: ["Where does a held carton go?", "Set it on the hold rack, separate from cleared orders.", "Leave it there until the shift lead releases it."],
+        release: ["Who releases a held carton?", "The shift lead checks the corrected label against the order.", "Only then can the carton go to dispatch."],
+        dispatch: ["Where does the checked carton go?", "Seal the checked carton.", "Move it to the dispatch pallet for that order."],
+      },
+      conversationLabels: ["Related questions", "New topic", "Choose a follow-up", "Start a new topic", "Hands press a shipping label onto one flat side of a carton."],
       answer: 'From the shift guide', replay: 'Replay example', pause: 'Pause example'
     },
     es: {
@@ -28,8 +37,17 @@
       meeting: 'Tras una confusión con dos etiquetas, el equipo acordó dejar las cajas retenidas fuera del palé de despacho. Solo el jefe de turno puede liberarlas después de revisar la etiqueta corregida.',
       follow: 'Procedimiento relacionado', notes: 'Acuerdo de la reunión', source: 'Documento de origen', more: 'Hacer otra pregunta',
       askTitle: 'Pregunta a la guía', askIntro: 'Prueba una pregunta del equipo de empaque.',
-      questions: ['¿Y si la etiqueta no coincide?', '¿Quién libera una caja retenida?', '¿Qué reviso antes de cerrar la caja?'],
-      answers: ['Lleva la caja al estante de retención y avisa al jefe de turno. Déjala fuera del palé de despacho.', 'El jefe de turno libera la caja después de revisar la etiqueta corregida.', 'Comprueba que el nombre del cliente y el número de pedido en la etiqueta coincidan con la orden.'],
+      threads: {
+        pack: ["¿Cómo empaco este pedido?", "Comprueba el producto y el número de cajas del pedido.", "Revisa la etiqueta del cliente antes de cerrar la caja."],
+        mismatch: ["¿Y si la etiqueta no coincide?", "Lleva la caja al estante de retención.", "Dile al jefe de turno qué dato no coincide."],
+        place: ["¿Dónde coloco la etiqueta?", "Elige una cara plana de la caja.", "Alisa toda la etiqueta, lejos de las esquinas y las uniones."],
+        seal: ["¿Qué reviso antes de cerrar la caja?", "Compara el nombre del cliente y el número de pedido con la orden.", "Comprueba que la etiqueta esté lisa."],
+        crease: ["¿Y si la etiqueta está arrugada?", "Deja la caja fuera del palé de despacho.", "Pide al jefe de turno que revise la nueva etiqueta."],
+        hold: ["¿Dónde dejo una caja retenida?", "Ponla en el estante de retención, separada de los pedidos listos.", "Déjala allí hasta que el jefe de turno la libere."],
+        release: ["¿Quién libera una caja retenida?", "El jefe de turno compara la etiqueta corregida con la orden.", "Solo entonces puede pasar la caja a despacho."],
+        dispatch: ["¿Dónde va la caja revisada?", "Cierra la caja revisada.", "Llévala al palé de despacho de ese pedido."],
+      },
+      conversationLabels: ["Preguntas relacionadas", "Otro tema", "Elige una pregunta relacionada", "Empieza otro tema", "Dos manos presionan una etiqueta de envío sobre una cara plana de la caja."],
       answer: 'Respuesta de la guía', replay: 'Repetir el ejemplo', pause: 'Pausar el ejemplo'
     },
     de: {
@@ -42,8 +60,17 @@
       meeting: 'Nach zwei vertauschten Etiketten hat das Team vereinbart, gesperrte Kartons von der Versandpalette fernzuhalten. Nur die Schichtleitung gibt sie nach Prüfung des korrigierten Etiketts frei.',
       follow: 'Verknüpfte Anleitung', notes: 'Beschluss der Schichtbesprechung', source: 'Quelldokument', more: 'Weitere Frage stellen',
       askTitle: 'Das Handbuch fragen', askIntro: 'Eine Frage aus der Packstation auswählen.',
-      questions: ['Was tun, wenn das Etikett falsch ist?', 'Wer gibt gesperrte Kartons frei?', 'Was prüfe ich vor dem Verschließen?'],
-      answers: ['Den Karton ins Sperrlager stellen und die Schichtleitung informieren. Der Karton bleibt von der Versandpalette getrennt.', 'Die Schichtleitung gibt den Karton nach Prüfung des korrigierten Etiketts frei.', 'Kundenname und Auftragsnummer auf dem Etikett mit dem Auftrag abgleichen.'],
+      threads: {
+        pack: ["Wie verpacke ich diesen Auftrag?", "Ware und Anzahl der Kartons mit dem Auftrag abgleichen.", "Vor dem Verschließen das Kundenetikett prüfen."],
+        mismatch: ["Was tun, wenn das Etikett falsch ist?", "Den Karton ins Sperrlager stellen.", "Der Schichtleitung sagen, welche Angabe abweicht."],
+        place: ["Wo bringe ich das Etikett an?", "Eine ebene Fläche am Karton wählen.", "Das Etikett glatt aufdrücken und Kanten und Nähte frei lassen."],
+        seal: ["Was prüfe ich vor dem Verschließen?", "Kundenname und Auftragsnummer mit dem Auftrag abgleichen.", "Prüfen, ob das Etikett glatt anliegt."],
+        crease: ["Was tun, wenn das Etikett zerknittert ist?", "Den Karton von der Versandpalette fernhalten.", "Die Schichtleitung das Ersatzetikett prüfen lassen."],
+        hold: ["Wohin kommt ein gesperrter Karton?", "Den Karton getrennt von freigegebener Ware ins Sperrlager stellen.", "Dort bleibt er bis zur Freigabe durch die Schichtleitung."],
+        release: ["Wer gibt gesperrte Kartons frei?", "Die Schichtleitung gleicht das korrigierte Etikett mit dem Auftrag ab.", "Erst danach darf der Karton in den Versand."],
+        dispatch: ["Wohin kommt der geprüfte Karton?", "Den geprüften Karton verschließen.", "Auf die Versandpalette für diesen Auftrag stellen."],
+      },
+      conversationLabels: ["Passende Folgefragen", "Neues Thema", "Folgefrage wählen", "Neues Thema wählen", "Zwei Hände drücken ein Versandetikett auf eine flache Seite des Kartons."],
       answer: 'Antwort aus dem Handbuch', replay: 'Beispiel wiederholen', pause: 'Beispiel pausieren'
     },
     zh: {
@@ -56,8 +83,17 @@
       meeting: '上次有两张标签贴反了。班组决定，待处理的箱子不得放上发货托盘。只有班组长核对更正后的标签后才能放行。',
       follow: '相关作业指导书', notes: '班前会决定', source: '查看依据', more: '再问一个问题',
       askTitle: '向班组手册提问', askIntro: '试试包装车间的常见问题。',
-      questions: ['标签和订单对不上怎么办？', '谁能放行待处理的箱子？', '封箱前要核对什么？'],
-      answers: ['把箱子放到待处理货架上，并通知班组长。不要将它放上发货托盘。', '班组长核对更正后的标签后才能放行。', '核对标签上的客户名称和订单号是否与订单一致。'],
+      threads: {
+        pack: ["这份订单怎么装箱？", "按订单核对果蔬品种和箱数。", "封箱前检查客户标签。"],
+        mismatch: ["标签和订单对不上怎么办？", "把箱子放到待处理货架上。", "告诉班组长哪项信息不符。"],
+        place: ["标签应该贴在哪里？", "选箱子上平整的一面。", "把整张标签压平，避开棱角和接缝。"],
+        seal: ["封箱前要核对什么？", "核对客户名称和订单号是否与订单一致。", "确认标签贴得平整。"],
+        crease: ["标签起皱了怎么办？", "先别把箱子放上发货托盘。", "请班组长核对更换后的标签。"],
+        hold: ["待处理的箱子放在哪里？", "放到待处理货架上，与已放行的订单分开。", "班组长放行后才能移走。"],
+        release: ["谁能放行待处理的箱子？", "班组长按订单核对更正后的标签。", "核对无误后，箱子才能发货。"],
+        dispatch: ["核对好的箱子放在哪里？", "将核对无误的箱子封好。", "放到该订单的发货托盘上。"],
+      },
+      conversationLabels: ["相关问题", "新话题", "选择后续问题", "选择新话题", "双手把运输标签压在纸箱平整的一面。"],
       answer: '班组手册的回答', replay: '重播示例', pause: '暂停示例'
     }
   };
@@ -83,11 +119,23 @@
     ['.fp-file[data-fp-view="meeting"]', 'meeting', 3550],
     ['.fp-source[data-fp-view="ask"]', 'ask', 3550],
     ['[data-fp-language]', 'translate', 1200],
-    ['[data-fp-picker]', 'choose', 1200],
-    ['[data-fp-send]', 'send', 1100]
+    ['[data-fp-picker]', 'pick-pack', 1200],
+    ['[data-fp-send]', 'send', 1100],
+    ['[data-fp-picker]', 'pick-place', 3600],
+    ['[data-fp-send]', 'send', 1000]
   ];
   const docs = ['pack', 'label', 'meeting'];
-  const sources = ['label', 'meeting', 'label'];
+  const starters = ['pack', 'mismatch', 'place'];
+  const paths = {
+    pack: {source: 'pack', next: ['place', 'seal']},
+    place: {source: 'label', next: ['crease', 'seal']},
+    seal: {source: 'label', next: ['mismatch', 'dispatch']},
+    crease: {source: 'label', next: ['hold', 'release']},
+    mismatch: {source: 'label', next: ['hold', 'release']},
+    hold: {source: 'meeting', next: ['release']},
+    release: {source: 'meeting', next: []},
+    dispatch: {source: 'pack', next: []}
+  };
   let view = 'library';
   let lang = 'en';
   let conversation = [];
@@ -116,6 +164,29 @@
   function heading(label, title) {
     return '<p class="fp-eyebrow">' + label + '</p><h3 tabindex="-1">' + title + '</h3>';
   }
+  function reply(key) {
+    const t = copy[lang];
+    const [question, ...instructions] = t.threads[key];
+    // Reference photograph: Liza Summer, Pexels 6348093.
+    const image = key === 'place' ? '<img class="fp-reference" src="assets/carton-label-example.webp" width="640" height="320" alt="' + t.conversationLabels[4] + '">' : '';
+    return '<div class="fp-turn"><p class="fp-bubble">' + question + '</p><div class="fp-answer">' + image +
+      '<ol>' + instructions.map(line => '<li>' + line + '</li>').join('') + '</ol></div>' +
+      '<p class="fp-eyebrow">' + t.source + '</p>' + documentButton(paths[key].source) + '</div>';
+  }
+  function fillPicker() {
+    const t = copy[lang];
+    const last = conversation.at(-1);
+    const followups = last ? paths[last].next : [];
+    const [related, newTopic, chooseNext, startOver] = t.conversationLabels;
+    const hint = last ? (followups.length ? chooseNext : startOver) : chatLabels[lang][0];
+    const options = keys => keys.map(key => '<option value="' + key + '">' + t.threads[key][0] + '</option>').join('');
+    const roots = starters.filter(key => !followups.includes(key) && key !== last);
+    picker.setAttribute('aria-label', hint);
+    picker.innerHTML = '<option value="" disabled>' + hint + '</option>' +
+      (followups.length ? '<optgroup label="' + related + '">' + options(followups) + '</optgroup>' : '') +
+      '<optgroup label="' + newTopic + '">' + options(roots) + '</optgroup>';
+    picker.value = draft;
+  }
   function render(focusPage = false) {
     const t = copy[lang];
     let body;
@@ -123,17 +194,14 @@
       body = heading(t.desk, t.library) + '<p>' + t.intro + '</p>' + docs.map(documentButton).join('');
     } else if (view === 'ask') {
       body = heading(t.brand, t.askTitle);
-      body += conversation.length ? conversation.map(i =>
-        '<div class="fp-turn"><p class="fp-bubble">' + t.questions[i] + '</p><p class="fp-answer">' + t.answers[i] +
-        '</p><p class="fp-eyebrow">' + t.source + '</p>' + documentButton(sources[i]) + '</div>'
-      ).join('') : '<p class="fp-answer">' + chatLabels[lang][2] + '</p>';
+      body += conversation.length ? conversation.map(reply).join('') : '<p class="fp-answer">' + chatLabels[lang][2] + '</p>';
     } else {
       const i = docs.indexOf(view);
       body = heading(t.kinds[i], t.titles[i]);
       if (view === 'pack') {
         body += '<ol>' + t.pack.map(step => '<li>' + step + '</li>').join('') + '</ol><p class="fp-eyebrow">' + t.follow + '</p>' + documentButton('label');
       } else if (view === 'label') {
-        body += '<p>' + t.label + '</p><p class="fp-eyebrow">' + t.notes + '</p>' + documentButton('meeting');
+        body += '<p>' + t.label + '</p><p>' + t.threads.place.slice(1).join(' ') + '</p><p>' + t.threads.crease.slice(1).join(' ') + '</p><p class="fp-eyebrow">' + t.notes + '</p>' + documentButton('meeting');
       } else {
         body += '<p>' + t.meeting + '</p><button type="button" class="fp-source" data-fp-view="ask">' + icon('chat') + t.askTitle + '</button>';
       }
@@ -142,13 +210,11 @@
     content.innerHTML = body;
     composer.hidden = view !== 'ask';
     composer.lang = lang;
-    picker.setAttribute('aria-label', chatLabels[lang][0]);
-    picker.innerHTML = '<option value="" disabled>' + chatLabels[lang][0] + '</option>' +
-      t.questions.map((q, i) => '<option value="' + i + '">' + q + '</option>').join('');
-    picker.value = draft;
+    fillPicker();
     send.disabled = draft === '';
     send.setAttribute('aria-label', chatLabels[lang][1]);
-    content.scrollTop = view === 'ask' && conversation.length ? content.scrollHeight : 0;
+    const latest = content.querySelector('.fp-turn:last-child');
+    content.scrollTop = latest ? latest.offsetTop - content.clientTop : 0;
     phone.querySelector('[data-fp-brand]').textContent = t.brand;
     select.value = lang;
     dock.lang = lang;
@@ -182,7 +248,7 @@
   }
   function publishQuestion() {
     if (draft === '') return;
-    conversation.push(Number(draft));
+    conversation.push(draft);
     draft = '';
   }
   function schedule() {
@@ -201,7 +267,7 @@
         clearPress();
         if (document.querySelector('dialog[open]')) { schedule(); return; }
         if (action === 'translate') lang = 'es';
-        else if (action === 'choose') draft = '0';
+        else if (action.startsWith('pick-')) draft = action.slice(5);
         else if (action === 'send') publishQuestion();
         else view = action;
         step += 1;
