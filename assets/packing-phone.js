@@ -62,33 +62,38 @@
     }
   };
 
-  const prompts = {
-    en: ['Ask about packing or labels…', 'This example covers the three questions below. Choose the closest one.'],
-    es: ['Pregunta sobre cajas o etiquetas…', 'Este ejemplo cubre las tres preguntas siguientes. Elige la más cercana.'],
-    de: ['Frage zu Kartons oder Etiketten…', 'Dieses Beispiel behandelt die drei Fragen unten. Wähle die passende aus.'],
-    zh: ['询问装箱或标签问题…', '本示例涵盖以下三个问题，请选择最接近的一项。']
+  const chatLabels = {
+    en: ['Choose a question', 'Send question', 'Which packing question can I help with? Pick one below.'],
+    es: ['Elige una pregunta', 'Enviar pregunta', '¿Qué necesitas saber sobre el empaque? Elige una pregunta abajo.'],
+    de: ['Frage auswählen', 'Frage senden', 'Was möchtest du über das Verpacken wissen? Wähle unten eine Frage aus.'],
+    zh: ['选择问题', '发送问题', '包装时有什么疑问？请在下方选择一个问题。']
   };
-  // Route questions to the three reviewed examples, in the selected answer language.
-  function findQuestion(text) {
-    const q = text.toLowerCase().normalize('NFKC');
-    if (/releas|liber|frei(?:geb|gabe)|gibt.{0,22}frei|放行|解封/.test(q)) return 1;
-    if (/mismatch|wrong|mix.?up|not match|n.t match|incorrect|no coinc|equivoc|falsch|abweich|nicht.{0,15}(?:stimm|pass)|不符|不对|对不上|贴错/.test(q)) return 0;
-    if (/before seal|sealing|label.{0,15}check|check.{0,15}label|antes de cerrar|verschließ|封箱|核对标签/.test(q)) return 2;
-    return -1;
-  }
-
   const content = phone.querySelector('[data-fp-content]');
   const dock = phone.querySelector('[data-fp-dock]');
   const select = phone.querySelector('[data-fp-language]');
   const tour = phone.querySelector('[data-fp-tour]');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const sequence = ['library', 'pack', 'label', 'meeting', 'ask', 'answer'];
+  const picker = phone.querySelector('[data-fp-picker]');
+  const composer = phone.querySelector('[data-fp-composer]');
+  const send = phone.querySelector('[data-fp-send]');
+  const invitation = phone.querySelector('[data-fp-try]');
+  const steps = [
+    ['.fp-file[data-fp-view="pack"]', 'pack', 2850],
+    ['.fp-file[data-fp-view="label"]', 'label', 3550],
+    ['.fp-file[data-fp-view="meeting"]', 'meeting', 3550],
+    ['.fp-source[data-fp-view="ask"]', 'ask', 3550],
+    ['[data-fp-language]', 'translate', 1200],
+    ['[data-fp-picker]', 'choose', 1200],
+    ['[data-fp-send]', 'send', 1100]
+  ];
   const docs = ['pack', 'label', 'meeting'];
   const sources = ['label', 'meeting', 'label'];
   let view = 'library';
   let lang = 'en';
-  let question = 0;
-  let typedQuestion = '';
+  let conversation = [];
+  let draft = '';
+  let step = 0;
+  let pressed;
   let running = !motion.matches;
   let visible = false;
   let timer;
@@ -117,14 +122,11 @@
     if (view === 'library') {
       body = heading(t.desk, t.library) + '<p>' + t.intro + '</p>' + docs.map(documentButton).join('');
     } else if (view === 'ask') {
-      const hint = prompts[lang][0];
-      body = heading(t.brand, t.askTitle) + '<form class="fp-form"><input required maxlength="180" aria-label="' + hint +
-        '" placeholder="' + hint + '"><button type="submit">' + t.ask + '</button></form><p data-fp-feedback role="status">' + t.askIntro + '</p>' + t.questions.map((q, i) =>
-        '<button type="button" class="fp-question" data-fp-question="' + i + '">' + q + '</button>').join('');
-    } else if (view === 'answer') {
-      body = heading(t.brand, t.askTitle) + '<p class="fp-bubble">' + t.questions[question] + '</p><p class="fp-answer">' + t.answers[question] +
-        '</p><p class="fp-eyebrow">' + t.source + '</p>' + documentButton(sources[question]) +
-        '<button type="button" class="fp-question" data-fp-view="ask">' + t.more + '</button>';
+      body = heading(t.brand, t.askTitle);
+      body += conversation.length ? conversation.map(i =>
+        '<div class="fp-turn"><p class="fp-bubble">' + t.questions[i] + '</p><p class="fp-answer">' + t.answers[i] +
+        '</p><p class="fp-eyebrow">' + t.source + '</p>' + documentButton(sources[i]) + '</div>'
+      ).join('') : '<p class="fp-answer">' + chatLabels[lang][2] + '</p>';
     } else {
       const i = docs.indexOf(view);
       body = heading(t.kinds[i], t.titles[i]);
@@ -138,75 +140,103 @@
     }
     content.lang = lang;
     content.innerHTML = body;
-    if (view === 'answer' && typedQuestion) content.querySelector('.fp-bubble').textContent = typedQuestion;
-    content.scrollTop = 0;
+    composer.hidden = view !== 'ask';
+    composer.lang = lang;
+    picker.setAttribute('aria-label', chatLabels[lang][0]);
+    picker.innerHTML = '<option value="" disabled>' + chatLabels[lang][0] + '</option>' +
+      t.questions.map((q, i) => '<option value="' + i + '">' + q + '</option>').join('');
+    picker.value = draft;
+    send.disabled = draft === '';
+    send.setAttribute('aria-label', chatLabels[lang][1]);
+    content.scrollTop = view === 'ask' && conversation.length ? content.scrollHeight : 0;
     phone.querySelector('[data-fp-brand]').textContent = t.brand;
     select.value = lang;
     dock.lang = lang;
     dock.hidden = false;
     dock.innerHTML = [['library', 'library', t.files], ['ask', 'chat', t.ask]].map(([key, glyph, text]) =>
       '<button type="button" data-fp-view="' + key + '"' +
-      ((key === 'ask') === (view === 'ask' || view === 'answer') ? ' aria-current="page"' : '') + '>' + icon(glyph) + text + '</button>').join('');
+      ((key === 'ask') === (view === 'ask') ? ' aria-current="page"' : '') + '>' + icon(glyph) + text + '</button>').join('');
     tour.hidden = false;
     updateTour();
-    if (focusPage) content.querySelector('h3').focus({preventScroll: true});
+    if (view === 'ask') content.setAttribute('aria-live', running ? 'off' : 'polite');
+    else content.removeAttribute('aria-live');
+    if (focusPage) {
+      const target = view === 'ask' ? picker : content.querySelector('h3');
+      target.focus({preventScroll: true});
+    }
   }
 
   function updateTour() {
     tour.lang = lang;
     tour.textContent = running ? copy[lang].pause : copy[lang].replay;
   }
+  function clearPress() {
+    clearTimeout(timer);
+    pressed?.classList.remove('fp-pressed');
+    pressed = null;
+  }
   function stopTour() {
     running = false;
-    clearTimeout(timer);
+    clearPress();
     updateTour();
   }
+  function publishQuestion() {
+    if (draft === '') return;
+    conversation.push(Number(draft));
+    draft = '';
+  }
   function schedule() {
-    clearTimeout(timer);
+    clearPress();
     if (!running || !visible || document.hidden) return;
+    const [selector, action, dwell] = steps[step];
     timer = setTimeout(() => {
       if (document.querySelector('dialog[open]')) { schedule(); return; }
-      view = sequence[sequence.indexOf(view) + 1];
-      if (view === 'ask') lang = 'es';
-      if (view === 'answer') running = false;
-      render();
-      schedule();
-    }, 4400);
+      pressed = phone.querySelector(selector);
+      if (content.contains(pressed)) {
+        const amount = pressed.getBoundingClientRect().bottom - content.getBoundingClientRect().bottom;
+        if (amount > 0) content.scrollTop += amount + 14;
+      }
+      pressed.classList.add('fp-pressed');
+      timer = setTimeout(() => {
+        clearPress();
+        if (document.querySelector('dialog[open]')) { schedule(); return; }
+        if (action === 'translate') lang = 'es';
+        else if (action === 'choose') draft = '0';
+        else if (action === 'send') publishQuestion();
+        else view = action;
+        step += 1;
+        running = step < steps.length;
+        render();
+        schedule();
+      }, 420);
+    }, dwell);
   }
-  phone.addEventListener('focusin', event => { if (event.target !== tour) stopTour(); });
-  phone.addEventListener('pointerdown', event => { if (event.target !== tour) stopTour(); });
+  function takeControl(event) {
+    if (!tour.contains(event.target)) stopTour();
+  }
+  phone.addEventListener('focusin', takeControl);
+  phone.addEventListener('pointerdown', takeControl);
   phone.addEventListener('click', event => {
     const button = event.target.closest('button');
     if (!button || button.type === 'submit') return;
     if (button === tour) {
       if (running) { stopTour(); return; }
-      view = 'library'; lang = 'en'; question = 0; typedQuestion = ''; running = true;
+      view = 'library'; lang = 'en'; conversation = []; draft = ''; step = 0; running = true;
       render(); schedule(); return;
     }
     stopTour();
-    if (button.hasAttribute('data-fp-question')) {
-      typedQuestion = '';
-      question = Number(button.dataset.fpQuestion);
-      view = 'answer';
-    } else {
-      view = button.dataset.fpView;
-    }
+    view = button === invitation ? 'ask' : button.dataset.fpView;
     render(true);
   });
-  phone.addEventListener('submit', event => {
+  picker.addEventListener('change', () => {
+    stopTour();
+    draft = picker.value;
+    send.disabled = draft === '';
+  });
+  composer.addEventListener('submit', event => {
     event.preventDefault();
     stopTour();
-    const input = event.target.querySelector('input');
-    const text = input.value.trim();
-    if (!text) return;
-    const found = findQuestion(text);
-    if (found < 0) {
-      content.querySelector('[data-fp-feedback]').textContent = prompts[lang][1];
-      return;
-    }
-    typedQuestion = text;
-    question = found;
-    view = 'answer';
+    publishQuestion();
     render(true);
   });
   select.addEventListener('change', () => { stopTour(); lang = select.value; render(); });
