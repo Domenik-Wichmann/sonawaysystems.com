@@ -37,7 +37,7 @@ function exactAnswer(array $records, string $q): ?array {
     foreach ($records as $r) {
         if (!isset($r['question'])) continue;
         foreach (array_merge([$r['question']], $r['aliases'] ?? []) as $variant) {
-            if (normalize($variant) === $q) return ['kind'=>'saved','answer'=>$r['answer'],'sources'=>[source($r)]];
+            if (normalize($variant) === $q) return ['kind'=>'saved','faqId'=>$r['id'],'answer'=>$r['answer'],'sources'=>[source($r)]];
         }
     }
     return null;

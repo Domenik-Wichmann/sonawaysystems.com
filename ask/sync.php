@@ -9,6 +9,7 @@ try {
     $db->exec("CREATE TABLE IF NOT EXISTS qa_documents (id VARCHAR(110) PRIMARY KEY, body MEDIUMTEXT NOT NULL, signature CHAR(64) NOT NULL, embedding MEDIUMBLOB NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
     $db->exec("CREATE TABLE IF NOT EXISTS qa_limits (bucket VARCHAR(120) PRIMARY KEY, used INT UNSIGNED NOT NULL, expires INT UNSIGNED NOT NULL, INDEX(expires)) ENGINE=InnoDB");
     $db->exec("CREATE TABLE IF NOT EXISTS qa_cache (digest CHAR(64) PRIMARY KEY, reply TEXT NOT NULL, expires INT UNSIGNED NOT NULL, INDEX(expires)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+    $db->exec("CREATE TABLE IF NOT EXISTS qa_popularity (counter VARCHAR(120) PRIMARY KEY, total BIGINT UNSIGNED NOT NULL DEFAULT 0) ENGINE=InnoDB");
     $records=libraryRecords();
     if (!$records) throw new RuntimeException('Empty source release');
     $db->beginTransaction();

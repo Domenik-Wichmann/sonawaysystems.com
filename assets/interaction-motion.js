@@ -14,7 +14,7 @@
   return false;
  }
  function decorate(control){
-  if(control.closest('.site-header,.footer')||control.matches('.kl-node-trigger'))return;
+  if(control.closest('.site-header,.footer,.sa-chat')||control.matches('.kl-node-trigger'))return;
   control.classList.toggle('sm-edge-only',control.matches('.kl-node,.kl-context-card'));
   control.classList.toggle('sm-disclosure',control.matches('summary'));
   if(!observed.has(control)){observed.add(control);visible.observe(control);control.style.setProperty('--sm-delay',String(-(sequence++%9)*.8)+'s')}

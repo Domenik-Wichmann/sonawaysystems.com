@@ -62,7 +62,7 @@ def build():
         if node[0] == 'details' and node[1].get('name') == 'owner-faq':
             question = words(next(n for n in nodes(node) if n[0] == 'summary'))
             answer = words(next(n for n in nodes(node) if n[0] == 'p'), ('a',))
-            records.append(dict(id='faq-'+str(len(records)+1), question=question, answer=answer,
+            records.append(dict(id=node[1]['data-faq-id'], question=question, answer=answer,
                                 url='/#common-questions'))
     if not records:
         raise ValueError("No homepage FAQs found")
