@@ -266,3 +266,47 @@
   .capture-steps { grid-template-columns: 1fr; }
   .capture-example { align-items: start; flex-direction: column; gap: 12px; }
 }
+
+/* Keep the word card still as the text inside it changes. */
+#photo-hero-title > .hero-word {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: max-content;
+  max-width: 100%;
+  margin-top: .13em;
+  padding: .07em .41em .15em;
+  border: 1px solid #426b72;
+  border-radius: .55em .14em .14em .14em;
+  overflow: hidden;
+  color: #f5faf8;
+  background: linear-gradient(115deg, #153f4a, #30636b);
+}
+#photo-hero-title > .hero-word::before,
+#photo-hero-title [data-rotate-word] { grid-area: 1 / 1; }
+#photo-hero-title > .hero-word::before {
+  content: "knowledge.";
+  visibility: hidden;
+}
+#photo-hero-title [data-rotate-word] { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  #photo-hero-title > .hero-word::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(110deg, transparent 30%, rgb(231 253 247 / 13%) 50%, transparent 70%);
+    animation: word-card-sheen 14s ease-in-out infinite;
+  }
+  @keyframes word-card-sheen {
+    0%, 78% { transform: translateX(-110%); }
+    100% { transform: translateX(110%); }
+  }
+}
+#story-overview .hero-signoff span,
+.ph-opening-lines > span { display: block; }
+#story-overview .ph-copy .hero-signoff {
+  margin: .6em 0 .65em;
+  line-height: 1.15;
+}
+.ph-opening-lines > span + span { margin-top: .32em; }
