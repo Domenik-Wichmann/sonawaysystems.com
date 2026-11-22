@@ -118,12 +118,15 @@
   },
   {
     "id": "first-workflow",
-    "question": "Can we start with just one workflow?",
+    "question": "How do we test whether a one-workflow pilot is complete?",
     "aliases": [
-      "Can we start small?"
+      "Can we start small?",
+      "Can we start with a pilot?",
+      "Is there a fee for the pilot testing chat?",
+      "How do we test the draft SOPs before approval?"
     ],
-    "answer": "Yes. Bring a task people repeatedly ask about, a handoff that varies between shifts, or a job only one person knows. We can use an example from the floor to agree which roles and steps to cover first. The scope and deliverables are agreed during discovery.",
-    "url": "/contact.html#contact-context"
+    "answer": "We agree on the job and what someone new should be able to do using just the guide or by asking questions of the documents. For dispatch handover, that might mean preparing the handover, checking it and passing it to the right person.\n\nBefore approval, invite managers, shift leads and other experienced staff to ask questions they already know the answers to, including exceptions. They can use a temporary web chat connected to the draft documents and flag inaccurate or missing answers. We use those flags to correct the material. The testing chat is included in the pilot at no extra build cost.",
+    "url": "/knowledge-capture.html#pilot-test"
   },
   {
     "id": "review-draft",
@@ -203,7 +206,7 @@
       "Do you check recordings for personally identifying information?",
       "How do you redact names from videos and transcripts?"
     ],
-    "answer": "We actively check the material for identifying details. If we catch a name on a dispatch screen, we blur or blank it in the image. If someone says it aloud, we mute that part of the recording and remove it from the transcript. When the role matters, we write “shift lead” or “customer”; when the detail adds nothing to the instruction, we leave it out.\n\nThe guide and the recording retained in the project library use the redacted version. Neither staff nor Sonaway receives library access to a copy with the detected details intact.",
+    "answer": "We actively check the material for identifying details. If we catch a name on a dispatch screen, we blur or blank it in the image. If someone says it aloud, we mute that part of the recording and remove it from the transcript. When the role matters, we write “shift lead” or “customer”; when the detail adds nothing to the instruction, we leave it out.\n\nThe guide and the recording retained in the project library use the redacted version. Neither staff nor Sonaway receives library access to a copy with the detected details intact.\n\nWe check after upload. The transcription provider receives the original recording. When we detect identifying details, we redact them and immediately delete the identifiable copy Sonaway received. We can also agree to stop processing, delete the file and request a new recording when specified types of identifying information are detected.",
     "url": "/knowledge-capture.html#recording-privacy"
   },
   {
@@ -211,9 +214,10 @@
     "question": "Who can see the walkthrough recordings and finished guides?",
     "aliases": [
       "Can I choose who sees our recordings?",
-      "Can someone with admin access see the redacted names?"
+      "Can someone with admin access see the redacted names?",
+      "Can we delete the redacted recording after approval?"
     ],
-    "answer": "You choose who can open the retained recordings and who can see the finished procedures. For example, you can give a shift lead access to review a redacted walkthrough and give packers access to the approved guide. Those permissions apply to redacted material. They do not restore personal details we have removed. Ask us to confirm the retention and deletion terms for your project.",
+    "answer": "You choose who can open the retained recordings and who can see the finished procedures. For example, you can give a shift lead access to review a redacted walkthrough and give packers access to the approved guide. Those permissions apply to redacted material. They do not restore personal details we have removed. You can request deletion of the redacted recording too. We generally recommend keeping it initially so a reviewer can trace a questionable instruction back to the recording and correct it at its source.",
     "url": "/knowledge-capture.html#recording-privacy"
   },
   {
@@ -226,21 +230,71 @@
     "url": "/knowledge-capture.html#recording-privacy"
   },
   {
+    "id": "pilot-handoff",
+    "question": "What do we keep if we stop after the pilot?",
+    "aliases": [
+      "Does the pilot fee count toward the full project?",
+      "Can we keep the pilot chatbot?"
+    ],
+    "answer": "You keep the documents, SOPs and checklists we delivered. If the pilot scope includes a transferable knowledge base and chat, we can hand that system over too. The temporary chat used to test drafts is included for testing; continued hosting or a system handover depends on the scope. If you expand into a larger project, the approved work carries forward and the amount you paid for the pilot can count toward the larger project.",
+    "url": "/knowledge-capture.html#pilot-handoff"
+  },
+  {
+    "id": "capture-team",
+    "question": "How many people need to participate?",
+    "aliases": [
+      "Does everyone have to record a shift?",
+      "How much time do staff need to set aside?"
+    ],
+    "answer": "You can designate one person who knows the job and has authority to define it. We usually suggest two experienced people per role, often one per shift, and generally no more than about three for capture. Most can record while they work. Key contributors and approvers may need a few sessions of one to two hours each. More people are welcome at the testing stage to try the drafts and flag errors.",
+    "url": "/knowledge-capture.html#capture-team"
+  },
+  {
+    "id": "capture-timing",
+    "question": "When will we see a draft, and how quickly do you follow up?",
+    "aliases": [
+      "When will you send follow-up questions?",
+      "How long until the first role outline?"
+    ],
+    "answer": "You can typically expect something useful to review, such as a preliminary role or shift outline, one to two weeks after the agreed project start date. We set that date after discovery. Completion depends on the complexity of the role, when recordings arrive and how quickly reviewers answer open questions.\n\nFor a typical complete batch, we aim to send follow-up questions within two business days: Monday morning to Wednesday, or Friday morning to Tuesday in a normal workweek. Several roles submitting full-shift recordings together can take longer. We compare new material against existing instructions first so we only ask questions that help settle a gap or disagreement.",
+    "url": "/knowledge-capture.html#capture-timing"
+  },
+  {
+    "id": "guide-languages",
+    "question": "Can we record in Spanish and approve the guide in English?",
+    "aliases": [
+      "Which language is the source of truth?",
+      "Can workers use nicknames for equipment?"
+    ],
+    "answer": "Yes. Your team can record and send documents in its working language. You choose which version is authoritative. For example, you can approve the English procedure and retain the Spanish source. We use multiple translation checks. Bilingual spot checks depend on the language and package.\n\nA custom search tool can retrieve an approved instruction in one language and answer in another. Staff can use familiar equipment names. If a nickname could refer to two machines, the assistant should ask which one they mean. When you maintain your own platform, you control how its search and updates work.",
+    "url": "/knowledge-capture.html#guide-languages"
+  },
+  {
+    "id": "procedure-changes",
+    "question": "Who updates the guide when the job changes?",
+    "aliases": [
+      "Can we update a procedure after handoff?",
+      "Can we send you a video when equipment changes?"
+    ],
+    "answer": "For a one-time delivery, your team handles future edits in your chosen platform. With a custom build, we can give you a guided way to submit a change, such as a short video of a new printer check, and route it for approval. You can use that workflow even if you maintain the system yourselves. With a maintenance agreement, changes can be routed to Sonaway for follow-through. Human approval is the default; the exact workflow is agreed for your project.",
+    "url": "/knowledge-capture.html#procedure-changes"
+  },
+  {
     "id": "knowledge-capture-capture-your-day",
     "title": "Recording work",
-    "answer": "What can you send us? Send existing instructions first. In week one, each person describes their role and walks us through a typical shift, on a call or in a recording. We use that outline to guide the detailed walkthrough. ▤ Your working-day notes ◉ Shift handover.m4a Voice note · steps and exceptions ▷ Label check.mp4 Short demonstration of the task ▧ Station setup.jpg Photo with a caption linking it to the task ☷ Packing checklist.pdf The instructions already in use Voice notes ◉ Start with a spoken overview of your shift. Then, as you do a real task, describe what you notice, what you decide and when you make an exception. Set aside time if you can. Detailed recording can continue for a week or longer per role. Short videos ▷ Demonstrate a setup, handoff or inspection. Tell us which role does it and what a good result looks like. Photos with context ▧ Add clear captions or refer to the photo in the accompanying recording so we can connect it to the right step. Documents & interviews ▤ We read your checklists and manuals before comparing them with recordings. Staff can answer follow-ups between shifts. We can put discovery questions into a small app with an assistant that asks for more detail, or arrange a call. What if a recording shows someone’s personal details? ▤ We actively check walkthroughs for identifying details. If a customer’s name appears on a dispatch screen, we blur or blank it in the image, mute it in the audio and remove it from the transcript wherever it appears. If the instruction needs to say who does something, we use a role such as “shift lead.” Only the redacted version is kept in the project library. You choose who can open that recording and who can see the finished guide. Giving someone access, including Sonaway, does not give them a copy with the detected details intact. Our systems support aggregate reporting. We do not build tools to track people by identifying details captured on shift. Optional named sign-in accounts are separate from the operational material. If you take over the system, your team is responsible for its ongoing privacy and security.",
+    "answer": "What can you send us? Send existing instructions first. In week one, each person describes their role and walks us through a typical shift, on a call or in a recording. We use that outline to guide the detailed walkthrough. ▤ Your working-day notes ◉ Shift handover.m4a Voice note · steps and exceptions ▷ Label check.mp4 Short demonstration of the task ▧ Station setup.jpg Photo with a caption linking it to the task ☷ Packing checklist.pdf The instructions already in use Voice notes ◉ Start with a spoken overview of your shift. Then, as you do a real task, describe what you notice, what you decide and when you make an exception. Set aside time if you can. Detailed recording can continue for a week or longer per role. Short videos ▷ Demonstrate a setup, handoff or inspection. Tell us which role does it and what a good result looks like. Photos with context ▧ Add clear captions or refer to the photo in the accompanying recording so we can connect it to the right step. Documents & interviews ▤ We read your checklists and manuals before comparing them with recordings. Staff can answer follow-ups between shifts. We can put discovery questions into a small app with an assistant that asks for more detail, or arrange a call. What if a recording shows someone’s personal details? ▤ We actively check walkthroughs for identifying details. If a customer’s name appears on a dispatch screen, we blur or blank it in the image, mute it in the audio and remove it from the transcript wherever it appears. If the instruction needs to say who does something, we use a role such as “shift lead.” We check after upload. The transcription provider receives the original recording. When we detect identifying details, we redact them and immediately delete the identifiable copy Sonaway received. We can also agree to stop processing, delete the file and request a new recording when specified types of identifying information are detected. You can request deletion of the redacted recording too. We generally recommend keeping it initially so a reviewer can trace a questionable instruction back to the recording and correct it at its source. Only the redacted version is kept in the project library. You choose who can open that recording and who can see the finished guide. Giving someone access, including Sonaway, does not give them a copy with the detected details intact. Our systems support aggregate reporting. We do not build tools to track people by identifying details captured on shift. Optional named sign-in accounts are separate from the operational material. If you take over the system, your team is responsible for its ongoing privacy and security. How many people need to participate? You can designate one person who knows the job and has authority to define it. We usually suggest two experienced people per role, often one per shift, and generally no more than about three for capture. Most can record while they work. Key contributors and approvers may need a few sessions of one to two hours each. More people are welcome at the testing stage to try the drafts and flag errors. When will we see a draft, and how quickly do you follow up? You can typically expect something useful to review, such as a preliminary role or shift outline, one to two weeks after the agreed project start date. We set that date after discovery. Completion depends on the complexity of the role, when recordings arrive and how quickly reviewers answer open questions. For a typical complete batch, we aim to send follow-up questions within two business days: Monday morning to Wednesday, or Friday morning to Tuesday in a normal workweek. Several roles submitting full-shift recordings together can take longer. We compare new material against existing instructions first so we only ask questions that help settle a gap or disagreement.",
     "url": "/knowledge-capture.html#capture-your-day"
   },
   {
     "id": "knowledge-capture-delivery",
     "title": "Delivery and existing platforms",
-    "answer": "Get the knowledge into the system your team uses. Editable files Receive the agreed procedures, maps and checklists with their sources and owners. Your platform We can organize the approved material in your chosen handbook, knowledge base or training platform where supported. We confirm import and publishing access during discovery. A custom system We can make approved documents and answers available automatically in the languages your staff use, with QR guides at each station and a public edition for guests or visitors. Explore custom systems →",
+    "answer": "Get the knowledge into the system your team uses. Editable files Receive the agreed procedures, maps and checklists with their sources and owners. Your platform We can organize the approved material in your chosen handbook, knowledge base or training platform where supported. We confirm import and publishing access during discovery. A custom system We can make approved documents and answers available automatically in the languages your staff use, with QR guides at each station and a public edition for guests or visitors. Explore custom systems → Can we record in Spanish and approve the guide in English? Yes. Your team can record and send documents in its working language. You choose which version is authoritative. For example, you can approve the English procedure and retain the Spanish source. We use multiple translation checks. Bilingual spot checks depend on the language and package. A custom search tool can retrieve an approved instruction in one language and answer in another. Staff can use familiar equipment names. If a nickname could refer to two machines, the assistant should ask which one they mean. When you maintain your own platform, you control how its search and updates work. Who updates the guide when the job changes? For a one-time delivery, your team handles future edits in your chosen platform. With a custom build, we can give you a guided way to submit a change, such as a short video of a new printer check, and route it for approval. You can use that workflow even if you maintain the system yourselves. With a maintenance agreement, changes can be routed to Sonaway for follow-through. Human approval is the default; the exact workflow is agreed for your project.",
     "url": "/knowledge-capture.html#delivery"
   },
   {
     "id": "knowledge-capture-pricing",
     "title": "Illustrative knowledge capture budgets",
-    "answer": "What does knowledge capture cost? To quote the work, we ask how many people do the job, whose decisions they rely on and what equipment or software they use. If dispatch needs to understand an inspector’s decision, that part of inspection is in scope too. A self-contained job usually costs less. The USD figures below are examples. ONE WORKFLOW $3,000 One location, up to two interviewees and up to three procedures or checklists. SMALL-TEAM PLAYBOOK $6,000 One location, up to five interviewees, up to three core workflows and up to eight procedures or checklists. MULTIPLE LOCATIONS Let’s scope it For cross-site processes, extensive source material or more involved handoffs. Request a discovery call →",
+    "answer": "What does knowledge capture cost? To quote the work, we ask how many people do the job, whose decisions they rely on and what equipment or software they use. If dispatch needs to understand an inspector’s decision, that part of inspection is in scope too. A self-contained job usually costs less. The USD figures below are examples. ONE WORKFLOW $3,000 One location, up to two interviewees and up to three procedures or checklists. SMALL-TEAM PLAYBOOK $6,000 One location, up to five interviewees, up to three core workflows and up to eight procedures or checklists. MULTIPLE LOCATIONS Let’s scope it For cross-site processes, extensive source material or more involved handoffs. Request a discovery call → How do we test whether a one-workflow pilot is complete? We agree on the job and what someone new should be able to do using just the guide or by asking questions of the documents. For dispatch handover, that might mean preparing the handover, checking it and passing it to the right person. Before approval, invite managers, shift leads and other experienced staff to ask questions they already know the answers to, including exceptions. They can use a temporary web chat connected to the draft documents and flag inaccurate or missing answers. We use those flags to correct the material. The testing chat is included in the pilot at no extra build cost. What do we keep if we stop after the pilot? You keep the documents, SOPs and checklists we delivered. If the pilot scope includes a transferable knowledge base and chat, we can hand that system over too. The temporary chat used to test drafts is included for testing; continued hosting or a system handover depends on the scope. If you expand into a larger project, the approved work carries forward and the amount you paid for the pilot can count toward the larger project.",
     "url": "/knowledge-capture.html#pricing"
   },
   {
