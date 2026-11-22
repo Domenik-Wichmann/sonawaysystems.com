@@ -43,7 +43,7 @@
       "Can we send voice notes?",
       "Can we send photos and videos?"
     ],
-    "answer": "Have someone talk through a task on their phone as they do it. They can send short videos, existing checklists and photos too. Give each photo a caption or mention it in the recording so we know which step it shows.",
+    "answer": "Send existing checklists and manuals first. Each person can then sit down and record an overview of their role and a typical shift. For the detailed walkthrough, talk through a real task as you do it: what you check, what you decide and when you do it differently. Voice notes or short videos work. If you take a photo, describe what matters in it and which step it shows.",
     "url": "/knowledge-capture.html#capture-your-day"
   },
   {
@@ -103,15 +103,16 @@
       "How does knowledge capture work from start to finish?",
       "How do you turn our team's know-how into a playbook?"
     ],
-    "answer": "Your team shows us how the work gets done. We turn those examples into instructions people can use on shift.\n\n## From the floor to a first draft\n1. Pick a workflow and the roles involved. Have someone talk through a real task on their phone as they do it. Send short videos, captioned photos and any checklists or manuals you already use.\n2. We pull out the steps and compare sources. If a recording says to release an order after packing and the checklist says after inspection, we flag that difference and ask the shift lead which rule applies.\n3. We write the procedure by role. The draft shows who does each step, what they check, where they hand off, and what to do when something goes wrong.\n\n## Review and put it to work\n4. Your process owner checks the draft against the job. We incorporate their corrections and get their approval before staff use it.\n5. We organize the approved documents in your existing platform where it supports them, or deliver editable files. If you need a custom knowledge base, workstation guides or role-specific training, we scope those with you.",
+    "answer": "We start with what’s already written, then ask the people doing the job how it works on their shift.\n\n## Understand the role\n1. Send any existing procedures, checklists or manuals up front. We review them first so we can ask where the written instructions differ from current practice.\n2. Each person describes their role and talks us through a typical shift, on a call or in a recording. The first thing you review is a preliminary description of the role and a high-level outline of the shift.\n\n## Work out the details\n3. Staff record themselves doing the work. They explain what they do, what they’re watching for, what changes their next step and why. A caption or spoken explanation tells us what to look for in a photo.\n4. We compare accounts across people and against the documents. We send specific questions back to the people involved. They can answer and correct drafts between shifts.\n\n## Approve and publish\n5. We turn the agreed details into the documents you need, such as a role-specific procedure or a station checklist. You review and approve them before publication. We can load them into your existing platform or build a knowledge base with the search, dashboards or analytics you need.",
     "flow": [
-      "Capture",
-      "Reconcile",
-      "Draft",
+      "Review documents",
+      "Map the shift",
+      "Observe the work",
+      "Clarify",
       "Approve",
       "Publish"
     ],
-    "url": "/#what-we-do"
+    "url": "/knowledge-capture.html#capture-your-day"
   },
   {
     "id": "first-workflow",
@@ -126,10 +127,12 @@
     "id": "review-draft",
     "question": "What will my shift lead actually review?",
     "aliases": [
-      "Who signs off on a procedure before staff see it?"
+      "Who signs off on a procedure before staff see it?",
+      "What is the first thing we get to review?",
+      "Do we see a draft before the full SOP?"
     ],
-    "answer": "Your lead gets a draft they can check against the job. It identifies the responsible role, the steps in order, checks, handoffs and exceptions. We bring disagreements back to the people who own the work, make their corrections, and publish the version your designated owner approves.",
-    "url": "/#what-we-do"
+    "answer": "The first thing your lead sees is a preliminary role description and a high-level outline of the shift, based on their walkthrough. They can correct a responsibility, point out a missing handoff or flag a step that only happens on certain orders.\n\nWe use those corrections and more detailed recordings to draft the SOP or checklist. Your team can review, request edits and approve asynchronously. Only approved instructions get published.",
+    "url": "/knowledge-capture.html#reconcile"
   },
   {
     "id": "two-shifts",
@@ -141,9 +144,40 @@
     "url": "/custom-systems.html#what-we-build"
   },
   {
+    "id": "first-week",
+    "question": "What happens in the first week of knowledge capture?",
+    "aliases": [
+      "What do you need from my dispatch team in week one?",
+      "How do we get started if our team works shifts?"
+    ],
+    "answer": "Start by sending any documents you already use. We ask each person two things: “What is your role?” and “Walk me through a typical shift.” They can record this when they have time or talk it through on a call.\n\nNext, we ask them to set aside time, if possible, to demonstrate the job and narrate their decisions as they go. Detailed recording starts in the first week and can continue for a week or longer per role. The first review is a role description and shift outline. The finished SOP follows as we clarify the details together.",
+    "url": "/knowledge-capture.html#capture-your-day"
+  },
+  {
+    "id": "asynchronous-capture",
+    "question": "Can my team participate without getting everyone on a call?",
+    "aliases": [
+      "Can different shifts answer separately?",
+      "Can staff record when they have time?"
+    ],
+    "answer": "Yes. Staff can send a recording of their shift, then answer follow-ups as their schedule allows. For example, a packer can explain a handoff after their shift and the supervisor can confirm their part the next morning.\n\nWe can set up a question page or small app with prompts based on discovery. An assistant can ask follow-ups, and our team compares the answers and comes back with specific gaps. You can request edits and approve drafts the same way. Calls are available when talking something through is easier.",
+    "url": "/knowledge-capture.html#capture-your-day"
+  },
+  {
+    "id": "quote-scope",
+    "question": "What do you need to know to quote a workflow?",
+    "aliases": [
+      "What determines the cost of documenting dispatch?",
+      "Does pricing depend only on headcount?",
+      "Would a computer-based procedure cost the same as a shop-floor task?"
+    ],
+    "answer": "Tell us how many people do the job, which roles they depend on, and what tools, software or equipment they use. Also tell us what staff should have at the end, such as a station checklist or a step-by-step guide to a screen-based task.\n\nThe biggest factors are the people involved and how their responsibilities fit together. If dispatch can only release an order by understanding an inspector’s decision, we need to capture that part of inspection too. A self-contained role usually takes less work and costs less. The equipment and the kind of guide you need can change how we capture it and which tools we use.",
+    "url": "/knowledge-capture.html#pricing"
+  },
+  {
     "id": "knowledge-capture-capture-your-day",
     "title": "Recording work",
-    "answer": "What can you send us? ▤ Your working-day notes ◉ Shift handover.m4a Voice note · steps and exceptions ▷ Label check.mp4 Short demonstration of the task ▧ Station setup.jpg Photo with a caption linking it to the task ☷ Packing checklist.pdf The instructions already in use Voice notes ◉ Explain the steps, what you check and what makes you do it differently. Short notes from the day are useful. Short videos ▷ Demonstrate a setup, handoff or inspection. Tell us which role does it and what a good result looks like. Photos with context ▧ Add clear captions or refer to the photo in the accompanying recording so we can connect it to the right step. Documents & interviews ▤ Include the checklists and manuals you already use. We can interview staff and ask follow-up questions to close the gaps.",
+    "answer": "What can you send us? Send existing instructions first. In week one, each person describes their role and walks us through a typical shift, on a call or in a recording. We use that outline to guide the detailed walkthrough. ▤ Your working-day notes ◉ Shift handover.m4a Voice note · steps and exceptions ▷ Label check.mp4 Short demonstration of the task ▧ Station setup.jpg Photo with a caption linking it to the task ☷ Packing checklist.pdf The instructions already in use Voice notes ◉ Start with a spoken overview of your shift. Then, as you do a real task, describe what you notice, what you decide and when you make an exception. Set aside time if you can. Detailed recording can continue for a week or longer per role. Short videos ▷ Demonstrate a setup, handoff or inspection. Tell us which role does it and what a good result looks like. Photos with context ▧ Add clear captions or refer to the photo in the accompanying recording so we can connect it to the right step. Documents & interviews ▤ We read your checklists and manuals before comparing them with recordings. Staff can answer follow-ups between shifts. We can put discovery questions into a small app with an assistant that asks for more detail, or arrange a call.",
     "url": "/knowledge-capture.html#capture-your-day"
   },
   {
@@ -155,7 +189,7 @@
   {
     "id": "knowledge-capture-pricing",
     "title": "Illustrative knowledge capture budgets",
-    "answer": "What does knowledge capture cost? Example USD budgets for discussion. A proposal confirms the work, source volume, deliverables and price. ONE WORKFLOW $3,000 One location, up to two interviewees and up to three procedures or checklists. SMALL-TEAM PLAYBOOK $6,000 One location, up to five interviewees, up to three core workflows and up to eight procedures or checklists. MULTIPLE LOCATIONS Let’s scope it For cross-site processes, extensive source material or more involved handoffs. Request a discovery call →",
+    "answer": "What does knowledge capture cost? To quote the work, we ask how many people do the job, whose decisions they rely on and what equipment or software they use. If dispatch needs to understand an inspector’s decision, that part of inspection is in scope too. A self-contained job usually costs less. The USD figures below are examples. ONE WORKFLOW $3,000 One location, up to two interviewees and up to three procedures or checklists. SMALL-TEAM PLAYBOOK $6,000 One location, up to five interviewees, up to three core workflows and up to eight procedures or checklists. MULTIPLE LOCATIONS Let’s scope it For cross-site processes, extensive source material or more involved handoffs. Request a discovery call →",
     "url": "/knowledge-capture.html#pricing"
   },
   {
