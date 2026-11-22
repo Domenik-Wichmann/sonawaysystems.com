@@ -1,0 +1,152 @@
+/* Portrait chapters use the document's native scroll. Long chapters can grow
+   beyond the viewport and remain readable between their start and end. */
+@media (orientation: portrait) and (max-width: 1100px),
+       (orientation: portrait) and (max-width: 1366px) and (hover: none) {
+  html:has(body:is(.story-home,.story-interior)) {
+    scroll-snap-type: y proximity;
+    scroll-padding-block-start: 0;
+  }
+  body:is(.story-home,.story-interior) {
+    --page-inset: clamp(14px, 3.5vw, 38px);
+    --card-inset: clamp(16px, 3.2vw, 34px);
+  }
+  body.story-home:has(.photo-hero) .site-header, body.story-interior .site-header {
+    position: sticky;
+    inset: 0 0 auto;
+  }
+  body:is(.story-home,.story-interior) .story-index { display: none; }
+  body:is(.story-home,.story-interior) #main > [data-story-chapter] {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+    scroll-margin-block-start: 0;
+  }
+  body:is(.story-home,.story-interior) #main > [data-story-chapter]:first-child {
+    scroll-margin-block-start: var(--ph-header-height, 74px);
+  }
+  body:is(.story-home,.story-interior) .story-screen:not(.story-cover) {
+    padding: clamp(10px, 1.7vw, 22px) var(--page-inset);
+    min-height: 0;
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+  }
+  body:is(.story-home,.story-interior) .story-screen > .story-surface {
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    padding: clamp(24px, 4vw, 44px) var(--card-inset);
+  }
+  body:is(.story-home,.story-interior) .story-surface > .wrap { width: 100%; min-width: 0; }
+  body:is(.story-home,.story-interior) > .footer { scroll-snap-align: start; scroll-snap-stop: normal; }
+
+  .story-home #main > #story-overview.photo-hero.story-cover {
+    display: grid;
+    align-items: stretch;
+    padding: clamp(16px, 3vw, 32px) var(--page-inset) 14px;
+    min-height: calc(100svh - var(--ph-header-height, 74px));
+  }
+  .story-home #story-overview .photo-hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: clamp(16px, 2.6vw, 28px);
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    align-items: stretch;
+  }
+  #story-overview .ph-copy, #story-overview .ph-copy:has(.hero-word) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    align-items: start;
+    gap: 10px;
+    padding: 0;
+  }
+  #story-overview .ph-copy h1, #story-overview:has(.hero-word) .ph-copy h1 {
+    grid-area: auto;
+    margin: 0;
+    max-width: none;
+    font-size: clamp(1.65rem, 7vw, 3.25rem);
+    line-height: 1.12;
+  }
+  #story-overview #photo-hero-title {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: .06em .22em;
+  }
+  #photo-hero-title > .hero-word { margin: 0; }
+  #story-overview .ph-copy .hero-signoff {
+    display: block;
+    max-width: none;
+    margin: 0;
+    font-size: clamp(1rem, 4.3vw, 1.4rem);
+    line-height: 1.35;
+  }
+  #story-overview .hero-signoff span { display: inline; }
+  #story-overview .ph-copy > p.ph-offer {
+    display: block;
+    max-width: 62ch;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  #story-overview .ph-copy > .btn { justify-self: start; min-height: 44px; margin: 0; }
+  #story-overview .ph-gallery {
+    display: grid;
+    grid-template-rows: minmax(15rem, 1fr) auto;
+    align-self: stretch;
+    min-width: 0;
+  }
+  #story-overview .ph-accordion {
+    height: auto;
+    min-height: 0;
+    border-radius: clamp(25px, 5vw, 50px) 8px 18px 8px;
+  }
+  #story-overview .ph-mobile-choice { min-height: 44px; }
+  #story-overview .ph-story { left: clamp(16px, 3vw, 32px); right: clamp(16px, 3vw, 32px); bottom: clamp(16px, 2.6vw, 28px); }
+  #story-overview .ph-mobile-choices { min-width: 0; }
+
+  .pw-shell, .pw-layout, .pw-layout > *, .pw-content, .pw-sidebar nav { min-width: 0; max-width: 100%; }
+  .story-interior .capture-poster img { height: clamp(190px, 45vw, 440px); }
+  .story-interior .interior-grid, .story-interior .sector { align-items: center; }
+  .story-interior :is(.interior-grid,.sector,.cap-grid,.ownership-features) > * { min-width: 0; }
+  #solutions .fp-stage { justify-self: center; max-width: 100%; }
+  #reclaim-calculator.time-tool { width: 100%; max-width: 100%; }
+}
+@media (orientation: portrait) and (max-width: 600px) {
+  #story-overview .ph-mobile-choices { padding: 8px 0 0; margin-inline-end: 52px; }
+  #story-overview .ph-mobile-choice { flex-basis: auto; max-width: 12rem; padding: 6px 10px; }
+  #story-overview .ph-story h2 { font-size: clamp(1.36rem, 5.8vw, 1.8rem); }
+  #what-we-do .road-card { grid-template-columns: minmax(72px, 29%) minmax(0, 1fr); }
+  #what-we-do .road-art { min-width: 0; padding-inline: 6px; overflow: hidden; }
+  #what-we-do .road-body { padding: 10px 12px; }
+  #reclaim-calculator .time-controls, #reclaim-calculator .time-results { padding-inline: clamp(12px, 3.2vw, 18px); }
+  #reclaim-calculator .time-field-top { gap: 6px; }
+  #reclaim-calculator .time-field-top > div { grid-template-columns: 4.1rem 3.2rem; gap: 4px; }
+  #reclaim-calculator .time-field-top input { font-size: 16px; padding-inline: 3px; }
+  .story-interior .capture-example { padding: 16px; }
+  .story-interior #contact-form :is(input,select,textarea) { max-width: 100%; min-width: 0; }
+}
+@media (orientation: portrait) and (min-width: 601px) and (max-width: 1100px),
+       (orientation: portrait) and (min-width: 1101px) and (max-width: 1366px) and (hover: none) {
+  #story-overview .ph-copy, #story-overview .ph-copy:has(.hero-word) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 24px;
+  }
+  #story-overview .ph-copy h1, #story-overview .ph-copy #photo-hero-title,
+  #story-overview .ph-copy .hero-signoff { grid-column: 1 / -1; }
+  #story-overview .ph-copy .ph-offer { grid-column: 1; align-self: center; }
+  #story-overview .ph-copy > .btn { grid-column: 2; align-self: center; }
+  #story-overview .ph-copy > .ph-ownership { grid-column: 2; margin: 0; }
+  #story-overview .ph-gallery { grid-template-rows: minmax(22rem, 1fr); }
+  #story-overview .ph-panel:not(.is-active) { flex-basis: clamp(44px, 5.5vw, 60px); }
+  #story-overview .systems-hero-preview { align-self: center; width: min(100%, 48rem); justify-self: center; }
+  .story-interior .ownership-features, .story-interior .cap-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  #reclaim-calculator.time-tool { grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); }
+  #reclaim-calculator .time-controls, #reclaim-calculator .time-results { padding-inline: clamp(15px, 2.5vw, 32px); }
+  #reclaim-calculator .time-results { border-top: 0; border-left: 1px solid #b6cdd1; }
+}
+@media (orientation: portrait) and (prefers-reduced-motion: reduce) {
+  html:has(body:is(.story-home,.story-interior)) { scroll-snap-type: none; }
+}
