@@ -55,3 +55,8 @@
 .sa-answer-body .sa-flow {display:flex;flex-wrap:wrap;gap:.45rem .85rem;padding:0;list-style:none}
 .sa-answer-body .sa-flow li {position:relative;margin:0;border:1px solid #a9c7c5;border-radius:.45rem;background:#fcfefd;color:#214f58;padding:.25rem .45rem;font-size:.86rem;line-height:1.35}
 .sa-flow li:not(:last-child)::after {content:'';position:absolute;inset-inline-end:-.55rem;top:50%;width:.34rem;height:.34rem;border-top:1.5px solid #537880;border-right:1.5px solid #537880;transform:translateY(-50%) rotate(45deg)}
+
+.sa-answer-body ol.sa-step-path {list-style:none;counter-reset:stage;padding-inline-start:0}
+.sa-step-path > li {position:relative;counter-increment:stage;padding-inline-start:2.05rem}
+.sa-step-path > li::before {content:counter(stage);position:absolute;inset:0 auto auto 0;display:grid;place-items:center;width:1.55rem;height:1.55rem;border:1px solid #88abae;border-radius:50%;background:#fcfefd;color:#24545d;font-size:.83rem;font-weight:700}
+.sa-step-path > li:not(:last-child)::after {content:'';position:absolute;inset:1.6rem auto -.35rem .75rem;border-inline-start:1px solid #9bbabc}

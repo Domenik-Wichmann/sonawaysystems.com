@@ -55,9 +55,21 @@
     const body = document.createElement('div');
     body.className = 'sa-answer-body';
     let group = null;
+    let fence = false;
     for (const raw of text.split(/\r?\n/)) {
       const line = raw.trim();
-      if (!line) { group = null; continue; }
+      if (line.startsWith('```')) { fence = !fence; group = null; continue; }
+      if (fence && line.includes('→')) {
+        const stages = line.split('→').map(stage => stage.trim());
+        if (stages.length >= 2 && stages.length <= 10 && stages.every(Boolean)) {
+          if (!flow?.length) flow = stages;
+          continue;
+        }
+      }
+      if (!line) {
+        if (group?.localName === 'p') group = null;
+        continue;
+      }
       const heading = line.match(/^#{1,4}\s+(.+)/);
       const step = line.match(/^(\d{1,2})[.)]\s+(.+)/);
       const bullet = line.match(/^[-*•]\s+(.+)/);
@@ -95,6 +107,11 @@
         chart.append(node);
       }
       body.append(chart);
+    } else {
+      // Keep a procedural answer visual even when the model only returns steps.
+      for (const list of body.querySelectorAll('ol')) {
+        if (list.start === 1 && list.children.length >= 2) list.classList.add('sa-step-path');
+      }
     }
     return body;
   }
