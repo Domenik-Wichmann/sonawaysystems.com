@@ -46,7 +46,7 @@ try {
     $refersBack=is_string($previous) && trim($previous)!=='' && mb_strlen($previous)<=400
         && preg_match('/\b(it|that|those|these|they|them|this|there|one|also)\b|^(and|what about|how about)\b/iu',$q);
     $lookup=$refersBack ? "Previous question: ".$previous."\nCurrent question: ".$q : $q;
-    $digest=hash_hmac('sha256',hash_file('sha256',__DIR__.'/index-data.json').'|'.$cfg['model'].'|chat4|'.mb_strtolower($lookup),$cfg['salt']);
+    $digest=hash_hmac('sha256',hash_file('sha256',__DIR__.'/index-data.json').'|'.$cfg['model'].'|chat4-schema|'.mb_strtolower($lookup),$cfg['salt']);
     $read=$db->prepare('SELECT reply FROM qa_cache WHERE digest=? AND expires>UNIX_TIMESTAMP()'); $read->execute([$digest]);
     if ($cached=$read->fetchColumn()) reply(json_decode($cached,true));
     $live=array_column($records,null,'id');
