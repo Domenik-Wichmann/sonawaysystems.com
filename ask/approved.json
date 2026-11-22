@@ -158,5 +158,35 @@
     ],
     "answer": "Yes. Your team can approve the parts it agrees on and leave the specific step open. If everyone agrees on packing and label checks but disagrees on who releases an order, those checks can be approved separately. The release instruction stays unresolved until the designated approver or approvers make a decision.",
     "url": "/knowledge-capture.html#approval-decisions"
+  },
+  {
+    "id": "walkthrough-redaction",
+    "question": "What happens if a customer’s name appears in a recording?",
+    "aliases": [
+      "What if someone says a customer name in a walkthrough?",
+      "Do you check recordings for personally identifying information?",
+      "How do you redact names from videos and transcripts?"
+    ],
+    "answer": "We actively check the material for identifying details. If we catch a name on a dispatch screen, we blur or blank it in the image. If someone says it aloud, we mute that part of the recording and remove it from the transcript. When the role matters, we write “shift lead” or “customer”; when the detail adds nothing to the instruction, we leave it out.\n\nThe guide and the recording retained in the project library use the redacted version. Neither staff nor Sonaway receives library access to a copy with the detected details intact.",
+    "url": "/knowledge-capture.html#recording-privacy"
+  },
+  {
+    "id": "recording-access",
+    "question": "Who can see the walkthrough recordings and finished guides?",
+    "aliases": [
+      "Can I choose who sees our recordings?",
+      "Can someone with admin access see the redacted names?"
+    ],
+    "answer": "You choose who can open the retained recordings and who can see the finished procedures. For example, you can give a shift lead access to review a redacted walkthrough and give packers access to the approved guide. Those permissions apply to redacted material. They do not restore personal details we have removed. Ask us to confirm the retention and deletion terms for your project.",
+    "url": "/knowledge-capture.html#recording-privacy"
+  },
+  {
+    "id": "identity-and-handoff",
+    "question": "Do you use recordings or analytics to track individual people?",
+    "aliases": [
+      "Who is responsible for privacy after handoff?"
+    ],
+    "answer": "We use aggregate reporting and do not build systems to track people through identifying details picked up in operational recordings. A person may have a named account to sign in. That account is separate from the material captured for procedures. If your team takes over the system, it takes responsibility for maintaining privacy and security, including who continues to have access.",
+    "url": "/knowledge-capture.html#recording-privacy"
   }
 ]

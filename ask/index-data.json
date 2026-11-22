@@ -196,9 +196,39 @@
     "url": "/knowledge-capture.html#approval-decisions"
   },
   {
+    "id": "walkthrough-redaction",
+    "question": "What happens if a customer’s name appears in a recording?",
+    "aliases": [
+      "What if someone says a customer name in a walkthrough?",
+      "Do you check recordings for personally identifying information?",
+      "How do you redact names from videos and transcripts?"
+    ],
+    "answer": "We actively check the material for identifying details. If we catch a name on a dispatch screen, we blur or blank it in the image. If someone says it aloud, we mute that part of the recording and remove it from the transcript. When the role matters, we write “shift lead” or “customer”; when the detail adds nothing to the instruction, we leave it out.\n\nThe guide and the recording retained in the project library use the redacted version. Neither staff nor Sonaway receives library access to a copy with the detected details intact.",
+    "url": "/knowledge-capture.html#recording-privacy"
+  },
+  {
+    "id": "recording-access",
+    "question": "Who can see the walkthrough recordings and finished guides?",
+    "aliases": [
+      "Can I choose who sees our recordings?",
+      "Can someone with admin access see the redacted names?"
+    ],
+    "answer": "You choose who can open the retained recordings and who can see the finished procedures. For example, you can give a shift lead access to review a redacted walkthrough and give packers access to the approved guide. Those permissions apply to redacted material. They do not restore personal details we have removed. Ask us to confirm the retention and deletion terms for your project.",
+    "url": "/knowledge-capture.html#recording-privacy"
+  },
+  {
+    "id": "identity-and-handoff",
+    "question": "Do you use recordings or analytics to track individual people?",
+    "aliases": [
+      "Who is responsible for privacy after handoff?"
+    ],
+    "answer": "We use aggregate reporting and do not build systems to track people through identifying details picked up in operational recordings. A person may have a named account to sign in. That account is separate from the material captured for procedures. If your team takes over the system, it takes responsibility for maintaining privacy and security, including who continues to have access.",
+    "url": "/knowledge-capture.html#recording-privacy"
+  },
+  {
     "id": "knowledge-capture-capture-your-day",
     "title": "Recording work",
-    "answer": "What can you send us? Send existing instructions first. In week one, each person describes their role and walks us through a typical shift, on a call or in a recording. We use that outline to guide the detailed walkthrough. ▤ Your working-day notes ◉ Shift handover.m4a Voice note · steps and exceptions ▷ Label check.mp4 Short demonstration of the task ▧ Station setup.jpg Photo with a caption linking it to the task ☷ Packing checklist.pdf The instructions already in use Voice notes ◉ Start with a spoken overview of your shift. Then, as you do a real task, describe what you notice, what you decide and when you make an exception. Set aside time if you can. Detailed recording can continue for a week or longer per role. Short videos ▷ Demonstrate a setup, handoff or inspection. Tell us which role does it and what a good result looks like. Photos with context ▧ Add clear captions or refer to the photo in the accompanying recording so we can connect it to the right step. Documents & interviews ▤ We read your checklists and manuals before comparing them with recordings. Staff can answer follow-ups between shifts. We can put discovery questions into a small app with an assistant that asks for more detail, or arrange a call.",
+    "answer": "What can you send us? Send existing instructions first. In week one, each person describes their role and walks us through a typical shift, on a call or in a recording. We use that outline to guide the detailed walkthrough. ▤ Your working-day notes ◉ Shift handover.m4a Voice note · steps and exceptions ▷ Label check.mp4 Short demonstration of the task ▧ Station setup.jpg Photo with a caption linking it to the task ☷ Packing checklist.pdf The instructions already in use Voice notes ◉ Start with a spoken overview of your shift. Then, as you do a real task, describe what you notice, what you decide and when you make an exception. Set aside time if you can. Detailed recording can continue for a week or longer per role. Short videos ▷ Demonstrate a setup, handoff or inspection. Tell us which role does it and what a good result looks like. Photos with context ▧ Add clear captions or refer to the photo in the accompanying recording so we can connect it to the right step. Documents & interviews ▤ We read your checklists and manuals before comparing them with recordings. Staff can answer follow-ups between shifts. We can put discovery questions into a small app with an assistant that asks for more detail, or arrange a call. What if a recording shows someone’s personal details? ▤ We actively check walkthroughs for identifying details. If a customer’s name appears on a dispatch screen, we blur or blank it in the image, mute it in the audio and remove it from the transcript wherever it appears. If the instruction needs to say who does something, we use a role such as “shift lead.” Only the redacted version is kept in the project library. You choose who can open that recording and who can see the finished guide. Giving someone access, including Sonaway, does not give them a copy with the detected details intact. Our systems support aggregate reporting. We do not build tools to track people by identifying details captured on shift. Optional named sign-in accounts are separate from the operational material. If you take over the system, your team is responsible for its ongoing privacy and security.",
     "url": "/knowledge-capture.html#capture-your-day"
   },
   {
