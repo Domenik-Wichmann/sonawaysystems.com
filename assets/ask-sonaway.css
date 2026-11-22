@@ -42,3 +42,16 @@
   .sa-launch span{display:none}
   .sa-panel{width:min(24rem,calc(100vw - 2rem));border-radius:1rem}
 }
+
+.sa-answer-body {min-width:0;overflow-wrap:anywhere}
+.sa-answer-body > :is(p,h3,ol,ul) {margin:0}
+.sa-answer-body > :is(p,h3,ol,ul) + :is(p,h3,ol,ul) {margin-top:.7rem}
+.sa-answer-body h3 {font:700 1.03rem/1.35 'DM Sans',system-ui,sans-serif;letter-spacing:normal;color:inherit}
+.sa-answer-body :is(ol,ul):not(.sa-flow) {padding-inline-start:1.45rem;list-style-position:outside}
+.sa-answer-body ol:not(.sa-flow) {list-style-type:decimal}
+.sa-answer-body ul {list-style-type:disc}
+.sa-answer-body li + li {margin-top:.4rem}
+.sa-answer-body li::marker {color:#285b65;font-weight:650}
+.sa-answer-body .sa-flow {display:flex;flex-wrap:wrap;gap:.45rem .85rem;padding:0;list-style:none}
+.sa-answer-body .sa-flow li {position:relative;margin:0;border:1px solid #a9c7c5;border-radius:.45rem;background:#fcfefd;color:#214f58;padding:.25rem .45rem;font-size:.86rem;line-height:1.35}
+.sa-flow li:not(:last-child)::after {content:'';position:absolute;inset-inline-end:-.55rem;top:50%;width:.34rem;height:.34rem;border-top:1.5px solid #537880;border-right:1.5px solid #537880;transform:translateY(-50%) rotate(45deg)}

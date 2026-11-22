@@ -57,5 +57,51 @@
     ],
     "answer": "Yes. You choose which material guests or customers can see and which instructions stay with staff. We can make a public guide available on your website, offer answers in the languages you need or connect the approved material to a voice agent.",
     "url": "/#common-questions"
+  },
+  {
+    "id": "knowledge-base-process",
+    "question": "What’s the process to build out a knowledge base for our business?",
+    "aliases": [
+      "How do you build a knowledge base for our business?",
+      "What is the process for building our knowledge base?",
+      "How does knowledge capture work from start to finish?",
+      "How do you turn our team's know-how into a playbook?"
+    ],
+    "answer": "Your team shows us how the work gets done. We turn those examples into instructions people can use on shift.\n\n## From the floor to a first draft\n1. Pick a workflow and the roles involved. Have someone talk through a real task on their phone as they do it. Send short videos, captioned photos and any checklists or manuals you already use.\n2. We pull out the steps and compare sources. If a recording says to release an order after packing and the checklist says after inspection, we flag that difference and ask the shift lead which rule applies.\n3. We write the procedure by role. The draft shows who does each step, what they check, where they hand off, and what to do when something goes wrong.\n\n## Review and put it to work\n4. Your process owner checks the draft against the job. We incorporate their corrections and get their approval before staff use it.\n5. We organize the approved documents in your existing platform where it supports them, or deliver editable files. If you need a custom knowledge base, workstation guides or role-specific training, we scope those with you.",
+    "flow": [
+      "Capture",
+      "Reconcile",
+      "Draft",
+      "Approve",
+      "Publish"
+    ],
+    "url": "/#what-we-do"
+  },
+  {
+    "id": "first-workflow",
+    "question": "Can we start with just one workflow?",
+    "aliases": [
+      "Can we start small?"
+    ],
+    "answer": "Yes. Bring a task people repeatedly ask about, a handoff that varies between shifts, or a job only one person knows. We can use an example from the floor to agree which roles and steps to cover first. The scope and deliverables are agreed during discovery.",
+    "url": "/contact.html#contact-context"
+  },
+  {
+    "id": "review-draft",
+    "question": "What will my shift lead actually review?",
+    "aliases": [
+      "Who signs off on a procedure before staff see it?"
+    ],
+    "answer": "Your lead gets a draft they can check against the job. It identifies the responsible role, the steps in order, checks, handoffs and exceptions. We bring disagreements back to the people who own the work, make their corrections, and publish the version your designated owner approves.",
+    "url": "/#what-we-do"
+  },
+  {
+    "id": "two-shifts",
+    "question": "What happens if two shifts really do need different instructions?",
+    "aliases": [
+      "Can different sites have their own rules?"
+    ],
+    "answer": "We ask what changes the instruction and who is authorized to decide. If both versions are valid, we describe when each applies. A custom system can keep a shared company procedure and show an approved local variation to the people who need it.",
+    "url": "/custom-systems.html#what-we-build"
   }
 ]

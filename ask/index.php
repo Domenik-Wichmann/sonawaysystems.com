@@ -46,7 +46,7 @@ try {
     $refersBack=is_string($previous) && trim($previous)!=='' && mb_strlen($previous)<=400
         && preg_match('/\b(it|that|those|these|they|them|this|there|one|also)\b|^(and|what about|how about)\b/iu',$q);
     $lookup=$refersBack ? "Previous question: ".$previous."\nCurrent question: ".$q : $q;
-    $digest=hash_hmac('sha256',hash_file('sha256',__DIR__.'/index-data.json').'|'.$cfg['model'].'|chat2|'.mb_strtolower($lookup),$cfg['salt']);
+    $digest=hash_hmac('sha256',hash_file('sha256',__DIR__.'/index-data.json').'|'.$cfg['model'].'|chat4|'.mb_strtolower($lookup),$cfg['salt']);
     $read=$db->prepare('SELECT reply FROM qa_cache WHERE digest=? AND expires>UNIX_TIMESTAMP()'); $read->execute([$digest]);
     if ($cached=$read->fetchColumn()) reply(json_decode($cached,true));
     $live=array_column($records,null,'id');
@@ -80,11 +80,11 @@ try {
     $first=$rank[0]; $best=$first['record'];
     // Conservative reuse. New specific wording normally goes to grounded synthesis.
     if (!$refersBack && isset($best['question']) && $first['score']>=0.86 && $first['score']-($rank[1]['score'] ?? 0)>=0.06 && preg_match('/^[\x20-\x7e]+$/D',$q)) {
-        $answer=['kind'=>'saved','faqId'=>$best['id'],'answer'=>$best['answer'],'sources'=>[source($best)]];
+        $answer=savedAnswer($best);
     } else {
         if (empty($cfg['openrouter_key'])) reply($fallback);
         if (!reserve($db,$global)) reply($limitReply,429);
-        $docs=array_column(array_slice($rank,0,4),'record');
+        $docs=array_column(array_slice($rank,0,6),'record');
         $answer=generation($cfg,$lookup,$docs);
         if (!$answer) reply($fallback);
     }

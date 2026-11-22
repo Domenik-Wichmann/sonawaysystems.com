@@ -41,6 +41,63 @@
       return a;
     } catch { return null; }
   }
+  function inlineText(element, text) {
+    // Only bold spans are markup. Everything else stays literal text.
+    for (const part of text.split(/(\*\*[^*\n]+\*\*)/g)) {
+      if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
+        const strong = document.createElement('strong');
+        strong.textContent = part.slice(2, -2);
+        element.append(strong);
+      } else element.append(document.createTextNode(part));
+    }
+  }
+  function answerBody(text, flow) {
+    const body = document.createElement('div');
+    body.className = 'sa-answer-body';
+    let group = null;
+    for (const raw of text.split(/\r?\n/)) {
+      const line = raw.trim();
+      if (!line) { group = null; continue; }
+      const heading = line.match(/^#{1,4}\s+(.+)/);
+      const step = line.match(/^(\d{1,2})[.)]\s+(.+)/);
+      const bullet = line.match(/^[-*•]\s+(.+)/);
+      if (step || bullet) {
+        const tag = step ? 'ol' : 'ul';
+        if (group?.localName !== tag) {
+          group = document.createElement(tag);
+          if (step) group.start = Number(step[1]);
+          body.append(group);
+        }
+        const item = document.createElement('li');
+        inlineText(item, step ? step[2] : bullet[1]);
+        group.append(item);
+      } else if (heading) {
+        const title = document.createElement('h3');
+        inlineText(title, heading[1]);
+        body.append(title);
+        group = null;
+      } else {
+        if (group?.localName !== 'p') {
+          group = document.createElement('p');
+          body.append(group);
+        } else group.append(' ');
+        inlineText(group, line);
+      }
+    }
+    if (Array.isArray(flow) && flow.length >= 2 && flow.length <= 6 && flow.every(label => typeof label === 'string' && label.trim() && label.length <= 100)) {
+      const chart = document.createElement('ol');
+      chart.className = 'sa-flow';
+      chart.setAttribute('role','list');
+      chart.setAttribute('aria-label','Workflow');
+      for (const label of flow) {
+        const node = document.createElement('li');
+        node.textContent = label;
+        chart.append(node);
+      }
+      body.append(chart);
+    }
+    return body;
+  }
   function orderHome() {
     if (!faqList || faqList.querySelector('[open]') || faqList.contains(document.activeElement)) return;
     const top = faqs.slice(0,6);
@@ -49,7 +106,7 @@
       if (original.has(f.id)) return original.get(f.id);
       const d = document.createElement('details'); d.name = 'owner-faq'; d.dataset.faqId = f.id;
       const s = document.createElement('summary'); s.textContent = f.question;
-      const p = document.createElement('p'); p.textContent = f.answer+' ';
+      const p = answerBody(f.answer);
       const a = safeLink({url:f.url,title:'Read more'}); if (a) p.append(a);
       d.append(s,p); return d;
     });
@@ -116,7 +173,7 @@
       const res=await fetch('/ask/index.php',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'same-origin',
         body:JSON.stringify({question,previousQuestion}),signal:timerController.signal});
       const result=await res.json();
-      item.firstChild.textContent=result.answer || result.error || 'Please try again.';
+      item.replaceChildren(answerBody(result.answer || result.error || 'Please try again.', result.flow));
       const links=document.createElement('div'); links.className='sa-sources';
       for (const s of result.sources || []) { const a=safeLink(s); if(a) links.append(a); }
       if (!['saved','generated'].includes(result.kind)) links.append(safeLink({url:'/contact.html',title:'Ask Domenik directly'}));
@@ -128,7 +185,7 @@
       item.append(safeLink({url:'/contact.html',title:'Contact Sonaway'}));
     } finally {
       clearTimeout(timer); busy=false; el('.sa-send').disabled=false; toggle.hidden=false; toggle.setAttribute('aria-expanded','false');
-      scroll.scrollTop=scroll.scrollHeight;
+      scroll.scrollTop += item.getBoundingClientRect().top - scroll.getBoundingClientRect().top - 12;
     }
   }
   form.addEventListener('submit',e => { e.preventDefault(); ask(input.value.trim()); });
