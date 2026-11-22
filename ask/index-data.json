@@ -71,10 +71,12 @@
     "id": "disagreement",
     "question": "What if two people describe the same job differently?",
     "aliases": [
-      "How do you resolve conflicting instructions?"
+      "How do you resolve conflicting instructions?",
+      "What happens when the checklist and the shift leads disagree?",
+      "What would you send me if you found conflicting instructions?"
     ],
-    "answer": "We compare the accounts with your existing instructions, flag the disagreement and ask the people responsible for that step. We put the agreed version into a draft for your process owner to check before it reaches staff.",
-    "url": "/#what-we-do"
+    "answer": "We send you a breakdown of the exact disagreement: which step is affected, what each source says, and what decision is needed. For example, “The checklist says the supervisor releases the order. Both shift leads say the packer releases it. Who is authorized to release it?”\n\nDuring setup, we agree with you who decides each type of question. That can be one designated person, a hierarchy by role, or several stages of approval. Your team can approve the rest of the checklist while that step stays open. We update the disputed instruction once your designated approvers resolve it.",
+    "url": "/knowledge-capture.html#approval-decisions"
   },
   {
     "id": "custom-tools",
@@ -173,6 +175,25 @@
     ],
     "answer": "Tell us how many people do the job, which roles they depend on, and what tools, software or equipment they use. Also tell us what staff should have at the end, such as a station checklist or a step-by-step guide to a screen-based task.\n\nThe biggest factors are the people involved and how their responsibilities fit together. If dispatch can only release an order by understanding an inspector’s decision, we need to capture that part of inspection too. A self-contained role usually takes less work and costs less. The equipment and the kind of guide you need can change how we capture it and which tools we use.",
     "url": "/knowledge-capture.html#pricing"
+  },
+  {
+    "id": "approval-authority",
+    "question": "Who gets the final say when staff disagree?",
+    "aliases": [
+      "Can our approval process have multiple stages?",
+      "Can different people approve different kinds of questions?"
+    ],
+    "answer": "You decide with us during setup who has authority over each kind of question. You might give one role the final say on a routine handoff and require more than one stage of review for a decision involving several departments. When we find a conflict, we send the breakdown through the approval path you chose.",
+    "url": "/knowledge-capture.html#approval-decisions"
+  },
+  {
+    "id": "partial-approval",
+    "question": "Can we approve the rest of a checklist while one step is disputed?",
+    "aliases": [
+      "Does one unresolved question hold up all approvals?"
+    ],
+    "answer": "Yes. Your team can approve the parts it agrees on and leave the specific step open. If everyone agrees on packing and label checks but disagrees on who releases an order, those checks can be approved separately. The release instruction stays unresolved until the designated approver or approvers make a decision.",
+    "url": "/knowledge-capture.html#approval-decisions"
   },
   {
     "id": "knowledge-capture-capture-your-day",
