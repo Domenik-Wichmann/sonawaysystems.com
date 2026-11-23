@@ -45,3 +45,62 @@ body:has(.photo-hero) .site-header:focus-within{transform:translateY(0)}
 @media(max-width:900px) and (min-width:601px){.ph-accordion{height:clamp(300px,calc(100svh - var(--ph-header-height) - 330px),650px)}}
 @media(max-width:600px){.ph-copy>p:not(.ph-ownership){display:none}}
 
+
+.ph-record-note {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  top: 43px;
+  right: 16px;
+  box-sizing: border-box;
+  width: min(176px, calc(100% - 32px));
+  padding: 10px 12px;
+  border: 1px solid #ffffff56;
+  border-radius: 12px;
+  background: #162b36d9;
+  backdrop-filter: blur(7px);
+  color: #fff;
+  pointer-events: none;
+}
+
+.ph-panel.is-active > .ph-record-note { display: block; }
+
+.ph-record-note p {
+  margin: 6px 0 0;
+  font: 600 12px/1.4 'DM Sans', sans-serif;
+}
+
+.ph-record-wave {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 17px;
+  color: #a2eee0;
+}
+
+.ph-record-wave > span {
+  width: 3px;
+  height: var(--level);
+  border-radius: 999px;
+  background: currentColor;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ph-panel.is-active .ph-record-wave > span {
+    animation: ph-record-level 1.6s ease-in-out var(--delay) 2 alternate both;
+  }
+}
+
+@keyframes ph-record-level {
+  0%, 100% { transform: scaleY(1); }
+  45% { transform: scaleY(.45); }
+  72% { transform: scaleY(.82); }
+}
+
+@media (orientation: portrait) {
+  .ph-record-note {
+    top: 14px;
+    right: 14px;
+    width: min(156px, calc(100% - 28px));
+  }
+}
