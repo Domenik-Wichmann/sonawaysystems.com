@@ -8,13 +8,8 @@
   {
     "id": "faq-2",
     "question": "Why hire Sonaway if we already use Trainual, Confluence or ChatGPT?",
-    "aliases": [
-      "Could we just use ChatGPT?",
-      "Can you connect to Gemini?",
-      "Why use Sonaway instead of Trainual?"
-    ],
     "answer": "## Keep the tools your team uses\nWe capture how staff actually work, resolve conflicting instructions with your team and publish the procedures you approve. We can organize those procedures in your current platform or build the database, permissions and search capabilities you’re missing.\n\n## Connect staff to approved answers\nWhere the platform, plan and permissions allow it, we can connect a supported Gemini or ChatGPT workspace or your existing app. Some connections retrieve documents. If search misses questions phrased differently, we can build meaning-based retrieval over approved content and link answers to the source material the employee is allowed to read. Sonaway can maintain the agreed integrations or hand them over with the rest of your system.",
-    "url": "/#existing-tools-faq"
+    "url": "/#common-questions"
   },
   {
     "id": "faq-3",
