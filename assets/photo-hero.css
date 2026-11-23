@@ -46,28 +46,29 @@ body:has(.photo-hero) .site-header:focus-within{transform:translateY(0)}
 @media(max-width:600px){.ph-copy>p:not(.ph-ownership){display:none}}
 
 
-.ph-record-note {
+.ph-photo-cue {
   display: none;
   position: absolute;
   z-index: 2;
   top: 43px;
   right: 16px;
   box-sizing: border-box;
-  width: min(176px, calc(100% - 32px));
-  padding: 10px 12px;
+  width: min(226px, calc(100% - 32px));
+  padding: 11px 14px;
   border: 1px solid #ffffff56;
   border-radius: 12px;
-  background: #162b36d9;
+  background: #10252ff0;
   backdrop-filter: blur(7px);
   color: #fff;
   pointer-events: none;
 }
 
-.ph-panel.is-active > .ph-record-note { display: block; }
+.ph-panel.is-active > .ph-photo-cue { display: block; }
 
-.ph-record-note p {
+.ph-photo-cue p {
   margin: 6px 0 0;
-  font: 600 12px/1.4 'DM Sans', sans-serif;
+  color: #fff;
+  font: 700 14px/1.35 'DM Sans', sans-serif;
 }
 
 .ph-record-wave {
@@ -98,9 +99,72 @@ body:has(.photo-hero) .site-header:focus-within{transform:translateY(0)}
 }
 
 @media (orientation: portrait) {
-  .ph-record-note {
+  .ph-photo-cue {
     top: 14px;
     right: 14px;
-    width: min(156px, calc(100% - 28px));
+    width: min(190px, calc(100% - 28px));
   }
+}
+
+.ph-chat-bubbles {
+  display: flex;
+  align-items: flex-start;
+  gap: 3px;
+  height: 27px;
+  color: #a2eee0;
+}
+
+.ph-chat-bubbles > span {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 17px;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  font: 700 12px/1 'DM Sans', sans-serif;
+}
+
+.ph-chat-bubbles > span::after {
+  position: absolute;
+  bottom: -3px;
+  left: 4px;
+  width: 4px;
+  height: 4px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  background: #18333d;
+  content: '';
+  transform: rotate(45deg);
+}
+
+.ph-chat-bubbles > .ph-chat-answer {
+  margin-top: 6px;
+  background: #a2eee0;
+  color: #17353d;
+}
+
+.ph-chat-bubbles > .ph-chat-answer::after {
+  right: 4px;
+  left: auto;
+  border-color: #a2eee0;
+  background: #a2eee0;
+}
+
+.ph-chat-answer svg { width: 12px; height: 12px; }
+.ph-station-icon { display: block; width: 24px; height: 24px; color: #a2eee0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ph-panel.is-active .ph-chat-bubbles > span {
+    animation: ph-chat-arrive 1.7s ease-out both;
+  }
+
+  .ph-panel.is-active .ph-chat-bubbles > .ph-chat-answer {
+    animation-delay: .22s;
+  }
+}
+
+@keyframes ph-chat-arrive {
+  0%, 47% { opacity: 0; transform: translateY(6px); }
+  22%, 36%, 75%, 100% { opacity: 1; transform: translateY(0); }
 }
