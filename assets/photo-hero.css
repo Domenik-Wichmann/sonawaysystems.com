@@ -156,7 +156,7 @@ body:has(.photo-hero) .site-header:focus-within{transform:translateY(0)}
 
 @media (prefers-reduced-motion: no-preference) {
   .ph-panel.is-active .ph-chat-bubbles > span {
-    animation: ph-chat-arrive 1.7s ease-out both;
+    animation: ph-chat-arrive 3s ease-in-out infinite;
   }
 
   .ph-panel.is-active .ph-chat-bubbles > .ph-chat-answer {
@@ -165,6 +165,20 @@ body:has(.photo-hero) .site-header:focus-within{transform:translateY(0)}
 }
 
 @keyframes ph-chat-arrive {
-  0%, 47% { opacity: 0; transform: translateY(6px); }
-  22%, 36%, 75%, 100% { opacity: 1; transform: translateY(0); }
+  0% { opacity: 0; transform: translateY(6px); }
+  20%, 80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-4px); }
+}
+
+.ph-panel-station {
+  background: #101f26;
+}
+
+.ph-panel-station > img {
+  height: calc(100% - 76px);
+  mask-image: linear-gradient(#000 94%, transparent);
+}
+
+.ph-panel-station::after {
+  background: linear-gradient(180deg, transparent 60%, #101f2640 72%, #101f26 86%);
 }
