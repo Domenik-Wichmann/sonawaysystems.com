@@ -150,3 +150,8 @@
 @media (orientation: portrait) and (prefers-reduced-motion: reduce) {
   html:has(body:is(.story-home,.story-interior)) { scroll-snap-type: none; }
 }
+
+@media (orientation: portrait) {
+  #story-overview .overview-tour-link { display: none; }
+  .story-home #story-overview .ph-copy .ph-offer { grid-column: 1 / -1; }
+}
