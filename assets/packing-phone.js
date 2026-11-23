@@ -113,6 +113,14 @@
   const composer = phone.querySelector('[data-fp-composer]');
   const send = phone.querySelector('[data-fp-send]');
   const invitation = phone.querySelector('[data-fp-try]');
+  const expand = phone.querySelector('[data-fp-expand]');
+  const fullscreen = phone.querySelector('[data-fp-fullscreen]');
+  const collapse = phone.querySelector('[data-fp-collapse]');
+  const device = phone.querySelector('.fp-device');
+  const portrait = window.matchMedia('(orientation: portrait) and (max-width: 1100px), (orientation: portrait) and (max-width: 1366px) and (hover: none)');
+  const placeholder = document.createElement('div');
+  placeholder.setAttribute('aria-hidden', 'true');
+
   const steps = [
     ['.fp-file[data-fp-view="pack"]', 'pack', 2850],
     ['.fp-file[data-fp-view="label"]', 'label', 3550],
@@ -285,6 +293,22 @@
   phone.addEventListener('click', event => {
     const button = event.target.closest('button');
     if (!button || button.type === 'submit') return;
+    if (button === expand) {
+      if (!portrait.matches || fullscreen.open) return;
+      stopTour();
+      const scroll = content.scrollTop;
+      placeholder.style.height = device.offsetHeight + 'px';
+      device.before(placeholder);
+      fullscreen.append(device);
+      fullscreen.showModal();
+      content.scrollTop = scroll;
+      return;
+    }
+    if (button === collapse) {
+      fullscreen.close();
+      return;
+    }
+
     if (button === tour) {
       if (running) { stopTour(); return; }
       view = 'library'; lang = 'en'; conversation = []; draft = ''; step = 0; running = true;
@@ -293,6 +317,15 @@
     stopTour();
     view = button === invitation ? 'ask' : button.dataset.fpView;
     render(true);
+  });
+  fullscreen.addEventListener('close', () => {
+    const scroll = content.scrollTop;
+    placeholder.replaceWith(device);
+    content.scrollTop = scroll;
+    if (portrait.matches) expand.focus({preventScroll: true});
+  });
+  portrait.addEventListener('change', () => {
+    if (!portrait.matches && fullscreen.open) fullscreen.close();
   });
   picker.addEventListener('change', () => {
     stopTour();
