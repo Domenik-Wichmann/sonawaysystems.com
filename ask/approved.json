@@ -105,12 +105,14 @@
   },
   {
     "id": "two-shifts",
-    "question": "What happens if two shifts really do need different instructions?",
+    "question": "How do headquarters rules and local equipment instructions work together?",
     "aliases": [
-      "Can different sites have their own rules?"
+      "Can different sites have their own rules?",
+      "What happens if two shifts really do need different instructions?",
+      "Does a change at headquarters overwrite every local procedure?"
     ],
-    "answer": "We ask what changes the instruction and who is authorized to decide. If both versions are valid, we describe when each applies. A custom system can keep a shared company procedure and show an approved local variation to the people who need it.",
-    "url": "/custom-systems.html#what-we-build"
+    "answer": "A site with an older packing line can keep an approved shutdown sequence for that machine while sharing the company shutdown policy. A headquarters change to the shutdown time can apply to every location while each site keeps its own instructions for how to turn the machine off.\n\nIf a local exception covers the same point, a configured system can flag the conflict for review. Headquarters can explicitly select the affected locations and override the local time when the new rule is meant to apply everywhere. Local differences must first be documented and approved.",
+    "url": "/custom-systems.html#local-and-shared"
   },
   {
     "id": "first-week",
@@ -242,5 +244,54 @@
     ],
     "answer": "For a one-time delivery, your team handles future edits in your chosen platform. With a custom build, we can give you a guided way to submit a change, such as a short video of a new printer check, and route it for approval. You can use that workflow even if you maintain the system yourselves. With a maintenance agreement, changes can be routed to Sonaway for follow-through. Human approval is the default; the exact workflow is agreed for your project.",
     "url": "/knowledge-capture.html#procedure-changes"
+  },
+  {
+    "id": "standing-rules",
+    "question": "Does a one-time permission become a rule?",
+    "aliases": [
+      "Can a manager approve one order through the knowledge base?",
+      "How do you distinguish an exception from a one-off decision?"
+    ],
+    "answer": "An approval to release a particular order applies to that order. Staff handle that decision with the person responsible. A one-off permission stays out of the playbook.\n\nDuring guided intake, we ask what conditions would let a future shift repeat the action without requesting fresh permission. If there is a repeatable exception, the designated owner can review its conditions and approve it as standing guidance.",
+    "url": "/custom-systems.html#standing-rules"
+  },
+  {
+    "id": "missing-exceptions",
+    "question": "What if the guide has no answer for my shift?",
+    "aliases": [
+      "What happens when a question cannot be answered?",
+      "Can the system know an undocumented exception?"
+    ],
+    "answer": "If a packer asks about night shift and only a general release procedure is documented, the assistant can show that procedure, say there is no confirmed night-shift instruction and point the packer to the designated supervisor. Where configured, a gap in the guide can be flagged for review. The chat does not grant permission for an individual order.\n\nIf the question gives no indication of an exception and nobody has documented it, the system may return the general rule even though a different rule applies. People who know the work help us find those gaps.",
+    "url": "/custom-systems.html#missing-exceptions"
+  },
+  {
+    "id": "rare-events",
+    "question": "How do you document a seasonal changeover nobody on shift remembers?",
+    "aliases": [
+      "How do you find gaps before the annual shutdown?",
+      "What if nobody can verify a seasonal step?"
+    ],
+    "answer": "We ask specifically about seasonal work and rare exceptions. Bring any existing changeover instructions and involve whoever knows or owns the procedure. We can have experienced staff mentally walk through the event, ask questions at each step and flag missing answers. If a step cannot be verified, it stays open and the client appoints someone to resolve it.\n\nDepending on the engagement, especially with ongoing support, we can run a mock changeover, test the knowledge base with hundreds of questions, and inspect connections between roles, equipment and steps for gaps. These checks identify what needs verifying; the appointed person supplies or confirms the instruction.",
+    "url": "/knowledge-capture.html#rare-events"
+  },
+  {
+    "id": "repeat-questions",
+    "question": "What can repeated staff questions tell us?",
+    "aliases": [
+      "What if staff keep asking the same question in different languages?"
+    ],
+    "answer": "Questions about the same task from several shifts, sites or languages give us a reason to investigate. The issue might be a missed onboarding detail, an unclear instruction or the layout of the work itself. Depending on the package, we can review training or walk through the station virtually.\n\nFor example, if bagging supplies are stored in three wings, the practical fix may be to move supplies nearer the station and post a laminated checklist showing what belongs there. A short refresher can help when the gap is something people learned once and rarely use.",
+    "url": "/custom-systems.html#repeat-questions"
+  },
+  {
+    "id": "measure-improvement",
+    "question": "How can we tell whether a station change helped?",
+    "aliases": [
+      "How do we measure whether moving supplies worked?",
+      "What should the shift lead check after we change a process?"
+    ],
+    "answer": "Compare the rate of related questions before and after the change alongside the amount of work the team did. Where reporting supports it, check whether questions now come mostly from new hires or continue among experienced staff. This can be done with grouped trends.\n\nAsk the shift lead to check whether the job still gets done correctly. For the bagging station, are workers finding the supplies and completing bags with the right contents? Compare errors or rework as well as questions. If questions fall while errors rise, fewer questions alone are no evidence of improvement.",
+    "url": "/custom-systems.html#measure-improvement"
   }
 ]
