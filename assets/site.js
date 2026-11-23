@@ -27,10 +27,11 @@
   const email=String(data.get('email')||'').trim();
   const business=String(data.get('business')||'').trim();
   const type=String(data.get('type')||'').trim();
+  const description=String(data.get('description')||'').trim();
   const message=String(data.get('message')||'').trim();
   const support=String(data.get('support')||'Not specified').trim();
   const subject='Sonaway project inquiry'+(business?' — '+business:'');
-  const body=['Name: '+name,'Email: '+email,'Business: '+business,'Operation: '+type,'Support preference: '+support,'','What we would like to explore:',message].join('\n');
+  const body=['Name: '+name,'Email: '+email,'Business: '+business,'Operation: '+type,'Support preference: '+support,'','About the business:',description,'','What we would like to explore:',message].join('\n');
   location.href='mailto:domenik@sonaway.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
  });
 })();
