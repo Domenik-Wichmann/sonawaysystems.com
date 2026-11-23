@@ -317,5 +317,27 @@
   {
     "id": "faq-6",
     "answer": "1. **Choose the tasks.** Managers identify what people need to learn.\n2. **Build onboarding.** We turn approved procedures into training for each role.\n3. **Refine it.** Recurring staff questions can reveal which lesson needs work and where a short refresher would help before the next shift."
+  },
+  {
+    "id": "knowledge-capture-cost",
+    "question": "How much does a one-role pilot or small-team playbook cost?",
+    "aliases": [
+      "What should I budget to get started?",
+      "How much is a pilot?",
+      "What does the small-team playbook cost?"
+    ],
+    "answer": "A **one-role pilot starts at $1,200 USD**. You get approved procedures and checklists for the agreed role and can decide whether to expand after reviewing them. A **small-team playbook typically costs $6,000–$10,000 USD** for several connected workflows. We confirm the written scope and quote before starting. Custom systems are quoted separately.",
+    "url": "/knowledge-capture.html#pricing"
+  },
+  {
+    "id": "ongoing-care-cost",
+    "question": "What does it cost to build or maintain a custom system?",
+    "aliases": [
+      "How much does ongoing care cost?",
+      "What do you charge to maintain a small chatbot?",
+      "How much is hands-on support?"
+    ],
+    "answer": "- **Custom builds:** quoted separately. We estimate hosting, software and AI usage before you commit.\n- **Basic upkeep:** $150–$500 USD per month for a straightforward document Q&A setup. More involved setups can cost more.\n- **Hands-on support:** typically $1,500–$2,500 USD per month for work such as updating procedures and training or maintaining integrations. Larger or more complex systems are scoped individually.",
+    "url": "/custom-systems.html#ongoing-care-pricing"
   }
 ]
