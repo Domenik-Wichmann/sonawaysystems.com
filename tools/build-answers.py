@@ -66,7 +66,14 @@ def build():
                                 url='/#common-questions'))
     if not records:
         raise ValueError("No homepage FAQs found")
-    records += json.loads((ROOT / 'ask/approved.json').read_text())
+    # The homepage keeps its compact prose. A chat edition can supply a layout
+    # for the same FAQ while retaining its public question, link and ranking ID.
+    homepage = {record['id']: record for record in records}
+    for record in json.loads((ROOT / 'ask/approved.json').read_text()):
+        if set(record) == {'id', 'answer'}:
+            homepage[record['id']]['answer'] = record['answer']
+        else:
+            records.append(record)
     for name, sections in SECTIONS.items():
         by_id = {n[1].get('id'): n for n in page(name)}
         for section, title in sections.items():

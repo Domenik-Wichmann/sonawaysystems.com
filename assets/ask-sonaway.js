@@ -51,13 +51,70 @@
       } else element.append(document.createTextNode(part));
     }
   }
+  function rowCells(line) {
+    return line.trim().replace(/^\||\|$/g,'').split('|').map(cell => cell.trim());
+  }
+  function comparison(headers, rows) {
+    const table = document.createElement('table');
+    table.className = 'sa-comparison';
+    const head = table.createTHead().insertRow();
+    for (const label of headers) {
+      const th = document.createElement('th');
+      th.scope = 'col';
+      inlineText(th, label);
+      head.append(th);
+    }
+    // Draw bars only for a single column of comparable, explicit dollar amounts.
+    const amounts = headers.length === 2 && rows.length > 1 &&
+      rows.every(row => /^\$\d[\d,]*(?:\.\d{1,2})?$/.test(row[1]))
+      ? rows.map(row => Number(row[1].replace(/[$,]/g,''))) : [];
+    const max = Math.max(0, ...amounts);
+    const body = table.createTBody();
+    rows.forEach((row, index) => {
+      const tr = body.insertRow();
+      row.forEach((value, col) => {
+        const td = tr.insertCell();
+        inlineText(td, value);
+        if (col === 1 && max > 0) {
+          const bar = document.createElement('span');
+          bar.className = 'sa-value-bar';
+          bar.style.width = (100 * amounts[index] / max) + '%';
+          bar.setAttribute('aria-hidden','true');
+          td.append(bar);
+        }
+      });
+    });
+    return table;
+  }
   function answerBody(text, flow) {
     const body = document.createElement('div');
     body.className = 'sa-answer-body';
     let group = null;
     let fence = false;
-    for (const raw of text.split(/\r?\n/)) {
-      const line = raw.trim();
+    const lines = text.split(/\r?\n/);
+    for (let i=0; i<lines.length; i++) {
+      const line = lines[i].trim();
+      if (!fence && line.includes('|') && lines[i+1]?.includes('|')) {
+        const headers = rowCells(line);
+        const separators = rowCells(lines[i+1]);
+        if (headers.length >= 2 && headers.length <= 4 && headers.length === separators.length &&
+            separators.every(cell => /^:?-{3,}:?$/.test(cell))) {
+          const rows = [];
+          let end = i+2;
+          while (end < lines.length && lines[end].includes('|')) {
+            const cells = rowCells(lines[end]);
+            if (cells.length !== headers.length) break;
+            rows.push(cells);
+            end++;
+          }
+          if (rows.length) {
+            body.append(comparison(headers, rows));
+            i = end-1;
+            group = null;
+            continue;
+          }
+        }
+      }
       if (line.startsWith('```')) { fence = !fence; group = null; continue; }
       if (fence && line.includes('→')) {
         const stages = line.split('→').map(stage => stage.trim());

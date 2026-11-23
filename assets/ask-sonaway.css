@@ -60,3 +60,11 @@
 .sa-step-path > li {position:relative;counter-increment:stage;padding-inline-start:2.05rem}
 .sa-step-path > li::before {content:counter(stage);position:absolute;inset:0 auto auto 0;display:grid;place-items:center;width:1.55rem;height:1.55rem;border:1px solid #88abae;border-radius:50%;background:#fcfefd;color:#24545d;font-size:.83rem;font-weight:700}
 .sa-step-path > li:not(:last-child)::after {content:'';position:absolute;inset:1.6rem auto -.35rem .75rem;border-inline-start:1px solid #9bbabc}
+
+.sa-answer-body .sa-comparison {width:100%;table-layout:fixed;border-collapse:collapse;font:inherit;font-size:.94em;color:inherit;line-height:1.4}
+.sa-comparison :is(th,td) {padding:.5em .55em;text-align:start;vertical-align:top;border-bottom:1px solid #bdd1d0;overflow-wrap:anywhere}
+.sa-comparison th {background:#d7e8e6;font-weight:700}
+.sa-comparison td:first-child {font-weight:600}
+.sa-answer-body > .sa-comparison,.sa-answer-body > .sa-comparison + * {margin-top:.7rem}
+.sa-value-bar {display:block;background:#357783;height:.32rem;border-radius:.16rem;margin-top:.35rem}
+.sa-answer-body h3 {padding-block-end:.24rem;border-bottom:1px solid #c2d6d4}

@@ -2,37 +2,37 @@
   {
     "id": "faq-1",
     "question": "Why does my business need a knowledge base?",
-    "answer": "When a packer on the night shift asks in Spanish which label goes on an order, they can get the answer in Spanish and open the approved procedure in Spanish, too. The same source serves someone asking in English, German, Chinese or another language your business needs. Your team can find answers 24/7, even when the person who wrote the guide is off shift.",
+    "answer": "A shared knowledge base gives the next person on shift access to what your team already knows.\n\n- **On the floor:** a packer can look up which label goes on an order and open the approved procedure.\n- **Across languages:** the same source can serve staff working in Spanish, English, German, Chinese or another language your business needs.\n- **After hours:** answers are available even when the person who wrote the guide is off shift.",
     "url": "/#common-questions"
   },
   {
     "id": "faq-2",
     "question": "Could we just use ChatGPT?",
-    "answer": "ChatGPT can help draft instructions and let people collaborate. Someone still has to collect what your crew knows, settle conflicting versions and decide what goes into the handbook. We do that work with your team and publish approved answers where the right people can find and maintain them.",
+    "answer": "ChatGPT can help draft instructions. Building a handbook your crew can rely on also takes work with the people doing the job.\n\n1. Collect the team’s know-how.\n2. Settle conflicting versions with the people responsible.\n3. Publish approved instructions where staff can find and maintain them.",
     "url": "/#common-questions"
   },
   {
     "id": "faq-3",
     "question": "Do you use AI to write our procedures?",
-    "answer": "We use AI to help transcribe recordings and organize source material. A human reviews the evidence, writes the procedure and takes gaps back to your staff. The instructions come from your business, and someone you designate approves them before publication.",
+    "answer": "## How we use AI\n- **Transcription and organization:** AI helps turn recordings into material we can review.\n- **Drafting:** a human checks the evidence, writes the procedure and brings gaps back to your staff.\n- **Approval:** someone you designate signs off before the instructions are published.",
     "url": "/#common-questions"
   },
   {
     "id": "faq-4",
     "question": "Which businesses benefit most?",
-    "answer": "Often it’s a growing business where the founders or original crew still field every question. Packing facilities, fabrication shops, hotels and franchise groups are good examples. We capture the work while it happens so people can spend their shift on the floor.",
+    "answer": "Growing businesses often benefit when the founders or original crew still field every question.\n\n**Examples:** packing facilities, fabrication shops, hotels and franchise groups. We capture the work as it happens so people can spend their shift on the floor.",
     "url": "/#common-questions"
   },
   {
     "id": "faq-5",
     "question": "What can you build for multiple locations?",
-    "answer": "Your front desk can look up a late-arrival procedure while guests see just the arrival instructions on your website. We can also connect the guest guide to a voice agent that answers calls. You decide which information is public, which stays with staff and when a question goes to a person.",
+    "answer": "- **Staff:** the front desk can look up the internal late-arrival procedure.\n- **Guests:** visitors can see arrival instructions on your website or hear them from a voice agent.\n- **You:** choose what is public, what stays with staff and when a question goes to a person.",
     "url": "/#common-questions"
   },
   {
     "id": "faq-6",
     "question": "How can you help us train staff?",
-    "answer": "We start with the tasks your managers want people to learn and turn approved procedures into role-specific onboarding. Once the system is in use, recurring staff questions can show where a guide or lesson needs work. We can deliver a short refresher before the next shift that needs it.",
+    "answer": "1. **Choose the tasks.** Managers identify what people need to learn.\n2. **Build onboarding.** We turn approved procedures into training for each role.\n3. **Refine it.** Recurring staff questions can reveal which lesson needs work and where a short refresher would help before the next shift.",
     "url": "/#common-questions"
   },
   {
@@ -43,7 +43,7 @@
       "Can we send voice notes?",
       "Can we send photos and videos?"
     ],
-    "answer": "Send existing checklists and manuals first. Each person can then sit down and record an overview of their role and a typical shift. For the detailed walkthrough, talk through a real task as you do it: what you check, what you decide and when you do it differently. Voice notes or short videos work. If you take a photo, describe what matters in it and which step it shows.",
+    "answer": "## What to send\n- **Existing documents.** Send your checklists and manuals first.\n- **A shift overview.** Each person can sit down and describe their role and a typical shift.\n- **A real task.** Record a voice note or short video as you work. Explain what you check, what you decide, and what makes you do it differently.\n- **Photos.** Tell us which step each photo shows and what we should notice.",
     "url": "/knowledge-capture.html#capture-your-day"
   },
   {
@@ -54,7 +54,7 @@
       "Can you use our existing knowledge base?",
       "Can we keep our existing software?"
     ],
-    "answer": "Yes, where your platform supports it. We can organize approved procedures in the handbook, knowledge base or training platform your team already uses. During discovery we check how imports work and who can publish. Editable files are also an option.",
+    "answer": "Yes, where your platform supports it. We can organize approved procedures in the handbook, knowledge base or training platform your team already uses.\n\n## Before delivery\nDuring discovery we check how imports work and who can publish. Editable files are also an option.",
     "url": "/knowledge-capture.html#delivery"
   },
   {
@@ -64,7 +64,7 @@
       "Who owns the system?",
       "Can we maintain it ourselves?"
     ],
-    "answer": "You control your operational information and receive the agreed project code, documentation and access. Your team can maintain the system, appoint another provider or ask Sonaway to look after it. We spell out any third-party or reusable component licenses in the agreement.",
+    "answer": "You control your operational information and receive the agreed project code, documentation and access.\n\n## After handoff\nYour team can maintain the system, appoint another provider or ask Sonaway to look after it. We spell out any third-party or reusable component licenses in the agreement.",
     "url": "/approach.html#ownership-deliverables"
   },
   {
@@ -75,7 +75,7 @@
       "What happens when the checklist and the shift leads disagree?",
       "What would you send me if you found conflicting instructions?"
     ],
-    "answer": "We send you a breakdown of the exact disagreement: which step is affected, what each source says, and what decision is needed. For example, “The checklist says the supervisor releases the order. Both shift leads say the packer releases it. Who is authorized to release it?”\n\nDuring setup, we agree with you who decides each type of question. That can be one designated person, a hierarchy by role, or several stages of approval. Your team can approve the rest of the checklist while that step stays open. We update the disputed instruction once your designated approvers resolve it.",
+    "answer": "We send you a breakdown of the exact disagreement: which step is affected, what each source says, and what decision is needed.\n\n## Example from dispatch\nFor example, “The checklist says the supervisor releases the order. Both shift leads say the packer releases it. Who is authorized to release it?”\n\n## Who decides\nDuring setup, we agree with you who decides each type of question. That can be one designated person, a hierarchy by role, or several stages of approval. Your team can approve the rest of the checklist while that step stays open. We update the disputed instruction once your designated approvers resolve it.",
     "url": "/knowledge-capture.html#approval-decisions"
   },
   {
@@ -84,7 +84,7 @@
     "aliases": [
       "What can you build for us?"
     ],
-    "answer": "We can build a searchable knowledge base, QR guides for individual workstations, role-specific training and dashboards. For a group with several sites, we can carry shared procedures across locations and show each team the instructions that apply there. We agree the features and integrations during discovery.",
+    "answer": "We can build a searchable knowledge base, QR guides for individual workstations, role-specific training and dashboards.\n\n## Across locations\nFor a group with several sites, we can carry shared procedures across locations and show each team the instructions that apply there. We agree the features and integrations during discovery.",
     "url": "/custom-systems.html#what-we-build"
   },
   {
@@ -93,7 +93,7 @@
     "aliases": [
       "Can the public ask questions?"
     ],
-    "answer": "Yes. You choose which material guests or customers can see and which instructions stay with staff. We can make a public guide available on your website, offer answers in the languages you need or connect the approved material to a voice agent.",
+    "answer": "Yes. You choose which material guests or customers can see and which instructions stay with staff.\n\n## How visitors get answers\nWe can make a public guide available on your website, offer answers in the languages you need or connect the approved material to a voice agent.",
     "url": "/#common-questions"
   },
   {
@@ -125,7 +125,7 @@
       "Is there a fee for the pilot testing chat?",
       "How do we test the draft SOPs before approval?"
     ],
-    "answer": "We agree on the job and what someone new should be able to do using just the guide or by asking questions of the documents. For dispatch handover, that might mean preparing the handover, checking it and passing it to the right person.\n\nBefore approval, invite managers, shift leads and other experienced staff to ask questions they already know the answers to, including exceptions. They can use a temporary web chat connected to the draft documents and flag inaccurate or missing answers. We use those flags to correct the material. The testing chat is included in the pilot at no extra build cost.",
+    "answer": "We agree on the job and what someone new should be able to do using just the guide or by asking questions of the documents. For dispatch handover, that might mean preparing the handover, checking it and passing it to the right person.\n\n## Testing the draft\nBefore approval, invite managers, shift leads and other experienced staff to ask questions they already know the answers to, including exceptions. They can use a temporary web chat connected to the draft documents and flag inaccurate or missing answers. We use those flags to correct the material. The testing chat is included in the pilot at no extra build cost.",
     "url": "/knowledge-capture.html#pilot-test"
   },
   {
@@ -136,7 +136,7 @@
       "What is the first thing we get to review?",
       "Do we see a draft before the full SOP?"
     ],
-    "answer": "The first thing your lead sees is a preliminary role description and a high-level outline of the shift, based on their walkthrough. They can correct a responsibility, point out a missing handoff or flag a step that only happens on certain orders.\n\nWe use those corrections and more detailed recordings to draft the SOP or checklist. Your team can review, request edits and approve asynchronously. Only approved instructions get published.",
+    "answer": "The first thing your lead sees is a preliminary role description and a high-level outline of the shift, based on their walkthrough. They can correct a responsibility, point out a missing handoff or flag a step that only happens on certain orders.\n\n## From outline to SOP\nWe use those corrections and more detailed recordings to draft the SOP or checklist. Your team can review, request edits and approve asynchronously. Only approved instructions get published.",
     "url": "/knowledge-capture.html#reconcile"
   },
   {
@@ -147,7 +147,7 @@
       "What happens if two shifts really do need different instructions?",
       "Does a change at headquarters overwrite every local procedure?"
     ],
-    "answer": "A site with an older packing line can keep an approved shutdown sequence for that machine while sharing the company shutdown policy. A headquarters change to the shutdown time can apply to every location while each site keeps its own instructions for how to turn the machine off.\n\nIf a local exception covers the same point, a configured system can flag the conflict for review. Headquarters can explicitly select the affected locations and override the local time when the new rule is meant to apply everywhere. Local differences must first be documented and approved.",
+    "answer": "A site with an older packing line can keep an approved shutdown sequence for that machine while sharing the company shutdown policy. A headquarters change to the shutdown time can apply to every location while each site keeps its own instructions for how to turn the machine off.\n\n## When rules overlap\nIf a local exception covers the same point, a configured system can flag the conflict for review. Headquarters can explicitly select the affected locations and override the local time when the new rule is meant to apply everywhere. Local differences must first be documented and approved.",
     "url": "/custom-systems.html#local-and-shared"
   },
   {
@@ -157,7 +157,7 @@
       "What do you need from my dispatch team in week one?",
       "How do we get started if our team works shifts?"
     ],
-    "answer": "Start by sending any documents you already use. We ask each person two things: “What is your role?” and “Walk me through a typical shift.” They can record this when they have time or talk it through on a call.\n\nNext, we ask them to set aside time, if possible, to demonstrate the job and narrate their decisions as they go. Detailed recording starts in the first week and can continue for a week or longer per role. The first review is a role description and shift outline. The finished SOP follows as we clarify the details together.",
+    "answer": "Start by sending any documents you already use. We ask each person two things: “What is your role?” and “Walk me through a typical shift.” They can record this when they have time or talk it through on a call.\n\n## Detailed walkthrough\nNext, we ask them to set aside time, if possible, to demonstrate the job and narrate their decisions as they go. Detailed recording starts in the first week and can continue for a week or longer per role. The first review is a role description and shift outline. The finished SOP follows as we clarify the details together.",
     "url": "/knowledge-capture.html#capture-your-day"
   },
   {
@@ -167,7 +167,7 @@
       "Can different shifts answer separately?",
       "Can staff record when they have time?"
     ],
-    "answer": "Yes. Staff can send a recording of their shift, then answer follow-ups as their schedule allows. For example, a packer can explain a handoff after their shift and the supervisor can confirm their part the next morning.\n\nWe can set up a question page or small app with prompts based on discovery. An assistant can ask follow-ups, and our team compares the answers and comes back with specific gaps. You can request edits and approve drafts the same way. Calls are available when talking something through is easier.",
+    "answer": "Yes. Staff can send a recording of their shift, then answer follow-ups as their schedule allows. For example, a packer can explain a handoff after their shift and the supervisor can confirm their part the next morning.\n\n## Following up between shifts\nWe can set up a question page or small app with prompts based on discovery. An assistant can ask follow-ups, and our team compares the answers and comes back with specific gaps. You can request edits and approve drafts the same way. Calls are available when talking something through is easier.",
     "url": "/knowledge-capture.html#capture-your-day"
   },
   {
@@ -178,7 +178,7 @@
       "Does pricing depend only on headcount?",
       "Would a computer-based procedure cost the same as a shop-floor task?"
     ],
-    "answer": "Tell us how many people do the job, which roles they depend on, and what tools, software or equipment they use. Also tell us what staff should have at the end, such as a station checklist or a step-by-step guide to a screen-based task.\n\nThe biggest factors are the people involved and how their responsibilities fit together. If dispatch can only release an order by understanding an inspector’s decision, we need to capture that part of inspection too. A self-contained role usually takes less work and costs less. The equipment and the kind of guide you need can change how we capture it and which tools we use.",
+    "answer": "## To scope the work\n- How many people do the job?\n- Whose decisions do they depend on?\n- What software or equipment do they use?\n- What should they receive: a station checklist, a screen-by-screen guide, or another deliverable?\n\n**Handoffs affect the quote.** If dispatch needs to understand an inspector’s decision to release an order, we include that part of inspection. A self-contained role usually costs less. Equipment and guide format also affect the tools we need.",
     "url": "/knowledge-capture.html#pricing"
   },
   {
@@ -188,7 +188,7 @@
       "Can our approval process have multiple stages?",
       "Can different people approve different kinds of questions?"
     ],
-    "answer": "You decide with us during setup who has authority over each kind of question. You might give one role the final say on a routine handoff and require more than one stage of review for a decision involving several departments. When we find a conflict, we send the breakdown through the approval path you chose.",
+    "answer": "You decide with us during setup who has authority over each kind of question.\n\n## Example approval path\nYou might give one role the final say on a routine handoff and require more than one stage of review for a decision involving several departments. When we find a conflict, we send the breakdown through the approval path you chose.",
     "url": "/knowledge-capture.html#approval-decisions"
   },
   {
@@ -197,7 +197,7 @@
     "aliases": [
       "Does one unresolved question hold up all approvals?"
     ],
-    "answer": "Yes. Your team can approve the parts it agrees on and leave the specific step open. If everyone agrees on packing and label checks but disagrees on who releases an order, those checks can be approved separately. The release instruction stays unresolved until the designated approver or approvers make a decision.",
+    "answer": "Yes. Your team can approve the parts it agrees on and leave the specific step open.\n\n## Example from packing\nIf everyone agrees on packing and label checks but disagrees on who releases an order, those checks can be approved separately. The release instruction stays unresolved until the designated approver or approvers make a decision.",
     "url": "/knowledge-capture.html#approval-decisions"
   },
   {
@@ -208,7 +208,7 @@
       "Do you check recordings for personally identifying information?",
       "How do you redact names from videos and transcripts?"
     ],
-    "answer": "We actively check the material for identifying details. If we catch a name on a dispatch screen, we blur or blank it in the image. If someone says it aloud, we mute that part of the recording and remove it from the transcript. When the role matters, we write “shift lead” or “customer”; when the detail adds nothing to the instruction, we leave it out.\n\nThe guide and the recording retained in the project library use the redacted version. Neither staff nor Sonaway receives library access to a copy with the detected details intact.\n\nWe check after upload. The transcription provider receives the original recording. When we detect identifying details, we redact them and immediately delete the identifiable copy Sonaway received. We can also agree to stop processing, delete the file and request a new recording when specified types of identifying information are detected.",
+    "answer": "We actively check the material for identifying details. If we catch a name on a dispatch screen, we blur or blank it in the image. If someone says it aloud, we mute that part of the recording and remove it from the transcript. When the role matters, we write “shift lead” or “customer”; when the detail adds nothing to the instruction, we leave it out.\n\n## What gets retained\nThe guide and the recording retained in the project library use the redacted version. Neither staff nor Sonaway receives library access to a copy with the detected details intact.\n\n## When redaction happens\nWe check after upload. The transcription provider receives the original recording. When we detect identifying details, we redact them and immediately delete the identifiable copy Sonaway received. We can also agree to stop processing, delete the file and request a new recording when specified types of identifying information are detected.",
     "url": "/knowledge-capture.html#recording-privacy"
   },
   {
@@ -219,7 +219,7 @@
       "Can someone with admin access see the redacted names?",
       "Can we delete the redacted recording after approval?"
     ],
-    "answer": "You choose who can open the retained recordings and who can see the finished procedures. For example, you can give a shift lead access to review a redacted walkthrough and give packers access to the approved guide. Those permissions apply to redacted material. They do not restore personal details we have removed. You can request deletion of the redacted recording too. We generally recommend keeping it initially so a reviewer can trace a questionable instruction back to the recording and correct it at its source.",
+    "answer": "You choose who can open the retained recordings and who can see the finished procedures.\n\n## Who can see what\nFor example, you can give a shift lead access to review a redacted walkthrough and give packers access to the approved guide. Those permissions apply to redacted material. They do not restore personal details we have removed.\n\n## Keeping the source\nYou can request deletion of the redacted recording too. We generally recommend keeping it initially so a reviewer can trace a questionable instruction back to the recording and correct it at its source.",
     "url": "/knowledge-capture.html#recording-privacy"
   },
   {
@@ -228,7 +228,7 @@
     "aliases": [
       "Who is responsible for privacy after handoff?"
     ],
-    "answer": "We use aggregate reporting and do not build systems to track people through identifying details picked up in operational recordings. A person may have a named account to sign in. That account is separate from the material captured for procedures. If your team takes over the system, it takes responsibility for maintaining privacy and security, including who continues to have access.",
+    "answer": "We use aggregate reporting and do not build systems to track people through identifying details picked up in operational recordings.\n\n## Sign-in and handoff\nA person may have a named account to sign in. That account is separate from the material captured for procedures. If your team takes over the system, it takes responsibility for maintaining privacy and security, including who continues to have access.",
     "url": "/knowledge-capture.html#recording-privacy"
   },
   {
@@ -238,7 +238,7 @@
       "Does the pilot fee count toward the full project?",
       "Can we keep the pilot chatbot?"
     ],
-    "answer": "You keep the documents, SOPs and checklists we delivered. If the pilot scope includes a transferable knowledge base and chat, we can hand that system over too. The temporary chat used to test drafts is included for testing; continued hosting or a system handover depends on the scope. If you expand into a larger project, the approved work carries forward and the amount you paid for the pilot can count toward the larger project.",
+    "answer": "You keep the **documents, SOPs and checklists** we deliver.\n\n| Item | What you receive |\n| --- | --- |\n| Draft-testing chat | Included for the pilot test |\n| Knowledge base and chat handover | Included if specified in your pilot scope |\n| Continued hosting | Depends on the agreed scope |\n\nIf you expand, the approved work carries forward. Your pilot payment can count toward the larger project.",
     "url": "/knowledge-capture.html#pilot-handoff"
   },
   {
@@ -248,7 +248,7 @@
       "Does everyone have to record a shift?",
       "How much time do staff need to set aside?"
     ],
-    "answer": "You can designate one person who knows the job and has authority to define it. We usually suggest two experienced people per role, often one per shift, and generally no more than about three for capture. Most can record while they work. Key contributors and approvers may need a few sessions of one to two hours each. More people are welcome at the testing stage to try the drafts and flag errors.",
+    "answer": "**Two experienced people per role** is our usual starting point, often one from each shift.\n\n- **One expert can be enough** if you designate that person as the authority.\n- **About three per role** is generally the most we recommend for capture. Invite a wider group to test the draft.\n- **Staff time:** most people can record while working. Key contributors and approvers may need a few sessions of one to two hours each.",
     "url": "/knowledge-capture.html#capture-team"
   },
   {
@@ -258,7 +258,7 @@
       "When will you send follow-up questions?",
       "How long until the first role outline?"
     ],
-    "answer": "You can typically expect something useful to review, such as a preliminary role or shift outline, one to two weeks after the agreed project start date. We set that date after discovery. Completion depends on the complexity of the role, when recordings arrive and how quickly reviewers answer open questions.\n\nFor a typical complete batch, we aim to send follow-up questions within two business days: Monday morning to Wednesday, or Friday morning to Tuesday in a normal workweek. Several roles submitting full-shift recordings together can take longer. We compare new material against existing instructions first so we only ask questions that help settle a gap or disagreement.",
+    "answer": "Expect a first role or shift outline roughly **one to two weeks after the agreed start date**. We set that date after discovery.\n\n## Follow-up questions\nFor a typical complete batch, we aim to respond within **two business days**.\n\n| Batch received | Typical follow-up |\n| --- | --- |\n| Monday morning | Wednesday |\n| Friday morning | Tuesday |\n\nThese examples assume a normal workweek. Several full-shift recordings arriving together can take longer. We compare them with existing instructions before sending questions. Completion also depends on role complexity and how quickly reviewers resolve gaps.",
     "url": "/knowledge-capture.html#capture-timing"
   },
   {
@@ -268,7 +268,7 @@
       "Which language is the source of truth?",
       "Can workers use nicknames for equipment?"
     ],
-    "answer": "Yes. Your team can record and send documents in its working language. You choose which version is authoritative. For example, you can approve the English procedure and retain the Spanish source. We use multiple translation checks. Bilingual spot checks depend on the language and package.\n\nA custom search tool can retrieve an approved instruction in one language and answer in another. Staff can use familiar equipment names. If a nickname could refer to two machines, the assistant should ask which one they mean. When you maintain your own platform, you control how its search and updates work.",
+    "answer": "Yes. Your team can record and send documents in its working language. You choose which version is authoritative. For example, you can approve the English procedure and retain the Spanish source. We use multiple translation checks. Bilingual spot checks depend on the language and package.\n\n## Searching across languages\nA custom search tool can retrieve an approved instruction in one language and answer in another. Staff can use familiar equipment names. If a nickname could refer to two machines, the assistant should ask which one they mean. When you maintain your own platform, you control how its search and updates work.",
     "url": "/knowledge-capture.html#guide-languages"
   },
   {
@@ -278,7 +278,7 @@
       "Can we update a procedure after handoff?",
       "Can we send you a video when equipment changes?"
     ],
-    "answer": "For a one-time delivery, your team handles future edits in your chosen platform. With a custom build, we can give you a guided way to submit a change, such as a short video of a new printer check, and route it for approval. You can use that workflow even if you maintain the system yourselves. With a maintenance agreement, changes can be routed to Sonaway for follow-through. Human approval is the default; the exact workflow is agreed for your project.",
+    "answer": "## Who handles the next change?\n- **One-time delivery.** Your team updates the guide in your existing platform.\n- **Custom build.** We can give your shift lead a guided way to send a change, such as a video of a new printer check, and route it for approval. You can run this yourselves.\n- **Managed support.** Changes can come to Sonaway for follow-through under your maintenance agreement.\n\nHuman approval is the default. We agree on the workflow for your project.",
     "url": "/knowledge-capture.html#procedure-changes"
   },
   {
@@ -288,7 +288,7 @@
       "Can a manager approve one order through the knowledge base?",
       "How do you distinguish an exception from a one-off decision?"
     ],
-    "answer": "An approval to release a particular order applies to that order. Staff handle that decision with the person responsible. A one-off permission stays out of the playbook.\n\nDuring guided intake, we ask what conditions would let a future shift repeat the action without requesting fresh permission. If there is a repeatable exception, the designated owner can review its conditions and approve it as standing guidance.",
+    "answer": "An approval to release a particular order applies to that order. Staff handle that decision with the person responsible. A one-off permission stays out of the playbook.\n\n## When an exception applies again\nDuring guided intake, we ask what conditions would let a future shift repeat the action without requesting fresh permission. If there is a repeatable exception, the designated owner can review its conditions and approve it as standing guidance.",
     "url": "/custom-systems.html#standing-rules"
   },
   {
@@ -298,7 +298,7 @@
       "What happens when a question cannot be answered?",
       "Can the system know an undocumented exception?"
     ],
-    "answer": "If a packer asks about night shift and only a general release procedure is documented, the assistant can show that procedure, say there is no confirmed night-shift instruction and point the packer to the designated supervisor. Where configured, a gap in the guide can be flagged for review. The chat does not grant permission for an individual order.\n\nIf the question gives no indication of an exception and nobody has documented it, the system may return the general rule even though a different rule applies. People who know the work help us find those gaps.",
+    "answer": "If a packer asks about night shift and only a general release procedure is documented, the assistant can show that procedure, say there is no confirmed night-shift instruction and point the packer to the designated supervisor. Where configured, a gap in the guide can be flagged for review. The chat does not grant permission for an individual order.\n\n## Undocumented exceptions\nIf the question gives no indication of an exception and nobody has documented it, the system may return the general rule even though a different rule applies. People who know the work help us find those gaps.",
     "url": "/custom-systems.html#missing-exceptions"
   },
   {
@@ -308,7 +308,7 @@
       "How do you find gaps before the annual shutdown?",
       "What if nobody can verify a seasonal step?"
     ],
-    "answer": "We ask specifically about seasonal work and rare exceptions. Bring any existing changeover instructions and involve whoever knows or owns the procedure. We can have experienced staff mentally walk through the event, ask questions at each step and flag missing answers. If a step cannot be verified, it stays open and the client appoints someone to resolve it.\n\nDepending on the engagement, especially with ongoing support, we can run a mock changeover, test the knowledge base with hundreds of questions, and inspect connections between roles, equipment and steps for gaps. These checks identify what needs verifying; the appointed person supplies or confirms the instruction.",
+    "answer": "We ask specifically about seasonal work and rare exceptions. Bring any existing changeover instructions and involve whoever knows or owns the procedure. We can have experienced staff mentally walk through the event, ask questions at each step and flag missing answers. If a step cannot be verified, it stays open and the client appoints someone to resolve it.\n\n## Testing for gaps\nDepending on the engagement, especially with ongoing support, we can run a mock changeover, test the knowledge base with hundreds of questions, and inspect connections between roles, equipment and steps for gaps. These checks identify what needs verifying; the appointed person supplies or confirms the instruction.",
     "url": "/knowledge-capture.html#rare-events"
   },
   {
@@ -317,7 +317,7 @@
     "aliases": [
       "What if staff keep asking the same question in different languages?"
     ],
-    "answer": "Questions about the same task from several shifts, sites or languages give us a reason to investigate. The issue might be a missed onboarding detail, an unclear instruction or the layout of the work itself. Depending on the package, we can review training or walk through the station virtually.\n\nFor example, if bagging supplies are stored in three wings, the practical fix may be to move supplies nearer the station and post a laminated checklist showing what belongs there. A short refresher can help when the gap is something people learned once and rarely use.",
+    "answer": "Questions about the same task from several shifts, sites or languages give us a reason to investigate. The issue might be a missed onboarding detail, an unclear instruction or the layout of the work itself. Depending on the package, we can review training or walk through the station virtually.\n\n## Example from a bagging station\nFor example, if bagging supplies are stored in three wings, the practical fix may be to move supplies nearer the station and post a laminated checklist showing what belongs there. A short refresher can help when the gap is something people learned once and rarely use.",
     "url": "/custom-systems.html#repeat-questions"
   },
   {
@@ -327,7 +327,7 @@
       "How do we measure whether moving supplies worked?",
       "What should the shift lead check after we change a process?"
     ],
-    "answer": "Compare the rate of related questions before and after the change alongside the amount of work the team did. Where reporting supports it, check whether questions now come mostly from new hires or continue among experienced staff. This can be done with grouped trends.\n\nAsk the shift lead to check whether the job still gets done correctly. For the bagging station, are workers finding the supplies and completing bags with the right contents? Compare errors or rework as well as questions. If questions fall while errors rise, fewer questions alone are no evidence of improvement.",
+    "answer": "Compare the rate of related questions before and after the change alongside the amount of work the team did. Where reporting supports it, check whether questions now come mostly from new hires or continue among experienced staff. This can be done with grouped trends.\n\n## What to check on the floor\nAsk the shift lead to check whether the job still gets done correctly. For the bagging station, are workers finding the supplies and completing bags with the right contents? Compare errors or rework as well as questions. If questions fall while errors rise, fewer questions alone are no evidence of improvement.",
     "url": "/custom-systems.html#measure-improvement"
   },
   {
